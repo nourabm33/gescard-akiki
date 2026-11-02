@@ -1,0 +1,124 @@
+{
+ "stock/dubai-skyline": {
+  "w": 2400,
+  "h": 1600,
+  "widths": [
+   640,
+   1280,
+   1920
+  ]
+ },
+ "stock/dubai-night-boulevard": {
+  "w": 2400,
+  "h": 3600,
+  "widths": [
+   640,
+   1280,
+   1920
+  ]
+ },
+ "stock/downtown-dubai": {
+  "w": 2400,
+  "h": 1800,
+  "widths": [
+   640,
+   1280,
+   1920
+  ]
+ },
+ "stock/palm-jumeirah": {
+  "w": 2400,
+  "h": 1800,
+  "widths": [
+   640,
+   1280,
+   1920
+  ]
+ },
+ "stock/burj-al-arab-coast": {
+  "w": 2400,
+  "h": 3600,
+  "widths": [
+   640,
+   1280,
+   1920
+  ]
+ },
+ "stock/villa-illustrative": {
+  "w": 2400,
+  "h": 1600,
+  "widths": [
+   640,
+   1280,
+   1920
+  ]
+ },
+ "stock/villa-garden-illustrative": {
+  "w": 2400,
+  "h": 1601,
+  "widths": [
+   640,
+   1280,
+   1920
+  ]
+ },
+ "stock/apartment-interior-illustrative": {
+  "w": 2400,
+  "h": 1632,
+  "widths": [
+   640,
+   1280,
+   1920
+  ]
+ },
+ "stock/dubai-tower-detail": {
+  "w": 2400,
+  "h": 3200,
+  "widths": [
+   640,
+   1280,
+   1920
+  ]
+ },
+ "gescard/gescard-portrait": {
+  "w": 1002,
+  "h": 1179,
+  "widths": [
+   480,
+   800,
+   1002
+  ]
+ },
+ "gescard/gescard-portrait-cutout": {
+  "w": 755,
+  "h": 1018,
+  "widths": [
+   480,
+   755
+  ]
+ },
+ "gescard/emaar-awards-team-stage": {
+  "w": 1290,
+  "h": 852,
+  "widths": [
+   640,
+   1290
+  ]
+ },
+ "gescard/emaar-awards-team-group": {
+  "w": 1290,
+  "h": 846,
+  "widths": [
+   640,
+   1290
+  ]
+ },
+ "gescard/emaar-awards-duo": {
+  "w": 1290,
+  "h": 860,
+  "widths": [
+   640,
+   1290
+  ]
+ }
+}
