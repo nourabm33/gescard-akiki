@@ -73,7 +73,7 @@ export default function ContactForm() {
   const describe = (k: keyof EnquiryInput) => (errors[k] ? { "aria-invalid": true as const, "aria-describedby": errorId(k) } : {});
   const Err = ({ k }: { k: keyof EnquiryInput }) =>
     errors[k] ? (
-      <p id={errorId(k)} className="mt-2 text-[0.8rem] text-[#e9b4a2]" role="alert">
+      <p id={errorId(k)} className="feedback-in mt-2 text-[0.8rem] text-[#e9b4a2]" role="alert">
         {errors[k]}
       </p>
     ) : null;
@@ -85,7 +85,7 @@ export default function ContactForm() {
   );
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-8" aria-describedby={`${id}-note`}>
+    <form onSubmit={onSubmit} noValidate className="form-luxe space-y-8" aria-describedby={`${id}-note`}>
       <div className="grid gap-8 sm:grid-cols-2">
         <div>
           <Label k="name" required>Full name</Label>
@@ -117,7 +117,7 @@ export default function ContactForm() {
           </select>
         </div>
         <div>
-          <Label k="location">Preferred location in Dubai</Label>
+          <Label k="location">Preferred location in the UAE</Label>
           <input id={fieldId("location")} name="location" type="text" placeholder="e.g. Dubai Hills Estate" maxLength={limits.location} value={values.location} onChange={(e) => set("location", e.target.value)} className="field" />
         </div>
       </div>
@@ -142,14 +142,14 @@ export default function ContactForm() {
         <p id={`${id}-note`} className="max-w-sm text-[0.82rem] leading-relaxed text-ivory/60">
           Submitting opens WhatsApp with your message ready to send to Gescard. Nothing is sent until you press send in WhatsApp.
         </p>
-        <button type="submit" className="group inline-flex shrink-0 items-center justify-center gap-3 bg-gold px-8 py-4 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-charcoal transition-colors duration-500 hover:bg-ivory">
+        <button type="submit" className="btn-sweep group inline-flex shrink-0 items-center justify-center gap-3 bg-gold px-8 py-4 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-charcoal transition-transform duration-300 [--sweep:var(--color-ivory)] active:scale-[0.98]">
           <WhatsAppIcon size={17} /> Send via WhatsApp
         </button>
       </div>
 
       <div ref={statusRef} tabIndex={-1} aria-live="polite" className="outline-none">
         {sent && (
-          <div className="border border-gold/40 bg-gold/[0.06] p-6">
+          <div className="feedback-in border border-gold/40 bg-gold/[0.06] p-6">
             <p className="font-serif text-2xl text-ivory">WhatsApp is opening with your message ready to send.</p>
             <p className="mt-3 text-sm leading-relaxed text-ivory/70">
               Review the message and press send in WhatsApp to deliver it. If WhatsApp did not open,{" "}

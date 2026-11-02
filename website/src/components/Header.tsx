@@ -68,7 +68,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`header-in fixed inset-x-0 top-0 z-50 transition-[background-color,padding,box-shadow,backdrop-filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         solid ? "bg-charcoal/92 py-3.5 shadow-[0_1px_0_rgba(195,164,119,0.14)] backdrop-blur-md" : "bg-transparent py-6 lg:py-8"
       }`}
     >
@@ -87,8 +87,8 @@ export default function Header() {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative py-2 text-[0.72rem] font-medium uppercase tracking-[0.22em] transition-colors duration-300 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-gold after:transition-transform after:duration-500 ${
-                      active ? "text-gold after:scale-x-100" : "text-ivory/80 after:scale-x-0 hover:text-ivory hover:after:scale-x-100"
+                    className={`relative py-2 text-[0.72rem] font-medium uppercase tracking-[0.22em] transition-colors duration-300 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:bg-gold after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      active ? "text-gold after:origin-left after:scale-x-100" : "text-ivory/80 after:origin-right after:scale-x-0 hover:text-ivory hover:after:origin-left hover:after:scale-x-100"
                     }`}
                   >
                     {item.label}
@@ -102,7 +102,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact/"
-            className="hidden border border-gold/60 px-6 py-3 text-[0.7rem] font-medium uppercase tracking-[0.26em] text-gold transition-all duration-500 hover:bg-gold hover:text-charcoal lg:inline-block"
+            className="btn-sweep hidden border border-gold/60 px-6 py-3 text-[0.7rem] font-medium uppercase tracking-[0.26em] text-gold transition-colors duration-500 [--sweep:var(--color-gold)] hover:text-charcoal lg:inline-block"
           >
             Let&rsquo;s Talk
           </Link>
@@ -127,8 +127,8 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
-        className={`fixed inset-0 top-0 -z-10 flex h-[100dvh] flex-col bg-charcoal px-6 pb-10 pt-28 transition-[opacity,visibility] duration-500 sm:px-8 lg:hidden ${
-          open ? "visible opacity-100" : "invisible opacity-0"
+        className={`fixed inset-0 top-0 -z-10 flex h-[100dvh] flex-col bg-charcoal px-6 pb-10 pt-28 transition-[opacity,visibility,clip-path] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-8 lg:hidden ${
+          open ? "visible opacity-100 [clip-path:inset(0_0_0_0)]" : "invisible opacity-0 [clip-path:inset(0_0_100%_0)]"
         }`}
       >
         <nav aria-label="Mobile" className="flex-1">

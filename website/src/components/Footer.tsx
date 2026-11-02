@@ -13,13 +13,13 @@ export default function Footer() {
           <Logo />
           <p className="mt-3 text-[0.62rem] font-medium uppercase tracking-[0.34em] text-ivory/60">{profile.title}</p>
           <p className="mt-8 max-w-sm font-serif text-2xl leading-snug text-ivory/85">
-            Personalised guidance for Dubai property investment, apartments and villas.
+            Personalised guidance for UAE property investment, apartments and villas.
           </p>
           <div className="mt-8 flex gap-3">
-            <a href={profile.socials.instagram.url} target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)" className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/20 text-ivory/80 transition-colors duration-300 hover:border-gold hover:text-gold">
+            <a href={profile.socials.instagram.url} target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)" className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/20 text-ivory/80 transition-[color,border-color,transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold hover:bg-gold/10 hover:text-gold">
               <InstagramIcon size={18} />
             </a>
-            <a href={profile.socials.youtube.url} target="_blank" rel="noopener noreferrer" aria-label="YouTube (opens in a new tab)" className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/20 text-ivory/80 transition-colors duration-300 hover:border-gold hover:text-gold">
+            <a href={profile.socials.youtube.url} target="_blank" rel="noopener noreferrer" aria-label="YouTube (opens in a new tab)" className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/20 text-ivory/80 transition-[color,border-color,transform,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold hover:bg-gold/10 hover:text-gold">
               <YouTubeIcon size={18} />
             </a>
           </div>
@@ -30,7 +30,7 @@ export default function Footer() {
           <ul className="mt-6 space-y-3">
             {navigation.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-[0.75rem] uppercase tracking-[0.22em] text-ivory/75 transition-colors hover:text-gold">
+                <Link href={item.href} className="link-line text-[0.75rem] uppercase tracking-[0.22em] text-ivory/75 transition-colors hover:text-gold">
                   {item.label}
                 </Link>
               </li>
@@ -42,10 +42,10 @@ export default function Footer() {
           <p className="text-[0.65rem] font-medium uppercase tracking-[0.3em] text-gold">Contact</p>
           <ul className="mt-6 space-y-3 text-[0.95rem] text-ivory/80">
             <li>
-              <a href={`mailto:${profile.email}`} className="transition-colors hover:text-gold">{profile.email}</a>
+              <a href={`mailto:${profile.email}`} className="link-line transition-colors hover:text-gold">{profile.email}</a>
             </li>
             <li>
-              <a href={`tel:${profile.phone.e164}`} className="transition-colors hover:text-gold">{profile.phone.display}</a>
+              <a href={`tel:${profile.phone.e164}`} className="link-line transition-colors hover:text-gold">{profile.phone.display}</a>
             </li>
             <li className="pt-3">
               <a href={profile.address.mapsUrl} target="_blank" rel="noopener noreferrer" className="not-italic leading-relaxed text-ivory/65 transition-colors hover:text-gold">
@@ -66,8 +66,8 @@ export default function Footer() {
               &copy; {year} {profile.name}. All rights reserved.
             </p>
             <ul className="flex gap-6">
-              <li><Link href="/privacy-policy/" className="hover:text-gold">Privacy Policy</Link></li>
-              <li><Link href="/terms/" className="hover:text-gold">Terms and Conditions</Link></li>
+              <li><Link href="/privacy-policy/" className="link-line hover:text-gold">Privacy Policy</Link></li>
+              <li><Link href="/terms/" className="link-line hover:text-gold">Terms and Conditions</Link></li>
             </ul>
           </div>
         </div>

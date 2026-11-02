@@ -1,6 +1,6 @@
-# Gescard Akiki | Dubai Real Estate
+# Gescard Akiki | UAE Real Estate
 
-Personal real estate brand website for Gescard Akiki, Dubai real estate consultant with RichKey Properties.
+Personal real estate brand website for Gescard Akiki, UAE real estate consultant with RichKey Properties.
 
 Live (GitHub Pages): https://nourabm33.github.io/gescard-akiki/
 

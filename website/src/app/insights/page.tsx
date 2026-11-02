@@ -11,14 +11,14 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Insights",
-  description: "Dubai property tours, real estate content and insights from Gescard Akiki on YouTube and Instagram.",
+  description: "UAE property tours, real estate content and insights from Gescard Akiki on YouTube and Instagram.",
   path: "/insights/",
 });
 
 export default function InsightsPage() {
   return (
     <>
-      <PageHero eyebrow="Insights & Media" title="Discover Dubai Through My Perspective." intro="Explore property tours, Dubai real estate content and insights through Gescard's videos." image="stock/dubai-night-boulevard">
+      <PageHero eyebrow="Insights & Media" title="Discover the UAE Through My Perspective." intro="Explore property tours, UAE real estate content and insights through Gescard's videos." image="stock/dubai-night-boulevard">
         <ButtonLink href={profile.socials.youtube.subscribeUrl} icon={<YouTubeIcon size={17} />}>Subscribe on YouTube</ButtonLink>
       </PageHero>
 

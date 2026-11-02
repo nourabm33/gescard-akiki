@@ -15,7 +15,7 @@ export default function VideoCard({ video, tone = "dark", large = false }: Props
 
   return (
     <article className="group flex h-full flex-col">
-      <div className={`relative w-full overflow-hidden bg-black ${ratio}`}>
+      <div className={`video-thumb relative w-full overflow-hidden bg-black ${ratio}`}>
         {playing ? (
           <iframe
             src={embedUrl(video)}
@@ -31,9 +31,10 @@ export default function VideoCard({ video, tone = "dark", large = false }: Props
             <img src={thumbnailUrl(video)} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover opacity-90" />
             <span className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/10 to-transparent" aria-hidden="true" />
             <span
-              className={`absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/60 bg-charcoal/30 text-ivory backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal ${large ? "h-20 w-20" : "h-14 w-14"}`}
+              className={`absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/60 bg-charcoal/30 text-ivory backdrop-blur-sm transition-[transform,background-color,border-color,color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08] group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal ${large ? "h-20 w-20" : "h-14 w-14"}`}
               aria-hidden="true"
             >
+              <span className="absolute -inset-2 rounded-full border border-gold/0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-inset-3 group-hover:border-gold/40" />
               <Play size={large ? 24 : 18} strokeWidth={1.4} className="translate-x-0.5" fill="currentColor" />
             </span>
             <span className="absolute left-4 top-4 text-[0.6rem] font-medium uppercase tracking-[0.26em] text-ivory/85">
@@ -48,7 +49,7 @@ export default function VideoCard({ video, tone = "dark", large = false }: Props
           href={videoUrl(video)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`mt-3 inline-flex text-[0.65rem] font-medium uppercase tracking-[0.24em] transition-colors ${onDark ? "text-gold hover:text-ivory" : "text-gold-deep hover:text-charcoal"}`}
+          className={`link-line mt-3 inline-flex self-start text-[0.65rem] font-medium uppercase tracking-[0.24em] transition-colors ${onDark ? "text-gold hover:text-ivory" : "text-gold-deep hover:text-charcoal"}`}
         >
           Watch on YouTube<span className="sr-only"> (opens in a new tab)</span>
         </a>

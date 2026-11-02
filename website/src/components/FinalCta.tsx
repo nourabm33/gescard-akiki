@@ -7,7 +7,7 @@ import { WhatsAppIcon } from "./icons";
 type Props = { title?: string; text?: string };
 
 export default function FinalCta({
-  title = "Your Dubai Property Journey Starts With a Conversation.",
+  title = "Your UAE Property Journey Starts With a Conversation.",
   text = "Tell Gescard what you are looking for and begin exploring the right opportunities for your goals.",
 }: Props) {
   return (
@@ -17,7 +17,7 @@ export default function FinalCta({
       </div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-charcoal via-charcoal/60 to-charcoal" aria-hidden="true" />
       <div className="container-luxe text-center">
-        <Reveal>
+        <Reveal variant="stagger">
           <p className="eyebrow justify-center text-gold">Let&rsquo;s Talk</p>
           <h2 className="mx-auto mt-6 max-w-4xl text-[2.6rem] leading-[1.05] text-ivory sm:text-6xl lg:text-7xl">{title}</h2>
           <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-ivory/70 sm:text-lg">{text}</p>
