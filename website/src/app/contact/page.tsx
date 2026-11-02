@@ -10,7 +10,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description: "Contact Gescard Akiki about Dubai property investment, apartments and villas by WhatsApp, phone or email.",
+  description: "Contact Gescard Akiki about UAE property investment, apartments and villas by WhatsApp, phone or email.",
   path: "/contact/",
 });
 
@@ -26,7 +26,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact & Consultation"
         title="Let's Find Your Next Opportunity."
-        intro="Whether you're considering an investment, searching for an apartment or exploring villas in Dubai, get in touch with Gescard to discuss your requirements."
+        intro="Whether you're considering an investment, searching for an apartment or exploring villas in the UAE, get in touch with Gescard to discuss your requirements."
         image="stock/dubai-skyline"
       />
       <section className="bg-charcoal pb-28 pt-8 sm:pb-36">

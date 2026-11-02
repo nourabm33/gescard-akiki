@@ -8,9 +8,9 @@ const base =
   "group/btn inline-flex items-center justify-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.24em] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]";
 
 const variants: Record<Variant, string> = {
-  gold: "bg-gold px-7 py-4 text-charcoal hover:bg-ivory",
-  outline: "border border-ivory/35 px-7 py-4 text-ivory hover:border-gold hover:text-gold",
-  "outline-dark": "border border-charcoal/30 px-7 py-4 text-charcoal hover:border-charcoal hover:bg-charcoal hover:text-ivory",
+  gold: "btn-sweep bg-gold px-7 py-4 text-charcoal [--sweep:var(--color-ivory)]",
+  outline: "btn-sweep border border-ivory/35 px-7 py-4 text-ivory [--sweep:rgba(195,164,119,0.12)] hover:border-gold hover:text-gold",
+  "outline-dark": "btn-sweep border border-charcoal/30 px-7 py-4 text-charcoal [--sweep:var(--color-charcoal)] hover:border-charcoal hover:text-ivory",
   text: "py-2 text-gold hover:text-ivory",
   "text-dark": "py-2 text-charcoal hover:text-gold-deep",
 };
@@ -29,14 +29,12 @@ export default function ButtonLink({ href, children, variant = "gold", className
   const content = (
     <>
       {icon}
-      <span>{children}</span>
+      <span className={variant.startsWith("text") ? "link-line" : undefined}>{children}</span>
       {!icon && (
-        <ArrowUpRight
-          size={15}
-          strokeWidth={1.5}
-          aria-hidden="true"
-          className="transition-transform duration-500 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5"
-        />
+        <span className="arrow-swap" aria-hidden="true">
+          <ArrowUpRight size={15} strokeWidth={1.5} />
+          <ArrowUpRight size={15} strokeWidth={1.5} />
+        </span>
       )}
     </>
   );

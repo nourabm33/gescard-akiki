@@ -18,7 +18,7 @@ export function pageMetadata({ title, description, path, image = "/og-image.jpg"
     title: fullTitle,
     description,
     alternates: { canonical: url },
-    openGraph: { type: "website", url, title: fullTitle, description, siteName: `${profile.name} | Dubai Real Estate`, images, locale: "en_GB" },
+    openGraph: { type: "website", url, title: fullTitle, description, siteName: `${profile.name} | UAE Real Estate`, images, locale: "en_GB" },
     twitter: { card: "summary_large_image", title: fullTitle, description, images: images.map((i) => i.url) },
     robots: noIndex ? { index: false, follow: true } : undefined,
   };

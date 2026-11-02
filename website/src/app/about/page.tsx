@@ -10,7 +10,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "About",
-  description: "Meet Gescard Akiki, Dubai real estate consultant with RichKey Properties, and his personal approach to property investment, apartments and villas in Dubai.",
+  description: "Meet Gescard Akiki, UAE real estate consultant with RichKey Properties, and his personal approach to property investment, apartments and villas in the UAE.",
   path: "/about/",
 });
 
@@ -32,18 +32,20 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageHero eyebrow="About Gescard" title="Meet Gescard Akiki." intro="A Dubai real estate consultant with RichKey Properties, focused on understanding people before properties." image="stock/burj-al-arab-coast" />
+      <PageHero eyebrow="About Gescard" title="Meet Gescard Akiki." intro="A UAE real estate consultant with RichKey Properties, focused on understanding people before properties." image="stock/burj-al-arab-coast" />
 
       <section className="bg-ivory py-24 text-charcoal sm:py-32">
         <div className="container-luxe grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
-          <Reveal className="lg:col-span-5">
+          <Reveal variant="fade" className="lg:col-span-5">
             <div className="relative">
               <div className="absolute -left-4 -top-4 hidden h-full w-full border border-gold-deep/30 sm:block" aria-hidden="true" />
-              <ResponsiveImage image="gescard/gescard-portrait" alt="Portrait of Gescard Akiki in a black tuxedo at the Emaar Quarter 1 Broker Awards 2026" sizes="(min-width: 1024px) 40vw, 100vw" className="relative aspect-[4/5] w-full object-cover object-top" />
+              <Reveal variant="image" delay={100} className="relative overflow-hidden">
+                <ResponsiveImage image="gescard/gescard-portrait" alt="Portrait of Gescard Akiki in a black tuxedo at the Emaar Quarter 1 Broker Awards 2026" sizes="(min-width: 1024px) 40vw, 100vw" className="aspect-[4/5] w-full object-cover object-top" />
+              </Reveal>
             </div>
           </Reveal>
           <div className="lg:col-span-6 lg:col-start-7">
-            <Reveal>
+            <Reveal variant="stagger">
               <p className="eyebrow text-gold-deep">Introduction</p>
               <h2 className="mt-6 text-[2.6rem] leading-[1.04] sm:text-6xl">Real Estate Is <em className="font-normal text-gold-deep">Personal.</em></h2>
             </Reveal>
@@ -53,10 +55,10 @@ export default function AboutPage() {
               ) : (
                 <>
                   <p>
-                    Gescard Akiki is a Dubai real estate professional working with {profile.agency.name}. His approach is centred on understanding each client&rsquo;s individual requirements and helping them explore properties that fit their goals.
+                    Gescard Akiki is a UAE real estate professional working with {profile.agency.name}. His approach is centred on understanding each client&rsquo;s individual requirements and helping them explore properties that fit their goals.
                   </p>
                   <p>
-                    Whether you are considering a property investment, an apartment or a villa, the search is tailored to you: your priorities, your preferred communities and the way you want to live or invest in Dubai.
+                    Whether you are considering a property investment, an apartment or a villa, the search is tailored to you: your priorities, your preferred communities and the way you want to live or invest in the UAE.
                   </p>
                 </>
               )}
@@ -131,15 +133,15 @@ export default function AboutPage() {
             <h2 id="moments-heading" className="mt-6 max-w-3xl text-[2.5rem] leading-[1.05] text-ivory sm:text-5xl">With the RichKey Properties team.</h2>
           </Reveal>
           <div className="mt-14 grid gap-4 md:grid-cols-2">
-            <Reveal className="md:row-span-2">
+            <Reveal variant="image" from="left" className="md:row-span-2">
               <figure className="h-full">
                 <ResponsiveImage image="gescard/emaar-awards-team-group" alt="Gescard Akiki and the RichKey Properties team at the Emaar Quarter 1 Broker Awards 2026" sizes="(min-width: 768px) 50vw, 100vw" className="h-full w-full object-cover" />
               </figure>
             </Reveal>
-            <Reveal delay={120}>
+            <Reveal variant="image" from="right" delay={150}>
               <ResponsiveImage image="gescard/emaar-awards-team-stage" alt="The RichKey Properties team on stage at the Emaar Quarter 1 Broker Awards 2026" sizes="(min-width: 768px) 50vw, 100vw" className="aspect-[3/2] w-full object-cover" />
             </Reveal>
-            <Reveal delay={200}>
+            <Reveal variant="image" from="right" delay={300}>
               <ResponsiveImage image="gescard/emaar-awards-duo" alt="Gescard Akiki with a RichKey Properties colleague at the Emaar Quarter 1 Broker Awards 2026" sizes="(min-width: 768px) 50vw, 100vw" className="aspect-[3/2] w-full object-cover" />
             </Reveal>
           </div>

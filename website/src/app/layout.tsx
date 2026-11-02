@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import BackToTop from "@/components/BackToTop";
 import { profile } from "@/data/profile";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -18,32 +19,32 @@ const cormorant = Cormorant_Garamond({
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 const description =
-  "Gescard Akiki, Dubai real estate consultant with RichKey Properties. Personalised guidance for Dubai property investment, apartments and villas.";
+  "Gescard Akiki, UAE real estate consultant with RichKey Properties. Personalised guidance for UAE property investment, apartments and villas.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${SITE_URL}/`),
-  title: { default: `${profile.name} | Dubai Real Estate Consultant`, template: `%s | ${profile.name}` },
+  title: { default: `${profile.name} | UAE Real Estate Consultant`, template: `%s | ${profile.name}` },
   description,
-  applicationName: `${profile.name} | Dubai Real Estate`,
+  applicationName: `${profile.name} | UAE Real Estate`,
   authors: [{ name: profile.name }],
   keywords: [
-    "Dubai real estate consultant",
-    "Dubai property investment",
-    "Dubai apartments and villas",
-    "property investment opportunities in Dubai",
-    "Gescard Akiki Dubai real estate",
+    "UAE real estate consultant",
+    "UAE property investment",
+    "UAE apartments and villas",
+    "property investment opportunities in the UAE",
+    "Gescard Akiki UAE real estate",
   ],
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     type: "website",
     url: absoluteUrl("/"),
-    siteName: `${profile.name} | Dubai Real Estate`,
-    title: `${profile.name} | Dubai Real Estate Consultant`,
+    siteName: `${profile.name} | UAE Real Estate`,
+    title: `${profile.name} | UAE Real Estate Consultant`,
     description,
     locale: "en_GB",
     images: [{ url: absoluteUrl("/og-image.jpg"), width: 1200, height: 630, alt: `${profile.name}, ${profile.title}` }],
   },
-  twitter: { card: "summary_large_image", title: `${profile.name} | Dubai Real Estate Consultant`, description, images: [absoluteUrl("/og-image.jpg")] },
+  twitter: { card: "summary_large_image", title: `${profile.name} | UAE Real Estate Consultant`, description, images: [absoluteUrl("/og-image.jpg")] },
   formatDetection: { telephone: false, email: false, address: false },
 };
 
@@ -68,7 +69,7 @@ const personJsonLd = {
     "@type": "Place",
     address: { "@type": "PostalAddress", streetAddress: "Dubai Hills Business Park, Building 4, 2nd Floor", addressLocality: "Dubai", addressCountry: "AE" },
   },
-  knowsAbout: ["Dubai real estate", "Property investment", "Apartments", "Villas"],
+  knowsAbout: ["UAE real estate", "Property investment", "Apartments", "Villas"],
   sameAs: [profile.socials.instagram.url, profile.socials.youtube.url],
 };
 
@@ -81,8 +82,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body>
         <Header />
-        <main id="main">{children}</main>
+        <main id="main" tabIndex={-1} className="outline-none">{children}</main>
         <Footer />
+        <BackToTop />
         <WhatsAppFloat />
       </body>
     </html>

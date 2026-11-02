@@ -6,7 +6,7 @@ export const profile = {
   name: "Gescard Akiki",
   brand: "GESCARD AKIKI",
   /** Public title used across the site. */
-  title: "Dubai Real Estate Consultant",
+  title: "UAE Real Estate Consultant",
   /**
    * Title from his social profile. Verify his current broker certification / registration
    * before using it on the site (then replace `title` above).
@@ -23,7 +23,7 @@ export const profile = {
     display: "+971 52 776 0240",
     number: "971527760240",
     url: "https://wa.me/971527760240",
-    defaultMessage: "Hello Gescard, I found your website and would like to discuss Dubai real estate.",
+    defaultMessage: "Hello Gescard, I found your website and would like to discuss UAE real estate.",
   },
   address: {
     lines: ["Dubai Hills Business Park", "Building 4, 2nd Floor", "Dubai, UAE"],

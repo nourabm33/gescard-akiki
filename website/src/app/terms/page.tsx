@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Terms and Conditions",
-  description: "Terms of use for the Gescard Akiki Dubai real estate website.",
+  description: "Terms of use for the Gescard Akiki UAE real estate website.",
   path: "/terms/",
 });
 
