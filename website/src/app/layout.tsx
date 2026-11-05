@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Montserrat } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -8,26 +8,29 @@ import { profile } from "@/data/profile";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
+const cinzel = Cinzel({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-cinzel", display: "swap" });
+
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  weight: ["400", "500"],
+  style: ["italic"],
   variable: "--font-cormorant",
   display: "swap",
 });
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" });
 
 const description =
-  "Gescard Akiki, UAE real estate consultant with RichKey Properties. Personalised guidance for UAE property investment, apartments and villas.";
+  "Gescard Akiki, UAE property advisor with RichKey Properties. Private property advisory for buyers and investors: apartments, villas and timeless assets in the UAE.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${SITE_URL}/`),
-  title: { default: `${profile.name} | UAE Real Estate Consultant`, template: `%s | ${profile.name}` },
+  title: { default: `${profile.name} | UAE Property Advisor`, template: `%s | ${profile.name}` },
   description,
   applicationName: `${profile.name} | UAE Real Estate`,
   authors: [{ name: profile.name }],
   keywords: [
+    "UAE property advisor",
     "UAE real estate consultant",
     "UAE property investment",
     "UAE apartments and villas",
@@ -39,17 +42,17 @@ export const metadata: Metadata = {
     type: "website",
     url: absoluteUrl("/"),
     siteName: `${profile.name} | UAE Real Estate`,
-    title: `${profile.name} | UAE Real Estate Consultant`,
+    title: `${profile.name} | UAE Property Advisor`,
     description,
     locale: "en_GB",
     images: [{ url: absoluteUrl("/og-image.jpg"), width: 1200, height: 630, alt: `${profile.name}, ${profile.title}` }],
   },
-  twitter: { card: "summary_large_image", title: `${profile.name} | UAE Real Estate Consultant`, description, images: [absoluteUrl("/og-image.jpg")] },
+  twitter: { card: "summary_large_image", title: `${profile.name} | UAE Property Advisor`, description, images: [absoluteUrl("/og-image.jpg")] },
   formatDetection: { telephone: false, email: false, address: false },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#151719",
+  themeColor: "#300719",
   width: "device-width",
   initialScale: 1,
 };
@@ -58,7 +61,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: profile.name,
-  jobTitle: "Real Estate Consultant",
+  jobTitle: "Property Advisor",
   description: `${profile.title} with ${profile.agency.name}.`,
   url: absoluteUrl("/"),
   image: absoluteUrl("/images/gescard/gescard-portrait-800.webp"),
@@ -75,7 +78,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${montserrat.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />

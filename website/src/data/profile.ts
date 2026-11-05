@@ -6,7 +6,7 @@ export const profile = {
   name: "Gescard Akiki",
   brand: "GESCARD AKIKI",
   /** Public title used across the site. */
-  title: "UAE Real Estate Consultant",
+  title: "UAE Property Advisor",
   /**
    * Title from his social profile. Verify his current broker certification / registration
    * before using it on the site (then replace `title` above).

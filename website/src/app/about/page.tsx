@@ -10,7 +10,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "About",
-  description: "Meet Gescard Akiki, UAE real estate consultant with RichKey Properties, and his personal approach to property investment, apartments and villas in the UAE.",
+  description: "Meet Gescard Akiki, UAE property advisor with RichKey Properties, and his personal approach to property investment, apartments and villas in the UAE.",
   path: "/about/",
 });
 
@@ -32,13 +32,13 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageHero eyebrow="About Gescard" title="Meet Gescard Akiki." intro="A UAE real estate consultant with RichKey Properties, focused on understanding people before properties." image="stock/burj-al-arab-coast" />
+      <PageHero eyebrow="About Gescard" title="Meet Gescard Akiki." intro="A UAE property advisor with RichKey Properties, focused on understanding people before properties." image="stock/burj-al-arab-coast" />
 
-      <section className="bg-ivory py-24 text-charcoal sm:py-32">
+      <section className="bg-ivory py-24 text-burgundy sm:py-32">
         <div className="container-luxe grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
           <Reveal variant="fade" className="lg:col-span-5">
             <div className="relative">
-              <div className="absolute -left-4 -top-4 hidden h-full w-full border border-gold-deep/30 sm:block" aria-hidden="true" />
+              <div className="absolute -left-4 -top-4 hidden h-full w-full border border-wine/30 sm:block" aria-hidden="true" />
               <Reveal variant="image" delay={100} className="relative overflow-hidden">
                 <ResponsiveImage image="gescard/gescard-portrait" alt="Portrait of Gescard Akiki in a black tuxedo at the Emaar Quarter 1 Broker Awards 2026" sizes="(min-width: 1024px) 40vw, 100vw" className="aspect-[4/5] w-full object-cover object-top" />
               </Reveal>
@@ -46,16 +46,19 @@ export default function AboutPage() {
           </Reveal>
           <div className="lg:col-span-6 lg:col-start-7">
             <Reveal variant="stagger">
-              <p className="eyebrow text-gold-deep">Introduction</p>
-              <h2 className="mt-6 text-[2.6rem] leading-[1.04] sm:text-6xl">Real Estate Is <em className="font-normal text-gold-deep">Personal.</em></h2>
+              <p className="eyebrow text-wine">Introduction</p>
+              <h2 className="mt-6 text-[2.6rem] leading-[1.04] sm:text-6xl">Real Estate Is <em className="font-normal text-wine">Personal.</em></h2>
             </Reveal>
-            <Reveal delay={120} className="mt-8 space-y-5 text-lg leading-relaxed text-charcoal/75">
+            <Reveal delay={120} className="mt-8 space-y-5 text-lg leading-relaxed text-burgundy/75">
               {profile.biography.length ? (
                 profile.biography.map((p) => <p key={p.slice(0, 24)}>{p}</p>)
               ) : (
                 <>
                   <p>
-                    Gescard Akiki is a UAE real estate professional working with {profile.agency.name}. His approach is centred on understanding each client&rsquo;s individual requirements and helping them explore properties that fit their goals.
+                    Gescard Akiki is a UAE property advisor with {profile.agency.name}, bringing four years of real estate experience and a genuine passion for the work. His approach is centred on understanding each client&rsquo;s individual requirements and helping them find properties that fit their goals.
+                  </p>
+                  <p>
+                    He is drawn to timeless assets: properties whose location, design and character cannot be replicated, and whose value is built to last.
                   </p>
                   <p>
                     Whether you are considering a property investment, an apartment or a villa, the search is tailored to you: your priorities, your preferred communities and the way you want to live or invest in the UAE.
@@ -71,16 +74,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-charcoal py-24 sm:py-32" aria-labelledby="approach-heading">
+      <section className="bg-burgundy py-24 sm:py-32" aria-labelledby="approach-heading">
         <div className="container-luxe">
           <Reveal>
-            <p className="eyebrow text-gold">My Approach</p>
+            <p className="eyebrow text-champagne">My Approach</p>
             <h2 id="approach-heading" className="mt-6 max-w-3xl text-[2.5rem] leading-[1.05] text-ivory sm:text-5xl lg:text-[3.6rem]">A property search shaped around your goals.</h2>
           </Reveal>
           <ol className="mt-16 grid gap-px bg-ivory/10 md:grid-cols-3">
             {approach.map((a, i) => (
-              <Reveal as="li" key={a.title} delay={i * 120} className="bg-charcoal p-8 md:p-10">
-                <span className="font-serif text-5xl text-gold/80">0{i + 1}</span>
+              <Reveal as="li" key={a.title} delay={i * 120} className="bg-burgundy p-8 md:p-10">
+                <span className="font-serif text-5xl text-champagne/80">0{i + 1}</span>
                 <h3 className="mt-8 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.26em] text-ivory">{a.title}</h3>
                 <p className="mt-4 leading-relaxed text-ivory/65">{a.text}</p>
               </Reveal>
@@ -89,16 +92,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-charcoal py-28 sm:py-40" aria-labelledby="philosophy-heading">
+      <section className="relative isolate overflow-hidden bg-burgundy py-28 sm:py-40" aria-labelledby="philosophy-heading">
         <div className="absolute inset-0 -z-10">
           <ResponsiveImage image="stock/dubai-night-boulevard" alt="" className="h-full w-full object-cover opacity-25" />
         </div>
-        <div className="absolute inset-0 -z-10 bg-charcoal/60" aria-hidden="true" />
+        <div className="absolute inset-0 -z-10 bg-burgundy/60" aria-hidden="true" />
         <div className="container-luxe">
           <Reveal className="mx-auto max-w-4xl text-center">
-            <h2 id="philosophy-heading" className="eyebrow justify-center font-sans text-gold">My Philosophy</h2>
+            <h2 id="philosophy-heading" className="eyebrow justify-center font-sans text-champagne">My Philosophy</h2>
             <blockquote className="mt-10">
-              <p className="font-serif text-[2rem] italic leading-[1.25] text-ivory sm:text-5xl sm:leading-[1.2]">
+              <p className="signature text-[2rem] leading-[1.25] text-ivory sm:text-5xl sm:leading-[1.2]">
                 &ldquo;Real estate is more than choosing a property. It is about understanding the people behind every decision, recognising their priorities and exploring opportunities that match their ambitions.&rdquo;
               </p>
               <footer className="mt-10 text-[0.7rem] uppercase tracking-[0.32em] text-ivory/60">{profile.name}</footer>
@@ -107,18 +110,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-ivory py-24 text-charcoal sm:py-32" aria-labelledby="identity-heading">
+      <section className="bg-ivory py-24 text-burgundy sm:py-32" aria-labelledby="identity-heading">
         <div className="container-luxe grid gap-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
-            <p className="eyebrow text-gold-deep">Professional Identity</p>
+            <p className="eyebrow text-wine">Professional Identity</p>
             <h2 id="identity-heading" className="mt-6 text-[2.5rem] leading-[1.05] sm:text-5xl">At a glance.</h2>
           </Reveal>
           <Reveal delay={120} className="lg:col-span-7 lg:col-start-6">
-            <dl className="divide-y divide-charcoal/15 border-y border-charcoal/15">
+            <dl className="divide-y divide-burgundy/15 border-y border-burgundy/15">
               {identity.map((row) => (
                 <div key={row.label} className="grid gap-2 py-6 sm:grid-cols-3 sm:gap-6">
-                  <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-charcoal/60">{row.label}</dt>
-                  <dd className="font-serif text-2xl leading-snug sm:col-span-2">{row.value}</dd>
+                  <dt className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-burgundy/60">{row.label}</dt>
+                  <dd className="signature text-2xl leading-snug sm:col-span-2">{row.value}</dd>
                 </div>
               ))}
             </dl>
@@ -126,10 +129,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-charcoal py-24 sm:py-32" aria-labelledby="moments-heading">
+      <section className="bg-burgundy py-24 sm:py-32" aria-labelledby="moments-heading">
         <div className="container-luxe">
           <Reveal>
-            <p className="eyebrow text-gold">Moments</p>
+            <p className="eyebrow text-champagne">Moments</p>
             <h2 id="moments-heading" className="mt-6 max-w-3xl text-[2.5rem] leading-[1.05] text-ivory sm:text-5xl">With the RichKey Properties team.</h2>
           </Reveal>
           <div className="mt-14 grid gap-4 md:grid-cols-2">
@@ -150,14 +153,14 @@ export default function AboutPage() {
       </section>
 
       {testimonials.length > 0 && (
-        <section className="bg-ivory py-24 text-charcoal sm:py-32" aria-labelledby="testimonials-heading">
+        <section className="bg-ivory py-24 text-burgundy sm:py-32" aria-labelledby="testimonials-heading">
           <div className="container-luxe">
             <h2 id="testimonials-heading" className="text-[2.5rem] sm:text-5xl">Client words.</h2>
             <ul className="mt-12 grid gap-8 md:grid-cols-2">
               {testimonials.map((t) => (
-                <li key={t.name} className="border-t border-charcoal/15 pt-8">
-                  <blockquote className="font-serif text-2xl italic leading-snug">&ldquo;{t.quote}&rdquo;</blockquote>
-                  <p className="mt-5 text-[0.7rem] uppercase tracking-[0.24em] text-charcoal/60">{t.name}{t.context ? ` · ${t.context}` : ""}</p>
+                <li key={t.name} className="border-t border-burgundy/15 pt-8">
+                  <blockquote className="signature text-2xl leading-snug">&ldquo;{t.quote}&rdquo;</blockquote>
+                  <p className="mt-5 text-[0.7rem] uppercase tracking-[0.24em] text-burgundy/60">{t.name}{t.context ? ` · ${t.context}` : ""}</p>
                 </li>
               ))}
             </ul>

@@ -15,7 +15,7 @@ export default function TermsPage() {
       <p>By using this website you agree to these terms. If you do not agree, please do not use the website.</p>
 
       <h2>About this website</h2>
-      <p>This is the personal website of {profile.name}, a real estate consultant with {profile.agency.name}. It presents his services and provides ways to contact him.</p>
+      <p>This is the personal website of {profile.name}, a property advisor with {profile.agency.name}. It presents his services and provides ways to contact him.</p>
 
       <h2>Property information</h2>
       <p>Property details, prices, availability, images and specifications are provided for general information only, may be supplied by third parties such as developers or owners, and can change without notice. They do not constitute an offer or form part of any contract. Images may be illustrative. Always confirm details directly before making any decision.</p>

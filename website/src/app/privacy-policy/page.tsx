@@ -12,7 +12,7 @@ export const metadata = pageMetadata({
 export default function PrivacyPolicyPage() {
   return (
     <LegalPage eyebrow="Legal" title="Privacy Policy" updated="2 November 2026">
-      <p>This policy explains how personal information is handled when you use this website, operated by {profile.name}, a real estate consultant with {profile.agency.name}, {profile.address.full}.</p>
+      <p>This policy explains how personal information is handled when you use this website, operated by {profile.name}, a property advisor with {profile.agency.name}, {profile.address.full}.</p>
 
       <h2>What this website collects</h2>
       <p>This website does not store your personal data on its own servers, does not use analytics or advertising trackers and does not set cookies.</p>

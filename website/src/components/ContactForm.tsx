@@ -80,7 +80,7 @@ export default function ContactForm() {
   const Label = ({ k, children, required }: { k: keyof EnquiryInput; children: string; required?: boolean }) => (
     <label htmlFor={fieldId(k)} className="block text-[0.66rem] font-medium uppercase tracking-[0.24em] text-ivory/65">
       {children}
-      {required ? <span className="text-gold"> *</span> : <span className="normal-case tracking-normal text-ivory/40"> (optional)</span>}
+      {required ? <span className="text-champagne"> *</span> : <span className="normal-case tracking-normal text-ivory/40"> (optional)</span>}
     </label>
   );
 
@@ -128,11 +128,11 @@ export default function ContactForm() {
       </div>
       <div>
         <div className="flex items-start gap-3">
-          <input id={fieldId("privacy")} name="privacy" type="checkbox" checked={values.privacy} onChange={(e) => set("privacy", e.target.checked)} className="mt-1 h-4 w-4 shrink-0 cursor-pointer accent-[#c3a477]" {...describe("privacy")} />
+          <input id={fieldId("privacy")} name="privacy" type="checkbox" checked={values.privacy} onChange={(e) => set("privacy", e.target.checked)} className="mt-1 h-4 w-4 shrink-0 cursor-pointer accent-[#e5c18f]" {...describe("privacy")} />
           <label htmlFor={fieldId("privacy")} className="cursor-pointer text-sm leading-relaxed text-ivory/75">
             I have read the{" "}
-            <Link href="/privacy-policy/" className="text-gold underline underline-offset-4 hover:text-ivory">privacy policy</Link>{" "}
-            and agree that my details are shared with Gescard via WhatsApp to respond to my enquiry. <span className="text-gold">*</span>
+            <Link href="/privacy-policy/" className="text-champagne underline underline-offset-4 hover:text-ivory">privacy policy</Link>{" "}
+            and agree that my details are shared with Gescard via WhatsApp to respond to my enquiry. <span className="text-champagne">*</span>
           </label>
         </div>
         <Err k="privacy" />
@@ -142,20 +142,20 @@ export default function ContactForm() {
         <p id={`${id}-note`} className="max-w-sm text-[0.82rem] leading-relaxed text-ivory/60">
           Submitting opens WhatsApp with your message ready to send to Gescard. Nothing is sent until you press send in WhatsApp.
         </p>
-        <button type="submit" className="btn-sweep group inline-flex shrink-0 items-center justify-center gap-3 bg-gold px-8 py-4 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-charcoal transition-transform duration-300 [--sweep:var(--color-ivory)] active:scale-[0.98]">
+        <button type="submit" className="btn-sweep group inline-flex shrink-0 items-center justify-center gap-3 bg-champagne px-8 py-4 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-burgundy transition-transform duration-300 [--sweep:var(--color-ivory)] active:scale-[0.98]">
           <WhatsAppIcon size={17} /> Send via WhatsApp
         </button>
       </div>
 
       <div ref={statusRef} tabIndex={-1} aria-live="polite" className="outline-none">
         {sent && (
-          <div className="feedback-in border border-gold/40 bg-gold/[0.06] p-6">
-            <p className="font-serif text-2xl text-ivory">WhatsApp is opening with your message ready to send.</p>
+          <div className="feedback-in border border-champagne/40 bg-champagne/[0.06] p-6">
+            <p className="signature text-2xl text-ivory">WhatsApp is opening with your message ready to send.</p>
             <p className="mt-3 text-sm leading-relaxed text-ivory/70">
               Review the message and press send in WhatsApp to deliver it. If WhatsApp did not open,{" "}
-              <a href={sent.wa} target="_blank" rel="noopener noreferrer" className="text-gold underline underline-offset-4">open it here</a>
+              <a href={sent.wa} target="_blank" rel="noopener noreferrer" className="text-champagne underline underline-offset-4">open it here</a>
               , or{" "}
-              <a href={sent.mail} className="text-gold underline underline-offset-4">send the same enquiry by email</a>.
+              <a href={sent.mail} className="text-champagne underline underline-offset-4">send the same enquiry by email</a>.
             </p>
           </div>
         )}

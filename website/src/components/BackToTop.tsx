@@ -46,13 +46,13 @@ export default function BackToTop() {
       aria-label="Back to top"
       tabIndex={visible ? 0 : -1}
       aria-hidden={!visible}
-      className={`group fixed bottom-[5.25rem] right-[1.625rem] z-40 flex h-11 w-11 items-center justify-center rounded-full bg-charcoal/85 text-ivory/80 backdrop-blur-sm transition-[opacity,transform,color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-gold sm:bottom-[6rem] sm:right-[2.125rem] ${
+      className={`group fixed bottom-[5.25rem] right-[1.625rem] z-40 flex h-11 w-11 items-center justify-center rounded-full bg-burgundy/85 text-ivory/80 backdrop-blur-sm transition-[opacity,transform,color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-champagne sm:bottom-[6rem] sm:right-[2.125rem] ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
       }`}
     >
       <svg className="absolute inset-0 -rotate-90" viewBox="0 0 44 44" aria-hidden="true">
         <circle cx="22" cy="22" r={R} fill="none" stroke="currentColor" strokeOpacity="0.18" strokeWidth="1" />
-        <circle ref={ringRef} cx="22" cy="22" r={R} fill="none" stroke="#C3A477" strokeWidth="1" strokeDasharray={C} strokeDashoffset={C} />
+        <circle ref={ringRef} cx="22" cy="22" r={R} fill="none" stroke="#e5c18f" strokeWidth="1" strokeDasharray={C} strokeDashoffset={C} />
       </svg>
       <ArrowUp size={16} strokeWidth={1.5} className="transition-transform duration-500 group-hover:-translate-y-0.5" aria-hidden="true" />
     </button>
