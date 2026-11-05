@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-charcoal: #151719;
-  --color-charcoal-soft: #1d2023;
-  --color-gold: #c3a477;
-  --color-gold-deep: #8a6c41;
-  --color-ivory: #f2efe8;
-  --color-ivory-deep: #e8e3d8;
-  --color-stone: #777c7d;
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  /* Brand palette (Gescard Akiki brand guidelines) */
+  --color-burgundy: #300719;
+  --color-burgundy-soft: #3b0c21;
+  --color-wine: #8c274f;
+  --color-champagne: #e5c18f;
+  --color-ivory: #f7f3ee;
+  --color-ivory-deep: #eee6dc;
+  --color-charcoal: #171923;
+  /* Cinzel: names and headlines. Cormorant italic: quotes and signature lines. Montserrat: body. */
+  --font-serif: var(--font-cinzel), "Cinzel", Georgia, serif;
+  --font-accent: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-montserrat), "Montserrat", system-ui, sans-serif;
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -19,18 +22,24 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-charcoal text-ivory font-sans antialiased;
+    @apply bg-burgundy text-ivory font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4 {
-    @apply font-serif font-medium;
-    letter-spacing: -0.01em;
+    @apply font-serif font-normal;
+    letter-spacing: 0.01em;
     text-wrap: balance;
   }
+  :where(h1, h2, h3, h4) em, .signature {
+    font-family: var(--font-accent);
+    font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+  }
   p { text-wrap: pretty; }
-  ::selection { background: var(--color-gold); color: var(--color-charcoal); }
+  ::selection { background: var(--color-champagne); color: var(--color-burgundy); }
   :focus-visible {
-    outline: 2px solid var(--color-gold);
+    outline: 2px solid var(--color-champagne);
     outline-offset: 3px;
   }
   [id] { scroll-margin-top: 6rem; }
@@ -52,17 +61,17 @@
     @apply w-full border-0 border-b border-ivory/25 bg-transparent px-0 py-3 text-base text-ivory placeholder:text-ivory/40 transition-colors duration-300;
   }
   .field:hover { @apply border-ivory/45; }
-  .field:focus { @apply border-gold outline-none; }
-  .field:focus-visible { outline: none; box-shadow: 0 1px 0 0 var(--color-gold); }
+  .field:focus { @apply border-champagne outline-none; }
+  .field:focus-visible { outline: none; box-shadow: 0 1px 0 0 var(--color-champagne); }
   .field[aria-invalid="true"] { @apply border-[#e0a08a]; }
-  select.field { @apply cursor-pointer appearance-none bg-[length:12px] bg-[right_0.25rem_center] bg-no-repeat pr-8; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C3A477' stroke-width='1.5'/%3E%3C/svg%3E"); }
-  select.field option { @apply bg-charcoal text-ivory; }
-  .prose-legal h2 { @apply mt-12 mb-4 text-3xl text-charcoal; }
-  .prose-legal h3 { @apply mt-8 mb-3 font-sans text-sm font-semibold uppercase tracking-[0.18em] text-charcoal; }
-  .prose-legal p, .prose-legal li { @apply text-[0.98rem] leading-relaxed text-charcoal/80; }
+  select.field { @apply cursor-pointer appearance-none bg-[length:12px] bg-[right_0.25rem_center] bg-no-repeat pr-8; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23E5C18F' stroke-width='1.5'/%3E%3C/svg%3E"); }
+  select.field option { @apply bg-burgundy text-ivory; }
+  .prose-legal h2 { @apply mt-12 mb-4 text-3xl text-burgundy; }
+  .prose-legal h3 { @apply mt-8 mb-3 font-sans text-sm font-semibold uppercase tracking-[0.18em] text-burgundy; }
+  .prose-legal p, .prose-legal li { @apply text-[0.98rem] leading-relaxed text-burgundy/80; }
   .prose-legal p + p { @apply mt-4; }
   .prose-legal ul { @apply mt-3 list-disc space-y-2 pl-5; }
-  .prose-legal a { @apply text-gold-deep underline underline-offset-4; }
+  .prose-legal a { @apply text-wine underline underline-offset-4; }
 }
 
 /* ---------- Motion system ----------
@@ -218,7 +227,7 @@
 
 /* Form fields: gold rule draws across on focus; label follows */
 .field {
-  background-image: linear-gradient(var(--color-gold), var(--color-gold));
+  background-image: linear-gradient(var(--color-champagne), var(--color-champagne));
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0 1px;
@@ -226,13 +235,13 @@
 }
 .field:focus { background-size: 100% 1px; }
 select.field {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C3A477' stroke-width='1.5'/%3E%3C/svg%3E"), linear-gradient(var(--color-gold), var(--color-gold));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23E5C18F' stroke-width='1.5'/%3E%3C/svg%3E"), linear-gradient(var(--color-champagne), var(--color-champagne));
   background-position: right 0.25rem center, 0 100%;
   background-size: 12px, 0 1px;
 }
 select.field:focus { background-size: 12px, 100% 1px; }
 .form-luxe label { transition: color 0.4s var(--ease-luxe); }
-.form-luxe div:focus-within > label[for] { color: var(--color-gold); }
+.form-luxe div:focus-within > label[for] { color: var(--color-champagne); }
 
 .feedback-in { animation: hero-rise 0.6s var(--ease-luxe) both; }
 

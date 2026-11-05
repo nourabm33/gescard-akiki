@@ -23,10 +23,10 @@ export default function InsightsPage() {
       </PageHero>
 
       {longVideos.length > 0 && (
-        <section className="bg-charcoal py-24 sm:py-28" aria-labelledby="videos-heading">
+        <section className="bg-burgundy py-24 sm:py-28" aria-labelledby="videos-heading">
           <div className="container-luxe">
             <Reveal>
-              <p className="eyebrow text-gold">Videos</p>
+              <p className="eyebrow text-champagne">Videos</p>
               <h2 id="videos-heading" className="mt-5 text-[2.4rem] leading-[1.05] text-ivory sm:text-5xl">Property tours &amp; projects.</h2>
             </Reveal>
             <div className="mt-14 grid gap-12 md:grid-cols-2 md:gap-8">
@@ -39,11 +39,11 @@ export default function InsightsPage() {
       )}
 
       {shortVideos.length > 0 && (
-        <section className="border-t border-ivory/5 bg-charcoal-soft py-24 sm:py-28" aria-labelledby="shorts-heading">
+        <section className="border-t border-ivory/5 bg-burgundy-soft py-24 sm:py-28" aria-labelledby="shorts-heading">
           <div className="container-luxe">
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <Reveal>
-                <p className="eyebrow text-gold">Shorts</p>
+                <p className="eyebrow text-champagne">Shorts</p>
                 <h2 id="shorts-heading" className="mt-5 text-[2.4rem] leading-[1.05] text-ivory sm:text-5xl">Quick takes on the market.</h2>
               </Reveal>
               <Reveal delay={100}><ButtonLink href={profile.socials.youtube.url} variant="text">View channel</ButtonLink></Reveal>

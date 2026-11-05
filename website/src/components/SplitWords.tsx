@@ -10,7 +10,7 @@ type Props = {
 };
 
 /** Renders a heading word-by-word so each word can rise from its own line mask (see `.split-word`). */
-export default function SplitWords({ segments, delay = 0, emClassName = "font-normal text-gold" }: Props) {
+export default function SplitWords({ segments, delay = 0, emClassName = "font-normal text-champagne" }: Props) {
   let index = 0;
   return (
     <>

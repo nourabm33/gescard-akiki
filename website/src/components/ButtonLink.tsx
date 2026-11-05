@@ -8,11 +8,11 @@ const base =
   "group/btn inline-flex items-center justify-center gap-3 text-[0.72rem] font-medium uppercase tracking-[0.24em] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]";
 
 const variants: Record<Variant, string> = {
-  gold: "btn-sweep bg-gold px-7 py-4 text-charcoal [--sweep:var(--color-ivory)]",
-  outline: "btn-sweep border border-ivory/35 px-7 py-4 text-ivory [--sweep:rgba(195,164,119,0.12)] hover:border-gold hover:text-gold",
-  "outline-dark": "btn-sweep border border-charcoal/30 px-7 py-4 text-charcoal [--sweep:var(--color-charcoal)] hover:border-charcoal hover:text-ivory",
-  text: "py-2 text-gold hover:text-ivory",
-  "text-dark": "py-2 text-charcoal hover:text-gold-deep",
+  gold: "btn-sweep bg-champagne px-7 py-4 text-burgundy [--sweep:var(--color-ivory)]",
+  outline: "btn-sweep border border-ivory/35 px-7 py-4 text-ivory [--sweep:rgba(229,193,143,0.12)] hover:border-champagne hover:text-champagne",
+  "outline-dark": "btn-sweep border border-burgundy/30 px-7 py-4 text-burgundy [--sweep:var(--color-burgundy)] hover:border-burgundy hover:text-ivory",
+  text: "py-2 text-champagne hover:text-ivory",
+  "text-dark": "py-2 text-burgundy hover:text-wine",
 };
 
 type Props = {

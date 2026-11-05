@@ -15,7 +15,7 @@ export default function PropertiesPage() {
   return (
     <>
       <PageHero eyebrow="Properties" title="Discover Selected Properties in the UAE." intro="Explore a curated selection of apartments, villas and property opportunities." image="stock/palm-jumeirah" />
-      <section className="bg-charcoal py-24 sm:py-32">
+      <section className="bg-burgundy py-24 sm:py-32">
         <div className="container-luxe">{properties.length ? <PropertyGrid items={properties} /> : <PropertiesEmptyState />}</div>
       </section>
       <FinalCta title="Looking for Something Specific?" text="Share your preferred location, property type and budget, and Gescard will help you explore suitable options." />

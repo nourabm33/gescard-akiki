@@ -69,10 +69,10 @@ export default function Header() {
   return (
     <header
       className={`header-in fixed inset-x-0 top-0 z-50 transition-[background-color,padding,box-shadow,backdrop-filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        solid ? "bg-charcoal/92 py-3.5 shadow-[0_1px_0_rgba(195,164,119,0.14)] backdrop-blur-md" : "bg-transparent py-6 lg:py-8"
+        solid ? "bg-burgundy/92 py-3.5 shadow-[0_1px_0_rgba(229,193,143,0.14)] backdrop-blur-md" : "bg-transparent py-6 lg:py-8"
       }`}
     >
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-gold focus:px-4 focus:py-2 focus:text-charcoal">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-champagne focus:px-4 focus:py-2 focus:text-burgundy">
         Skip to content
       </a>
       <div className="container-luxe flex items-center justify-between gap-6">
@@ -87,8 +87,8 @@ export default function Header() {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative py-2 text-[0.72rem] font-medium uppercase tracking-[0.22em] transition-colors duration-300 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:bg-gold after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      active ? "text-gold after:origin-left after:scale-x-100" : "text-ivory/80 after:origin-right after:scale-x-0 hover:text-ivory hover:after:origin-left hover:after:scale-x-100"
+                    className={`relative py-2 text-[0.72rem] font-medium uppercase tracking-[0.22em] transition-colors duration-300 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:bg-champagne after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      active ? "text-champagne after:origin-left after:scale-x-100" : "text-ivory/80 after:origin-right after:scale-x-0 hover:text-ivory hover:after:origin-left hover:after:scale-x-100"
                     }`}
                   >
                     {item.label}
@@ -102,7 +102,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact/"
-            className="btn-sweep hidden border border-gold/60 px-6 py-3 text-[0.7rem] font-medium uppercase tracking-[0.26em] text-gold transition-colors duration-500 [--sweep:var(--color-gold)] hover:text-charcoal lg:inline-block"
+            className="btn-sweep hidden border border-champagne/60 px-6 py-3 text-[0.7rem] font-medium uppercase tracking-[0.26em] text-champagne transition-colors duration-500 [--sweep:var(--color-champagne)] hover:text-burgundy lg:inline-block"
           >
             Let&rsquo;s Talk
           </Link>
@@ -116,7 +116,7 @@ export default function Header() {
             onClick={() => setOpen((v) => !v)}
           >
             <span className={`absolute h-px w-7 bg-ivory transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "rotate-45" : "-translate-y-[5px]"}`} />
-            <span className={`absolute h-px bg-gold transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "w-7 -rotate-45 bg-ivory" : "w-5 translate-x-1 translate-y-[5px]"}`} />
+            <span className={`absolute h-px bg-champagne transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "w-7 -rotate-45 bg-ivory" : "w-5 translate-x-1 translate-y-[5px]"}`} />
           </button>
         </div>
       </div>
@@ -127,7 +127,7 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
-        className={`fixed inset-0 top-0 -z-10 flex h-[100dvh] flex-col bg-charcoal px-6 pb-10 pt-28 transition-[opacity,visibility,clip-path] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-8 lg:hidden ${
+        className={`fixed inset-0 top-0 -z-10 flex h-[100dvh] flex-col bg-burgundy px-6 pb-10 pt-28 transition-[opacity,visibility,clip-path] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-8 lg:hidden ${
           open ? "visible opacity-100 [clip-path:inset(0_0_0_0)]" : "invisible opacity-0 [clip-path:inset(0_0_100%_0)]"
         }`}
       >
@@ -146,9 +146,9 @@ export default function Header() {
                     onClick={close}
                     tabIndex={open ? 0 : -1}
                     aria-current={active ? "page" : undefined}
-                    className={`flex items-baseline gap-4 py-2 font-serif text-[2.6rem] leading-tight ${active ? "text-gold" : "text-ivory"}`}
+                    className={`flex items-baseline gap-4 py-2 font-serif text-[2.6rem] leading-tight ${active ? "text-champagne" : "text-ivory"}`}
                   >
-                    <span className="font-sans text-[0.65rem] tracking-[0.2em] text-gold/80">0{i + 1}</span>
+                    <span className="font-sans text-[0.65rem] tracking-[0.2em] text-champagne/80">0{i + 1}</span>
                     {item.label}
                   </Link>
                 </li>
@@ -164,19 +164,19 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             tabIndex={open ? 0 : -1}
-            className="flex w-full items-center justify-center gap-3 bg-gold px-6 py-4 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-charcoal"
+            className="flex w-full items-center justify-center gap-3 bg-champagne px-6 py-4 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-burgundy"
           >
             <WhatsAppIcon size={18} /> Chat on WhatsApp
           </a>
           <div className="flex items-center justify-between text-sm text-ivory/70">
-            <a href={`mailto:${profile.email}`} tabIndex={open ? 0 : -1} className="hover:text-gold">
+            <a href={`mailto:${profile.email}`} tabIndex={open ? 0 : -1} className="hover:text-champagne">
               {profile.email}
             </a>
             <div className="flex gap-5">
-              <a href={profile.socials.instagram.url} target="_blank" rel="noopener noreferrer" tabIndex={open ? 0 : -1} aria-label="Instagram (opens in a new tab)" className="hover:text-gold">
+              <a href={profile.socials.instagram.url} target="_blank" rel="noopener noreferrer" tabIndex={open ? 0 : -1} aria-label="Instagram (opens in a new tab)" className="hover:text-champagne">
                 <InstagramIcon />
               </a>
-              <a href={profile.socials.youtube.url} target="_blank" rel="noopener noreferrer" tabIndex={open ? 0 : -1} aria-label="YouTube (opens in a new tab)" className="hover:text-gold">
+              <a href={profile.socials.youtube.url} target="_blank" rel="noopener noreferrer" tabIndex={open ? 0 : -1} aria-label="YouTube (opens in a new tab)" className="hover:text-champagne">
                 <YouTubeIcon />
               </a>
             </div>
