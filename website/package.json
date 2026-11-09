@@ -9,7 +9,7 @@
     "lint": "eslint && tsc --noEmit",
     "test": "vitest run",
     "images": "python3 scripts/optimize_images.py",
-    "export": "NEXT_PUBLIC_BASE_PATH=/gescard-akiki NEXT_PUBLIC_SITE_URL=https://nourabm33.github.io/gescard-akiki next build && node scripts/publish.mjs"
+    "export": "node scripts/export.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.66.0",

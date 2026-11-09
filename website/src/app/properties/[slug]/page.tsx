@@ -26,9 +26,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!property) return { title: "Property not found", robots: { index: false } };
   return pageMetadata({
     title: property.title,
-    description: `${property.title}, ${property.location}. ${formatAED(property.priceAED)}. ${property.shortDescription}`,
+    description: property.development ? property.shortDescription : `${property.title}, ${property.location}. ${formatAED(property.priceAED)}. ${property.shortDescription}`,
     path: `/properties/${property.slug}/`,
     image: property.images[0]?.src,
+    imageAlt: property.images[0]?.alt,
   });
 }
 
@@ -38,6 +39,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
   if (!property) notFound();
 
   const similar = getSimilarProperties(property);
+  const development = property.development;
   const enquiry = `Hello Gescard, I'm interested in "${property.title}" (${property.location}) on your website: ${absoluteUrl(`/properties/${property.slug}/`)}`;
   const specs = [
     { icon: BedDouble, label: "Bedrooms", value: property.bedrooms },
@@ -50,17 +52,23 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
       <section className="bg-burgundy pb-20 pt-32 sm:pt-40">
         <div className="container-luxe">
           <nav aria-label="Breadcrumb" className="text-[0.68rem] uppercase tracking-[0.24em] text-ivory/55">
-            <Link href="/properties/" className="hover:text-champagne">Properties</Link> <span aria-hidden="true">/</span> <span className="text-ivory/80">{property.title}</span>
+            <Link href="/properties/" className="hover:text-champagne">Developments</Link> <span aria-hidden="true">/</span> <span className="text-ivory/80">{property.title}</span>
           </nav>
           <div className="mt-8 grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-8">
               <PropertyGallery images={property.images} title={property.title} />
+              {development && <p className="mt-4 text-xs text-ivory/65">Illustrative renders courtesy of {development.developer}.</p>}
             </div>
             <aside className="lg:col-span-4">
               <div className="lg:sticky lg:top-28">
                 <p className="flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.26em] text-champagne"><MapPin size={14} aria-hidden="true" />{property.location}</p>
                 <h1 className="mt-4 text-4xl leading-tight text-ivory sm:text-5xl">{property.title}</h1>
-                <p className="mt-6 font-serif text-3xl text-champagne">{formatAED(property.priceAED)}</p>
+                {development ? (
+                  <>
+                    <p className="signature mt-6 text-3xl text-champagne">{development.tagline}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-ivory/75">{development.developer} · {development.homes}</p>
+                  </>
+                ) : <p className="mt-6 font-serif text-3xl text-champagne">{formatAED(property.priceAED)}</p>}
                 <div className="mt-6 flex flex-wrap gap-3 text-[0.62rem] uppercase tracking-[0.22em]">
                   <span className="border border-ivory/25 px-3 py-1.5 text-ivory/80">{property.category}</span>
                   {property.status && property.statusConfirmed && <span className="border border-champagne/60 px-3 py-1.5 text-champagne">{statusLabels[property.status]}</span>}
@@ -88,7 +96,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
       <section className="bg-ivory py-20 text-burgundy sm:py-28">
         <div className="container-luxe grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <h2 className="text-4xl sm:text-5xl">About this property</h2>
+            <h2 className="text-4xl sm:text-5xl">{development ? "About the development" : "About this property"}</h2>
             <div className="mt-8 space-y-5 text-lg leading-relaxed text-burgundy/75">
               {property.description.map((p) => <p key={p.slice(0, 30)}>{p}</p>)}
             </div>
@@ -105,6 +113,16 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
           )}
         </div>
         <div className="container-luxe mt-14">
+          {development && (
+            <details className="mb-8 max-w-3xl border-y border-burgundy/15 py-4">
+              <summary className="cursor-pointer text-sm font-semibold text-wine">Project and destination sources</summary>
+              <ul className="mt-4 space-y-2 pl-4 text-sm">
+                {development.sources.map((source) => (
+                  <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-wine">{source.label}<span className="sr-only"> (opens in a new tab)</span></a></li>
+                ))}
+              </ul>
+            </details>
+          )}
           <p className="max-w-3xl text-xs leading-relaxed text-burgundy/55">Information is provided by the seller or developer for guidance only and may change without notice. Please confirm price, availability and specifications directly before making any decision.</p>
         </div>
       </section>
@@ -112,7 +130,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
       {similar.length > 0 && (
         <section className="bg-burgundy py-20 sm:py-28">
           <div className="container-luxe">
-            <h2 className="mb-12 text-4xl text-ivory sm:text-5xl">Similar properties</h2>
+            <h2 className="mb-12 text-4xl text-ivory sm:text-5xl">{development ? "More featured developments" : "Similar properties"}</h2>
             <PropertyGrid items={similar} />
           </div>
         </section>

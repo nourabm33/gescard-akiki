@@ -120,5 +120,50 @@
    640,
    1290
   ]
+ },
+ "gescard/office-portrait": {
+  "w": 3648,
+  "h": 5472,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "gescard/richkey-awards": {
+  "w": 5472,
+  "h": 3648,
+  "widths": [
+   640,
+   1000,
+   1440
+  ]
+ },
+ "gescard/richkey-office": {
+  "w": 5472,
+  "h": 3648,
+  "widths": [
+   640,
+   1000,
+   1440
+  ]
+ },
+ "gescard/consultation": {
+  "w": 3648,
+  "h": 5472,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
+ },
+ "gescard/about-portrait": {
+  "w": 3648,
+  "h": 5472,
+  "widths": [
+   480,
+   800,
+   1200
+  ]
  }
 }

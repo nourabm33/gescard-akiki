@@ -29,20 +29,20 @@ npm test           # unit tests (enquiry form validation / WhatsApp message)
 cd website
 npm run export     # builds for /gescard-akiki and copies the static site to the repo root
 cd ..
-git add -A && git commit -m "Update site" && git push
+# Commit the source and generated site to a feature branch and open a PR to main.
 ```
 
-`npm run export` sets `NEXT_PUBLIC_BASE_PATH=/gescard-akiki` and `NEXT_PUBLIC_SITE_URL=https://nourabm33.github.io/gescard-akiki`.
-For a custom domain (e.g. `gescardakiki.com`), change both in `website/package.json` (base path `""`), add a `CNAME` file at the root, and re-run the export.
+`npm run export` works on Windows, macOS and Linux. It sets the Pages base path and canonical URL in `website/scripts/export.mjs`.
+For a custom domain (e.g. `gescardakiki.com`), update those values (base path `""`), add a `CNAME` file at the root, and re-run the export.
 
 ## Editing content
 
 All content lives in `website/src/data/`:
 
 - `profile.ts`: contact details, socials, biography, credentials, languages (biography/credentials/languages are empty until verified text is supplied)
-- `properties.ts`: property listings (empty: the site shows a "request current opportunities" panel). Add an object to `properties` and re-export; the detail page `/properties/<slug>/` is generated automatically.
-- `videos.ts`: YouTube videos (real IDs and titles from the official channel)
-- `instagram.ts`: manually managed Instagram tiles
+- `properties.ts`: individual listings and featured development profiles. Add an object and re-export to generate `/properties/<slug>/`. Use the optional `development` fields for project-wide facts and source links.
+- `videos.ts`: long-form YouTube video IDs and titles from the official channel
+- `instagram.ts`: verified Instagram Reel IDs and editorial titles
 - `services.ts`, `testimonials.ts`, `navigation.ts`
 
 Property images go in `website/public/images/properties/` and are referenced as `/images/properties/<file>`.
@@ -50,6 +50,8 @@ Property images go in `website/public/images/properties/` and are referenced as 
 ### Images
 
 Original photos are kept in `website/assets/originals/`. `npm run images` (Python + Pillow) regenerates the optimised WebP sizes in `website/public/images/` and `src/data/image-manifest.json`. Dubai architecture photos are illustrative stock images from Unsplash and are never presented as listings.
+
+New client portraits and project renders are stored as web-ready copies only. See `website/CONTENT-SOURCES.md` for the asset references and content to confirm.
 
 ## Before launch
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ButtonLink from "@/components/ButtonLink";
+import DubaiFuture from "@/components/DubaiFuture";
 import FinalCta from "@/components/FinalCta";
 import InstagramSection from "@/components/InstagramSection";
 import PropertiesEmptyState from "@/components/PropertiesEmptyState";
@@ -9,17 +10,13 @@ import Parallax from "@/components/Parallax";
 import Reveal from "@/components/Reveal";
 import SplitWords from "@/components/SplitWords";
 import SectionHeading from "@/components/SectionHeading";
-import VideoCard from "@/components/VideoCard";
-import { YouTubeIcon } from "@/components/icons";
+import YouTubeSection from "@/components/YouTubeSection";
 import { profile } from "@/data/profile";
 import { getFeaturedProperties } from "@/data/properties";
 import { principles, serviceHighlights } from "@/data/services";
-import { longVideos, shortVideos } from "@/data/videos";
 
 export default function HomePage() {
   const featured = getFeaturedProperties(3);
-  const featuredVideo = longVideos[0];
-  const previewShorts = shortVideos.slice(0, 3);
 
   return (
     <>
@@ -27,44 +24,41 @@ export default function HomePage() {
       <section className="relative isolate overflow-hidden bg-burgundy lg:min-h-[100svh]">
         <Parallax className="absolute inset-0 -z-20">
           <div className="hero-bg h-full w-full">
-            <ResponsiveImage image="stock/dubai-skyline" alt="" priority className="h-full w-full object-cover object-[60%_center] opacity-25" />
+            <ResponsiveImage image="stock/dubai-skyline" alt="" priority className="h-full w-full object-cover object-[60%_center] opacity-20" />
           </div>
         </Parallax>
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_72%_48%,rgba(140,39,79,0.5),rgba(48,7,25,0.9)_62%)]" aria-hidden="true" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-burgundy via-burgundy/80 to-transparent" aria-hidden="true" />
 
-        <div className="container-luxe grid min-h-[100svh] grid-rows-[auto_1fr] pt-28 lg:grid-cols-12 lg:grid-rows-1 lg:pt-0">
+        <div className="container-luxe grid items-center gap-10 pb-20 pt-28 lg:min-h-[100svh] lg:grid-cols-12 lg:gap-0 lg:pb-24 lg:pt-32">
           {/* Portrait */}
-          <div className="relative order-1 mx-auto flex w-full max-w-[420px] items-end justify-center sm:max-w-[480px] lg:order-2 lg:col-span-5 lg:col-start-8 lg:max-w-none lg:self-end">
-            <div className="hero-halo absolute bottom-[8%] left-1/2 aspect-square w-[88%] -translate-x-1/2 rounded-full border border-champagne/25 lg:bottom-[14%]" aria-hidden="true" />
+          <div className="relative order-2 mx-auto w-full max-w-[430px] lg:col-span-5 lg:col-start-8 lg:row-start-1">
+            <div className="absolute inset-0 translate-x-2 translate-y-2 border border-champagne/35 sm:translate-x-3 sm:translate-y-3" aria-hidden="true" />
             <ResponsiveImage
-              image="gescard/gescard-portrait-cutout"
-              alt="Gescard Akiki, UAE property advisor, smiling in a black tuxedo"
+              image="gescard/office-portrait"
+              alt="Gescard Akiki seated at the RichKey Properties office"
               priority
-              sizes="(min-width: 1024px) 42vw, 90vw"
-              className="hero-portrait relative max-h-[52svh] w-auto object-contain object-bottom [mask-image:linear-gradient(to_bottom,black_78%,transparent)] lg:max-h-[88vh]"
+              sizes="(min-width: 640px) 430px, 90vw"
+              className="hero-portrait relative aspect-[4/5] w-full object-cover object-[50%_62%]"
             />
           </div>
 
           {/* Copy */}
-          <div className="relative order-2 -mt-16 flex flex-col justify-center pb-24 lg:order-1 lg:col-span-7 lg:mt-0 lg:pb-16 lg:pt-32">
+          <div className="relative order-1 flex flex-col justify-center lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:pr-10">
             <p className="hero-rise eyebrow text-champagne">Private Property Advisory</p>
             <h1 className="mt-6 text-[2.35rem] leading-[1.08] text-ivory sm:text-6xl lg:text-[4.2rem] xl:text-[4.8rem]">
-              <SplitWords segments={["Your Next Move in the UAE", { text: "Starts Here.", em: true }]} delay={150} />
+              <SplitWords segments={[profile.name]} delay={150} />
             </h1>
             <p className="hero-rise signature mt-6 text-2xl text-champagne sm:text-[1.7rem]" style={{ "--d": "700ms" } as React.CSSProperties}>
               Vision. Value. Trust.
             </p>
-            <p className="hero-rise mt-6 max-w-lg text-base leading-relaxed text-ivory/75 sm:text-lg" style={{ "--d": "780ms" } as React.CSSProperties}>
-              Private property advisory for buyers and investors in the UAE, with carefully selected opportunities and a personal approach at every step.
+            <p className="hero-rise mt-6 max-w-lg text-base leading-relaxed text-ivory/85 sm:text-lg" style={{ "--d": "780ms" } as React.CSSProperties}>
+              {profile.title} at {profile.agency.name}. I help buyers and investors evaluate off-plan homes in Dubai and Abu Dhabi, with location at the centre of every decision.
             </p>
-            <div className="hero-rise mt-10 flex flex-col gap-4 sm:flex-row" style={{ "--d": "880ms" } as React.CSSProperties}>
-              <ButtonLink href="/properties/">Explore Properties</ButtonLink>
-              <ButtonLink href="/contact/" variant="outline">Connect with Gescard</ButtonLink>
+            <div className="hero-rise mt-10 flex flex-col flex-wrap gap-4 sm:flex-row" style={{ "--d": "880ms" } as React.CSSProperties}>
+              <ButtonLink href="/contact/">Book a Consultation</ButtonLink>
+              <ButtonLink href="/properties/" variant="outline">Explore Developments</ButtonLink>
             </div>
-            <p className="hero-rise mt-12 text-[0.68rem] uppercase tracking-[0.28em] text-ivory/50" style={{ "--d": "1000ms" } as React.CSSProperties}>
-              {profile.title} &middot; {profile.agency.name}
-            </p>
           </div>
         </div>
 
@@ -141,8 +135,9 @@ export default function HomePage() {
         <div className="container-luxe grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeading tone="light" eyebrow="Why Gescard" title="A More Personal Way to Explore UAE Real Estate." />
-            <Reveal variant="image" from="left" delay={150} className="mt-12 hidden overflow-hidden lg:block">
-              <ResponsiveImage image="gescard/emaar-awards-duo" alt="Gescard Akiki with a RichKey Properties colleague at the Emaar Quarter 1 Broker Awards 2026" sizes="40vw" className="aspect-[4/3] w-full object-cover" />
+            <Reveal as="figure" variant="fade" delay={150} className="mt-10">
+              <ResponsiveImage image="gescard/richkey-awards" alt="Gescard Akiki beside the awards display at the RichKey Properties office" sizes="(min-width: 1024px) 40vw, 100vw" className="aspect-[3/2] w-full object-cover brightness-[1.1] saturate-[0.92]" />
+              <figcaption className="mt-3 text-xs text-burgundy/65">Gescard at the RichKey Properties office.</figcaption>
             </Reveal>
           </div>
           <ol className="lg:col-span-6 lg:col-start-7 lg:pt-16">
@@ -165,38 +160,16 @@ export default function HomePage() {
       <section className="bg-burgundy py-24 sm:py-32" aria-labelledby="featured-heading">
         <div className="container-luxe">
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-            <SectionHeading eyebrow="Properties" title={<span id="featured-heading">Discover Selected Properties in the UAE.</span>} intro="Explore a curated selection of apartments, villas and property opportunities." />
-            {featured.length > 0 && <Reveal delay={100}><ButtonLink href="/properties/" variant="outline">View all properties</ButtonLink></Reveal>}
+            <SectionHeading eyebrow="Featured Developments" title={<span id="featured-heading">Two distinct waterfront addresses.</span>} intro="A closer look at Marsa Al Saadiyat in Abu Dhabi and Palm Central on Dubai’s Palm Jebel Ali." />
+            {featured.length > 0 && <Reveal delay={100}><ButtonLink href="/properties/" variant="outline">View developments</ButtonLink></Reveal>}
           </div>
           <div className="mt-16">{featured.length ? <PropertyGrid items={featured} /> : <PropertiesEmptyState showViewAll />}</div>
         </div>
       </section>
 
-      {/* INSIGHTS PREVIEW */}
-      <section className="border-t border-ivory/5 bg-burgundy-soft py-24 sm:py-32" aria-labelledby="insights-heading">
-        <div className="container-luxe">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-            <SectionHeading eyebrow="Insights" title={<span id="insights-heading">Discover the UAE Through My Perspective.</span>} intro="Explore property tours, UAE real estate content and insights through Gescard's videos." />
-            <Reveal delay={100}><ButtonLink href="/insights/" variant="outline">Explore my videos</ButtonLink></Reveal>
-          </div>
-          <div className="mt-16 grid gap-10 lg:grid-cols-12 lg:gap-8">
-            {featuredVideo && (
-              <Reveal className="lg:col-span-6"><VideoCard video={featuredVideo} large /></Reveal>
-            )}
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:col-span-6 lg:gap-6">
-              {previewShorts.map((v, i) => (
-                <Reveal key={v.id} delay={i * 110} className={i === 2 ? "hidden sm:block" : ""}><VideoCard video={v} /></Reveal>
-              ))}
-            </div>
-          </div>
-          <Reveal className="mt-14 flex flex-col items-start gap-4 border-t border-ivory/10 pt-10 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-md text-sm text-ivory/60">New property tours and market content are published on YouTube.</p>
-            <ButtonLink href={profile.socials.youtube.subscribeUrl} variant="gold" icon={<YouTubeIcon size={17} />}>Subscribe on YouTube</ButtonLink>
-          </Reveal>
-        </div>
-      </section>
-
+      <DubaiFuture />
       <InstagramSection />
+      <YouTubeSection />
       <FinalCta />
     </>
   );

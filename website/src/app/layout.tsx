@@ -21,33 +21,33 @@ const cormorant = Cormorant_Garamond({
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" });
 
 const description =
-  "Gescard Akiki, UAE property advisor with RichKey Properties. Private property advisory for buyers and investors: apartments, villas and timeless assets in the UAE.";
+  "Gescard Akiki, Senior Property Consultant at RichKey Properties, specialises in off-plan real estate in Dubai and Abu Dhabi.";
+
+const siteTitle = `${profile.name} | Dubai & Abu Dhabi Off-Plan Property`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${SITE_URL}/`),
-  title: { default: `${profile.name} | UAE Property Advisor`, template: `%s | ${profile.name}` },
+  title: { default: siteTitle, template: `%s | ${profile.name}` },
   description,
   applicationName: `${profile.name} | UAE Real Estate`,
   authors: [{ name: profile.name }],
   keywords: [
-    "UAE property advisor",
-    "UAE real estate consultant",
-    "UAE property investment",
-    "UAE apartments and villas",
-    "property investment opportunities in the UAE",
-    "Gescard Akiki UAE real estate",
+    "Dubai off-plan property",
+    "Abu Dhabi off-plan property",
+    "Gescard Akiki",
+    "RichKey Properties",
   ],
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     type: "website",
     url: absoluteUrl("/"),
     siteName: `${profile.name} | UAE Real Estate`,
-    title: `${profile.name} | UAE Property Advisor`,
+    title: siteTitle,
     description,
     locale: "en_GB",
     images: [{ url: absoluteUrl("/og-image.jpg"), width: 1200, height: 630, alt: `${profile.name}, ${profile.title}` }],
   },
-  twitter: { card: "summary_large_image", title: `${profile.name} | UAE Property Advisor`, description, images: [absoluteUrl("/og-image.jpg")] },
+  twitter: { card: "summary_large_image", title: siteTitle, description, images: [absoluteUrl("/og-image.jpg")] },
   formatDetection: { telephone: false, email: false, address: false },
 };
 
@@ -61,10 +61,10 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: profile.name,
-  jobTitle: "Property Advisor",
+  jobTitle: profile.title,
   description: `${profile.title} with ${profile.agency.name}.`,
   url: absoluteUrl("/"),
-  image: absoluteUrl("/images/gescard/gescard-portrait-800.webp"),
+  image: absoluteUrl("/images/gescard/office-portrait-800.webp"),
   email: `mailto:${profile.email}`,
   telephone: profile.phone.e164,
   worksFor: { "@type": "Organization", name: profile.agency.name },
@@ -72,7 +72,7 @@ const personJsonLd = {
     "@type": "Place",
     address: { "@type": "PostalAddress", streetAddress: "Dubai Hills Business Park, Building 4, 2nd Floor", addressLocality: "Dubai", addressCountry: "AE" },
   },
-  knowsAbout: ["UAE real estate", "Property investment", "Apartments", "Villas"],
+  knowsAbout: ["Off-plan real estate", "Dubai real estate", "Abu Dhabi real estate"],
   sameAs: [profile.socials.instagram.url, profile.socials.youtube.url],
 };
 

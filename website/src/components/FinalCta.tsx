@@ -22,7 +22,7 @@ export default function FinalCta({
           <h2 className="mx-auto mt-6 max-w-4xl text-[2.6rem] leading-[1.05] text-ivory sm:text-6xl lg:text-7xl">{title}</h2>
           <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-ivory/70 sm:text-lg">{text}</p>
           <div className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <ButtonLink href="/contact/">Let&rsquo;s Talk</ButtonLink>
+            <ButtonLink href="/contact/">Book a Consultation</ButtonLink>
             <ButtonLink href={whatsappLink()} variant="outline" icon={<WhatsAppIcon size={17} />}>
               Chat on WhatsApp
             </ButtonLink>

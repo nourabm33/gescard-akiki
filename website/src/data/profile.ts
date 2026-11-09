@@ -6,16 +6,12 @@ export const profile = {
   name: "Gescard Akiki",
   brand: "GESCARD AKIKI",
   /** Public title used across the site. */
-  title: "UAE Property Advisor",
-  /**
-   * Title from his social profile. Verify his current broker certification / registration
-   * before using it on the site (then replace `title` above).
-   */
-  selfDescribedTitle: "Certified Senior Property Consultant",
+  title: "Senior Property Consultant",
+  specialty: "Off-Plan Real Estate",
   agency: {
     name: "RichKey Properties",
     /** Wording for his relationship with the agency (he is not the owner). */
-    relationship: "Consultant with RichKey Properties",
+    relationship: "Senior Property Consultant at RichKey Properties",
   },
   email: "Gescard.a@richkey.ae",
   phone: { display: "+971 52 776 0240", e164: "+971527760240" },
