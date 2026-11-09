@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description: "Contact Gescard Akiki about UAE property investment, apartments and villas by WhatsApp, phone or email.",
+  description: "Book a consultation with Gescard Akiki for off-plan property in Dubai and Abu Dhabi. Contact him by WhatsApp, phone or email.",
   path: "/contact/",
 });
 
@@ -25,7 +25,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact & Consultation"
         title="Let's Find Your Next Opportunity."
-        intro="Whether you're considering an investment, searching for an apartment or exploring villas in the UAE, get in touch with Gescard to discuss your requirements."
+        intro="Tell Gescard what you’re looking for in Dubai or Abu Dhabi. Share your preferred location, budget and timing to start a consultation."
         image="stock/dubai-skyline"
       />
       <section className="bg-burgundy pb-28 pt-8 sm:pb-36">
@@ -46,7 +46,7 @@ export default function ContactPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a href={profile.socials.instagram.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-ivory/20 px-4 py-3 text-[0.65rem] uppercase tracking-[0.22em] text-ivory/80 transition-colors hover:border-champagne hover:text-champagne">
                 <InstagramIcon size={16} /> Instagram<span className="sr-only"> (opens in a new tab)</span>
               </a>

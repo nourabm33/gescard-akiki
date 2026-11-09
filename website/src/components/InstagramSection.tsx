@@ -1,39 +1,58 @@
-import { instagramPosts } from "@/data/instagram";
+"use client";
+
+import { useState } from "react";
+import { instagramReels } from "@/data/instagram";
 import { profile } from "@/data/profile";
 import ButtonLink from "./ButtonLink";
 import Reveal from "./Reveal";
-import ResponsiveImage from "./ResponsiveImage";
+import SectionHeading from "./SectionHeading";
 import { InstagramIcon } from "./icons";
 
 export default function InstagramSection() {
   const ig = profile.socials.instagram;
+  const [activeReel, setActiveReel] = useState<string | null>(null);
+
   return (
-    <section className="bg-ivory py-24 text-burgundy sm:py-32" aria-labelledby="instagram-heading">
+    <section className="border-t border-burgundy/10 bg-ivory py-24 text-burgundy sm:py-32" aria-labelledby="instagram-heading">
       <div className="container-luxe">
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <SectionHeading tone="light" eyebrow="Instagram Reels" title={<span id="instagram-heading">Insights in Motion</span>} intro="Quick perspectives from Gescard’s site visits and conversations about the UAE property market." />
           <Reveal>
-            <p className="eyebrow text-wine">Instagram</p>
-            <h2 id="instagram-heading" className="mt-5 text-[2.5rem] leading-[1.05] sm:text-5xl lg:text-[3.6rem]">Follow the Journey.</h2>
-            <a href={ig.url} target="_blank" rel="noopener noreferrer" className="group mt-5 inline-flex items-center gap-3 text-burgundy/75 transition-colors duration-500 hover:text-wine">
-              <span className="transition-transform duration-500 group-hover:-translate-y-0.5"><InstagramIcon size={20} /></span> <span className="link-line text-[0.95rem]">{ig.handle}</span>
-              <span className="sr-only">(opens in a new tab)</span>
-            </a>
-          </Reveal>
-          <Reveal delay={120}>
-            <ButtonLink href={ig.url} variant="outline-dark" icon={<InstagramIcon size={16} />}>Follow on Instagram</ButtonLink>
+            <ButtonLink href={`${ig.url}reels/`} variant="outline-dark" icon={<InstagramIcon size={17} />}>{ig.handle}</ButtonLink>
           </Reveal>
         </div>
-        <ul className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-          {instagramPosts.map((post, i) => (
-            <Reveal as="li" variant="image" key={post.image} delay={i * 110}>
-              <a href={post.url ?? ig.url} target="_blank" rel="noopener noreferrer" className="img-zoom group relative block aspect-square overflow-hidden bg-ivory-deep" aria-label={`${post.alt}. View on Instagram (opens in a new tab)`}>
-                <ResponsiveImage image={post.image} alt={post.alt} sizes="(min-width: 1024px) 25vw, 50vw" className="h-full w-full object-cover" />
-                <span className="absolute inset-0 flex items-center justify-center bg-burgundy/0 text-ivory opacity-0 transition-all duration-500 group-hover:bg-burgundy/45 group-hover:opacity-100" aria-hidden="true">
-                  <InstagramIcon size={28} />
-                </span>
-              </a>
-            </Reveal>
-          ))}
+        <ul className="mt-12 grid gap-6 md:grid-cols-3">
+          {instagramReels.map((reel, index) => {
+            const active = reel.id === activeReel;
+            return (
+              <Reveal as="li" key={reel.id} delay={index * 100} className="flex min-w-0 flex-col border border-burgundy/15">
+                <div className="flex flex-1 flex-col p-6 lg:p-8">
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.23em] text-wine">{reel.topic}</p>
+                  <h3 className="mb-6 mt-3 text-xl leading-snug lg:text-2xl">{reel.title}</h3>
+                  <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2">
+                    <button type="button" aria-expanded={active} aria-controls={`reel-${reel.id}`} onClick={() => setActiveReel(active ? null : reel.id)} className="link-line py-2 text-sm font-semibold text-wine">
+                      {active ? "Hide preview" : "Load preview"}<span className="sr-only">: {reel.title}</span>
+                    </button>
+                    <a href={`${ig.url}reel/${reel.id}/`} target="_blank" rel="noopener noreferrer" className="py-2 text-sm underline underline-offset-4 hover:text-wine">
+                      Open on Instagram<span className="sr-only">: {reel.title} (opens in a new tab)</span>
+                    </a>
+                  </div>
+                </div>
+                <div id={`reel-${reel.id}`} hidden={!active} className="border-t border-burgundy/15 bg-white">
+                  {active && (
+                    <iframe
+                      src={`https://www.instagram.com/reel/${reel.id}/embed/`}
+                      title={`Instagram Reel: ${reel.title}`}
+                      className="block h-[34rem] w-full"
+                      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  )}
+                </div>
+              </Reveal>
+            );
+          })}
         </ul>
       </div>
     </section>

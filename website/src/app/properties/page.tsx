@@ -6,15 +6,15 @@ import { properties } from "@/data/properties";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
-  title: "Properties",
-  description: "Discover selected apartments, villas and property opportunities in the UAE with Gescard Akiki.",
+  title: "Featured Developments",
+  description: "Explore Marsa Al Saadiyat in Abu Dhabi and Palm Central on Palm Jebel Ali with off-plan property consultant Gescard Akiki.",
   path: "/properties/",
 });
 
 export default function PropertiesPage() {
   return (
     <>
-      <PageHero eyebrow="Properties" title="Discover Selected Properties in the UAE." intro="Explore a curated selection of apartments, villas and property opportunities." image="stock/palm-jumeirah" />
+      <PageHero eyebrow="Featured Developments" title="Two coastlines. Two distinct addresses." intro="Explore selected off-plan communities in Dubai and Abu Dhabi through the places, architecture and plans that shape them." image="stock/dubai-skyline" />
       <section className="bg-burgundy py-24 sm:py-32">
         <div className="container-luxe">{properties.length ? <PropertyGrid items={properties} /> : <PropertiesEmptyState />}</div>
       </section>

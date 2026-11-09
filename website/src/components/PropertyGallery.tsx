@@ -9,23 +9,25 @@ type Img = { src: string; alt: string };
 export default function PropertyGallery({ images, title }: { images: Img[]; title: string }) {
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(false);
-  const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const openerRef = useRef<HTMLButtonElement>(null);
   const count = images.length;
   const go = useCallback((d: number) => setActive((i) => (i + d + count) % count), [count]);
 
   useEffect(() => {
-    if (!lightbox) return;
-    closeRef.current?.focus();
+    const dialog = dialogRef.current;
+    if (!lightbox || !dialog) return;
+    dialog.showModal();
+    const overflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setLightbox(false);
       if (e.key === "ArrowRight") go(1);
       if (e.key === "ArrowLeft") go(-1);
     };
-    document.addEventListener("keydown", onKey);
+    dialog.addEventListener("keydown", onKey);
     return () => {
-      document.removeEventListener("keydown", onKey);
-      document.documentElement.style.overflow = "";
+      dialog.removeEventListener("keydown", onKey);
+      document.documentElement.style.overflow = overflow;
     };
   }, [lightbox, go]);
 
@@ -34,7 +36,7 @@ export default function PropertyGallery({ images, title }: { images: Img[]; titl
 
   return (
     <div>
-      <button type="button" onClick={() => setLightbox(true)} className="img-zoom group relative block aspect-[16/10] w-full overflow-hidden bg-burgundy-soft" aria-label={`Open gallery: ${current.alt}`}>
+      <button ref={openerRef} type="button" onClick={() => setLightbox(true)} className="img-zoom group relative block aspect-[16/10] w-full overflow-hidden bg-burgundy-soft" aria-label={`Open gallery: ${current.alt}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={asset(current.src)} alt={current.alt} className="h-full w-full object-cover" fetchPriority="high" />
         <span className="absolute bottom-4 right-4 bg-burgundy/80 px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.22em] text-ivory">
@@ -61,8 +63,11 @@ export default function PropertyGallery({ images, title }: { images: Img[]; titl
       )}
 
       {lightbox && (
-        <div role="dialog" aria-modal="true" aria-label={`${title} gallery`} className="fixed inset-0 z-[70] flex items-center justify-center bg-burgundy/97 p-4">
-          <button ref={closeRef} type="button" onClick={() => setLightbox(false)} className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center text-ivory hover:text-champagne" aria-label="Close gallery">
+        <dialog ref={dialogRef} aria-label={`${title} gallery`} onClose={() => {
+          setLightbox(false);
+          openerRef.current?.focus();
+        }} className="fixed inset-0 m-0 h-full max-h-none w-full max-w-none items-center justify-center bg-burgundy/97 p-4 open:flex backdrop:bg-burgundy">
+          <button type="button" onClick={() => dialogRef.current?.close()} className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center text-ivory hover:text-champagne" aria-label="Close gallery">
             <X strokeWidth={1.3} />
           </button>
           {count > 1 && (
@@ -77,7 +82,7 @@ export default function PropertyGallery({ images, title }: { images: Img[]; titl
               <ChevronRight strokeWidth={1.3} size={32} />
             </button>
           )}
-        </div>
+        </dialog>
       )}
     </div>
   );

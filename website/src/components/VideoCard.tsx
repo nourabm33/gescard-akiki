@@ -2,20 +2,16 @@
 
 import { Play } from "lucide-react";
 import { useState } from "react";
-import { displayTitle, embedUrl, thumbnailUrl, videoUrl, type Video } from "@/data/videos";
+import { embedUrl, thumbnailUrl, videoUrl, type Video } from "@/data/videos";
 
-type Props = { video: Video; tone?: "dark" | "light"; large?: boolean };
-
-/** Click-to-load YouTube facade: no YouTube scripts or cookies until the visitor presses play. */
-export default function VideoCard({ video, tone = "dark", large = false }: Props) {
+/** Mount the YouTube player when the visitor chooses to play it. */
+export default function VideoCard({ video }: { video: Video }) {
   const [playing, setPlaying] = useState(false);
-  const title = displayTitle(video);
-  const ratio = video.format === "short" ? "aspect-[9/16]" : "aspect-video";
-  const onDark = tone === "dark";
+  const { title, duration } = video;
 
   return (
     <article className="group flex h-full flex-col">
-      <div className={`video-thumb relative w-full overflow-hidden bg-black ${ratio}`}>
+      <div className="video-thumb relative aspect-video w-full overflow-hidden bg-black">
         {playing ? (
           <iframe
             src={embedUrl(video)}
@@ -31,27 +27,27 @@ export default function VideoCard({ video, tone = "dark", large = false }: Props
             <img src={thumbnailUrl(video)} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover opacity-90" />
             <span className="absolute inset-0 bg-gradient-to-t from-burgundy/85 via-burgundy/10 to-transparent" aria-hidden="true" />
             <span
-              className={`absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/60 bg-burgundy/30 text-ivory backdrop-blur-sm transition-[transform,background-color,border-color,color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08] group-hover:border-champagne group-hover:bg-champagne group-hover:text-burgundy ${large ? "h-20 w-20" : "h-14 w-14"}`}
+              className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/60 bg-burgundy/30 text-ivory backdrop-blur-sm transition-[transform,background-color,border-color,color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08] group-hover:border-champagne group-hover:bg-champagne group-hover:text-burgundy"
               aria-hidden="true"
             >
               <span className="absolute -inset-2 rounded-full border border-champagne/0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-inset-3 group-hover:border-champagne/40" />
-              <Play size={large ? 24 : 18} strokeWidth={1.4} className="translate-x-0.5" fill="currentColor" />
+              <Play size={18} strokeWidth={1.4} className="translate-x-0.5" fill="currentColor" />
             </span>
-            <span className="absolute left-4 top-4 text-[0.6rem] font-medium uppercase tracking-[0.26em] text-ivory/85">
-              {video.format === "short" ? "Short" : "Video"}
+            <span className="absolute bottom-3 right-3 bg-burgundy/85 px-2 py-1 text-xs tabular-nums text-ivory">
+              {duration}
             </span>
           </button>
         )}
       </div>
       <div className="flex flex-1 flex-col pt-4">
-        <h3 className={`${large ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl"} leading-snug ${onDark ? "text-ivory" : "text-burgundy"}`}>{title}</h3>
+        <h3 className="text-xl leading-snug text-ivory">{title}</h3>
         <a
           href={videoUrl(video)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`link-line mt-3 inline-flex self-start text-[0.65rem] font-medium uppercase tracking-[0.24em] transition-colors ${onDark ? "text-champagne hover:text-ivory" : "text-wine hover:text-burgundy"}`}
+          className="link-line mt-auto inline-flex self-start pt-3 text-[0.65rem] font-medium uppercase tracking-[0.24em] text-champagne transition-colors hover:text-ivory"
         >
-          Watch on YouTube<span className="sr-only"> (opens in a new tab)</span>
+          Watch on YouTube<span className="sr-only">: {title} (opens in a new tab)</span>
         </a>
       </div>
     </article>

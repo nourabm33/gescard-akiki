@@ -75,11 +75,11 @@ export default function Header() {
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-champagne focus:px-4 focus:py-2 focus:text-burgundy">
         Skip to content
       </a>
-      <div className="container-luxe flex items-center justify-between gap-6">
+      <div className="container-luxe flex items-center justify-between gap-4 xl:gap-6">
         <Logo onNavigate={close} />
 
         <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-9">
+          <ul className="flex items-center gap-4 xl:gap-9">
             {navigation.map((item) => {
               const active = isActive(pathname, item.href);
               return (
@@ -102,7 +102,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact/"
-            className="btn-sweep hidden border border-champagne/60 px-6 py-3 text-[0.7rem] font-medium uppercase tracking-[0.26em] text-champagne transition-colors duration-500 [--sweep:var(--color-champagne)] hover:text-burgundy lg:inline-block"
+            className="btn-sweep hidden whitespace-nowrap border border-champagne/60 px-4 py-3 text-[0.7rem] font-medium uppercase tracking-[0.26em] text-champagne transition-colors duration-500 [--sweep:var(--color-champagne)] hover:text-burgundy lg:inline-block xl:px-6"
           >
             Let&rsquo;s Talk
           </Link>

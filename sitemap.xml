@@ -40,4 +40,14 @@
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
+<url>
+<loc>https://nourabm33.github.io/gescard-akiki/properties/marsa-al-saadiyat/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://nourabm33.github.io/gescard-akiki/properties/palm-central/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>

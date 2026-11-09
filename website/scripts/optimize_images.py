@@ -1,4 +1,5 @@
-import json, os
+import json
+from pathlib import Path
 from PIL import Image, ImageStat
 SRC="assets/originals"; OUT="public/images"
 def trim_bars(im):
@@ -10,7 +11,12 @@ def trim_bars(im):
     bot=h-1
     while bot>h*2//3 and flat(bot): bot-=1
     return im.crop((0,top,w,bot+1)) if (top>5 or h-1-bot>5) else im
-manifest={}
+manifest_file = Path("src/data/image-manifest.json")
+# The newer client photos are delivered as web-ready copies. Keep their entries
+# when regenerating images whose source files live in this repository.
+existing = json.loads(manifest_file.read_text(encoding="utf-8")) if manifest_file.exists() else {}
+client_images = ("office-portrait", "richkey-awards", "richkey-office", "consultation", "about-portrait")
+manifest = {key: value for key, value in existing.items() if key.split("/")[-1] in client_images}
 def emit(name, im, folder, widths, q=78):
     w,h=im.size; outs=[]
     for tw in widths:
@@ -30,11 +36,5 @@ emit("gescard-portrait-cutout", cut, "gescard", [480,800,cut.width], 82)
 for n in ["emaar-awards-team-stage","emaar-awards-team-group","emaar-awards-duo"]:
     im=trim_bars(Image.open(f"{SRC}/{n}.jpg").convert("RGB")); print(n, im.size)
     emit(n, im, "gescard", [640,1290], 80)
-# OG image 1200x630
-sky=Image.open(f"{SRC}/dubai-skyline.jpg").convert("RGB").resize((1200,800)).crop((0,85,1200,715))
-from PIL import ImageEnhance
-sky=ImageEnhance.Brightness(sky).enhance(0.45)
-c=cut.copy(); c.thumbnail((560,630)); sky.paste(c,(1200-c.width-40,630-c.height),c)
-sky.save("public/og-image.jpg",quality=85)
-json.dump(manifest, open("src/data/image-manifest.json","w"), indent=1)
+manifest_file.write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
 print(json.dumps(manifest)[:600])
