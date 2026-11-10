@@ -8,8 +8,8 @@ const build = spawnSync(process.execPath, [next, "build"], {
   stdio: "inherit",
   env: {
     ...process.env,
-    NEXT_PUBLIC_BASE_PATH: "/gescard-akiki",
-    NEXT_PUBLIC_SITE_URL: "https://nourabm33.github.io/gescard-akiki",
+    NEXT_PUBLIC_BASE_PATH: "",
+    NEXT_PUBLIC_SITE_URL: "https://gescardakiki.com",
   },
 });
 if (build.error) throw build.error;

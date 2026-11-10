@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://nourabm33.github.io/gescard-akiki/sitemap.xml
+Sitemap: https://gescardakiki.com/sitemap.xml

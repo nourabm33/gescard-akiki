@@ -2,7 +2,7 @@
 
 Personal real estate brand website for Gescard Akiki, UAE real estate consultant with RichKey Properties.
 
-Live (GitHub Pages): https://nourabm33.github.io/gescard-akiki/
+Live: https://gescardakiki.com (GitHub Pages custom domain; the root `CNAME` file must stay)
 
 ## How this repository is organised
 
@@ -27,13 +27,12 @@ npm test           # unit tests (enquiry form validation / WhatsApp message)
 
 ```bash
 cd website
-npm run export     # builds for /gescard-akiki and copies the static site to the repo root
+npm run export     # builds for https://gescardakiki.com (base path "") and copies the static site to the repo root
 cd ..
 # Commit the source and generated site to a feature branch and open a PR to main.
 ```
 
-`npm run export` works on Windows, macOS and Linux. It sets the Pages base path and canonical URL in `website/scripts/export.mjs`.
-For a custom domain (e.g. `gescardakiki.com`), update those values (base path `""`), add a `CNAME` file at the root, and re-run the export.
+`npm run export` works on Windows, macOS and Linux. It pins the base path (`""`) and canonical URL (`https://gescardakiki.com`) in `website/scripts/export.mjs`, overriding any environment values. The export never deletes the root `CNAME` or `.nojekyll`.
 
 ## Editing content
 
