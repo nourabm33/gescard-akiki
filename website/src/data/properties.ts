@@ -48,6 +48,12 @@ export type Property = {
     developer: string;
     tagline: string;
     homes: string;
+    /** Prefilled WhatsApp/email enquiry. Defaults to a generic message. */
+    enquiry?: string;
+    /** Approximate headline figures from official sources. */
+    facts?: { value: string; label: string }[];
+    /** Extra storytelling sections shown after the overview. */
+    sections?: { title: string; intro?: string; items?: { title: string; text: string }[] }[];
     sources: { label: string; url: string }[];
   };
   shortDescription: string;
@@ -116,6 +122,65 @@ export const properties: Property[] = [
       { src: "/images/properties/palm-central/aerial.webp", alt: "Nakheel aerial render of Palm Central’s stepped buildings beside a crescent beach" },
       { src: "/images/properties/palm-central/beachfront.webp", alt: "Nakheel render of Palm Central Private Residences from the beach" },
       { src: "/images/properties/palm-central/interior.webp", alt: "Nakheel render of a Palm Central living room overlooking the waterfront" },
+    ],
+  },
+  {
+    slug: "palm-springs",
+    title: "Palm Springs",
+    location: "Southern Dubai, beside Palm Jebel Ali",
+    category: "Off-plan",
+    featured: true,
+    shortDescription: "Nakheel’s master-planned community of villas and townhouses, connected by parkland, clubs and everyday essentials.",
+    development: {
+      developer: "Nakheel",
+      tagline: "Where life comes together.",
+      homes: "Aliso Townhouses & Rancho Villas · 3–5 bedrooms",
+      enquiry: "Hi Gescard, I'm interested in Palm Springs by Nakheel and would like to know more about the available residences.",
+      facts: [
+        { value: "3.8M sq m", label: "Masterplan" },
+        { value: "~50,000", label: "Planned residents" },
+        { value: "15", label: "Neighbourhoods" },
+        { value: "35+ km", label: "Cycling & walking routes" },
+      ],
+      sections: [
+        {
+          title: "Three signature destinations",
+          items: [
+            { title: "Canyon Park", text: "The green heart of the community: pathways through sensory gardens and open lawns, beside streams, ponds and gentle waterfalls, with shallow pools and small sandy beaches for families to explore." },
+            { title: "Thousand Palms Country Club", text: "Dining, wellness and leisure in a landscaped setting, planned with a beach-inspired pool, kids’ pools and splash pads, a gym, restaurants and an event lawn." },
+            { title: "Silver Spur Racquet Club", text: "The community’s sports destination, with courts, a gym and a pool for early matches, midday workouts and evening swims." },
+          ],
+        },
+        {
+          title: "Two residential collections",
+          intro: "Indicative sizes are taken from Nakheel’s factsheet and may vary by release.",
+          items: [
+            { title: "Aliso Townhouses", text: "Three- and four-bedroom townhouses with private gardens and walkable streets leading to nearby parks. Approximately 2,326 to 3,115 sq ft." },
+            { title: "Rancho Villas", text: "Four- and five-bedroom standalone villas whose living areas open onto private gardens, courtyards and pools, with en-suite bedrooms. Approximately 4,041 to 4,921 sq ft." },
+          ],
+        },
+        {
+          title: "Thoughtfully planned for tomorrow",
+          intro: "Palm Springs has been awarded LEED for Communities Platinum Precertification. Nakheel’s masterplan integrates water, energy and waste solutions, climate-responsive landscaping and shaded corridors for everyday outdoor movement. Precertification recognises the plan; it is not a final certification of the completed community.",
+        },
+      ],
+      sources: [
+        { label: "Nakheel · Palm Springs", url: "https://www.nakheel.com/en/new-launches/palm-springs" },
+        { label: "Dubai Holding · Nakheel unveils Palm Springs", url: "https://www.dubaiholding.com/en/media-hub/press-releases/nakheel-unveils-palm-springs-a-new-sustainable-community-beside-palm-jebel-ali" },
+      ],
+    },
+    description: [
+      "Palm Springs is Nakheel’s new residential masterplan in southern Dubai, set beside Palm Jebel Ali rather than on the island itself. It covers about 3.8 million square metres and is planned for almost 50,000 residents across 15 neighbourhoods, with homes, schools, healthcare, sport and leisure planned together from the outset.",
+      "Canyon Park runs through the community as a continuous landscape. Around it, Nakheel plans approximately 593,000 square metres of open space and more than 35 km of cycling, jogging and walking routes linking the neighbourhoods with parks, retail and leisure destinations.",
+      "Nakheel puts the community about 14 minutes from Palm Jebel Ali and 23 minutes from Al Maktoum International Airport (DWC). The facilities described here are planned and will be delivered as the district develops.",
+    ],
+    features: ["Two planned schools and a hospital", "Six planned mosques", "Planned retail and cultural venues", "Country Club and Racquet Club", "Approx. 593,000 sq m of open space", "35+ km of cycling, jogging and walking routes"],
+    images: [
+      { src: "/images/properties/palm-springs/canyon-park.webp", alt: "Nakheel render of Canyon Park’s waterways, fountains and landscaped pools at Palm Springs" },
+      { src: "/images/properties/palm-springs/country-club.webp", alt: "Nakheel render of the Thousand Palms Country Club pool at dusk, framed by palms" },
+      { src: "/images/properties/palm-springs/rancho-villa.webp", alt: "Nakheel render of five-bedroom Rancho villas along a landscaped path" },
+      { src: "/images/properties/palm-springs/villa-living.webp", alt: "Nakheel render of a Rancho villa living and dining room opening onto the garden" },
+      { src: "/images/properties/palm-springs/aliso-townhouse.webp", alt: "Nakheel render of an Aliso four-plex townhouse street" },
     ],
   },
 ];

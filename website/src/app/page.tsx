@@ -160,7 +160,7 @@ export default function HomePage() {
       <section className="bg-burgundy py-24 sm:py-32" aria-labelledby="featured-heading">
         <div className="container-luxe">
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-            <SectionHeading eyebrow="Featured Developments" title={<span id="featured-heading">Two distinct waterfront addresses.</span>} intro="A closer look at Marsa Al Saadiyat in Abu Dhabi and Palm Central on Dubai’s Palm Jebel Ali." />
+            <SectionHeading eyebrow="Featured Developments" title={<span id="featured-heading">Distinctive developments. Carefully selected.</span>} intro="Explore selected communities in Dubai and Abu Dhabi, chosen for their location, design and lifestyle offering." />
             {featured.length > 0 && <Reveal delay={100}><ButtonLink href="/properties/" variant="outline">View developments</ButtonLink></Reveal>}
           </div>
           <div className="mt-16">{featured.length ? <PropertyGrid items={featured} /> : <PropertiesEmptyState showViewAll />}</div>
