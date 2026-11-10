@@ -40,7 +40,8 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
 
   const similar = getSimilarProperties(property);
   const development = property.development;
-  const enquiry = `Hello Gescard, I'm interested in "${property.title}" (${property.location}) on your website: ${absoluteUrl(`/properties/${property.slug}/`)}`;
+  const pageUrl = absoluteUrl(`/properties/${property.slug}/`);
+  const enquiry = development?.enquiry ? `${development.enquiry} ${pageUrl}` : `Hello Gescard, I'm interested in "${property.title}" (${property.location}) on your website: ${pageUrl}`;
   const specs = [
     { icon: BedDouble, label: "Bedrooms", value: property.bedrooms },
     { icon: Bath, label: "Bathrooms", value: property.bathrooms },
@@ -73,6 +74,16 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                   <span className="border border-ivory/25 px-3 py-1.5 text-ivory/80">{property.category}</span>
                   {property.status && property.statusConfirmed && <span className="border border-champagne/60 px-3 py-1.5 text-champagne">{statusLabels[property.status]}</span>}
                 </div>
+                {development?.facts && (
+                  <dl className="mt-8 grid grid-cols-2 gap-y-6 border-y border-ivory/10 py-6">
+                    {development.facts.map(({ value, label }) => (
+                      <div key={label}>
+                        <dt className="text-[0.6rem] uppercase tracking-[0.22em] text-ivory/55">{label}</dt>
+                        <dd className="mt-2 font-serif text-2xl text-ivory">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
                 {specs.length > 0 && (
                   <dl className="mt-8 grid grid-cols-3 border-y border-ivory/10 py-6">
                     {specs.map(({ icon: Icon, label, value }) => (
@@ -112,6 +123,22 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
             </div>
           )}
         </div>
+        {development?.sections?.map((section) => (
+          <div key={section.title} className="container-luxe mt-20 border-t border-burgundy/10 pt-16">
+            <h2 className="text-4xl sm:text-5xl">{section.title}</h2>
+            {section.intro && <p className="mt-6 max-w-3xl text-lg leading-relaxed text-burgundy/75">{section.intro}</p>}
+            {section.items && (
+              <ul className={`mt-10 grid gap-10 ${section.items.length > 2 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+                {section.items.map((item) => (
+                  <li key={item.title} className="border-t border-wine/40 pt-6">
+                    <h3 className="text-2xl">{item.title}</h3>
+                    <p className="mt-3 leading-relaxed text-burgundy/75">{item.text}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
         <div className="container-luxe mt-14">
           {development && (
             <details className="mb-8 max-w-3xl border-y border-burgundy/15 py-4">
