@@ -15,6 +15,15 @@ Reviewed on 9 November 2026.
 | Infrastructure | Dubai Government Media Office, Expo City Dubai and DP World, linked from the homepage |
 | Media | Gescard’s official Instagram Reel grid and embed captions, and the Videos tab of his official YouTube channel |
 
+### V2 development sources
+
+| Development | Brochure details | Gallery renders |
+| --- | --- | --- |
+| Marèva at The Oasis | Emaar’s `MAREVA_THE_OASIS_BROCHURE.pdf`, pp. 7–11 and 19–25. Marèva and Marèva 2 are separate villa collections, each with four- to six-bedroom homes. The brochure depicts planned amenities and does not provide confirmed unit areas or a handover schedule. | p. 20 villa and pool, p. 15 lagoon, p. 24 living room, p. 10 Marèva 2 villa. |
+| Dubai Design District (d3) | Meraas’s `D3_Masterplan_Digital-Brochure.pdf`, pp. 4–11, 12–40 and 42–47. Approximate masterplan area, Design Line, five areas, sustainability and separate residential launches. The cited Meraas floor plans supply the two illustrative unit-area examples. | p. 9 masterplan, p. 6 daylight aerial, p. 15 Creekside, p. 27 Soho, p. 31 Sanctuary. |
+
+Confirm current inventory, specific villa sizes, handover schedules and prices with Gescard or the developer. The masterplan’s LEED Silver designation is a target.
+
 The supplied PDFs and full-resolution new portraits stay outside Git. Exported project renders are captioned as illustrative.
 
 Review with Gescard before adding content about current inventory or prices, access rights tied to specific homes, additional project names from the recordings, broker credentials or specific RichKey rankings and award categories. Recheck the status of announced facilities before updating any copy.

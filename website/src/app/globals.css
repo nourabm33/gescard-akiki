@@ -96,7 +96,7 @@
   transition-delay: var(--reveal-delay, 0ms);
 }
 .js .reveal.reveal-fade { transform: none; }
-.js .reveal.is-visible { opacity: 1; transform: none; }
+.js .reveal:is(.is-visible, :focus-within) { opacity: 1; transform: none; }
 
 /* Staggered children (eyebrow → heading → intro → actions) */
 .js .reveal-stagger > * {
@@ -109,7 +109,7 @@
 .reveal-stagger > :nth-child(3) { --stagger: 220ms; }
 .reveal-stagger > :nth-child(4) { --stagger: 330ms; }
 .reveal-stagger > :nth-child(n + 5) { --stagger: 420ms; }
-.js .reveal-stagger.is-visible > * { opacity: 1; transform: none; }
+.js .reveal-stagger:is(.is-visible, :focus-within) > * { opacity: 1; transform: none; }
 
 /* Eyebrow rule draws in when its block is revealed */
 .js :is(.reveal, .reveal-stagger) .eyebrow::before {
@@ -137,7 +137,10 @@
 
 /* Video thumbnails wipe in with their card */
 .js .reveal .video-thumb { clip-path: inset(100% 0 0 0); transition: clip-path var(--mask-dur) var(--ease-luxe) calc(var(--reveal-delay, 0ms) + 80ms); }
-.js .reveal.is-visible .video-thumb { clip-path: inset(0 0 0 0); }
+.js .reveal:is(.is-visible, :focus-within) .video-thumb { clip-path: inset(0 0 0 0); }
+.js .reveal:focus-within, .js .reveal-stagger:focus-within > *, .js .reveal:focus-within .video-thumb {
+  transition-delay: 0ms;
+}
 
 /* ---------- Page & hero entrance ---------- */
 .page-enter { animation: page-in 0.8s var(--ease-luxe) both; }
@@ -163,9 +166,9 @@
 }
 @keyframes word-rise { from { opacity: 0; transform: translate3d(0, 105%, 0); } to { opacity: 1; transform: none; } }
 
-.hero-portrait { animation: portrait-in 1.8s var(--ease-luxe) both 200ms; }
+.hero-portrait { animation: portrait-in 1.35s var(--ease-luxe) both 160ms; }
 @keyframes portrait-in {
-  from { opacity: 0; clip-path: inset(100% 0 0 0); transform: scale(1.04); }
+  from { opacity: 0; clip-path: inset(5% 0 0 0); transform: translate3d(0, 12px, 0) scale(1.015); }
   to { opacity: 1; clip-path: inset(0 0 0 0); transform: none; }
 }
 .hero-halo { animation: halo-in 2s var(--ease-luxe) both 600ms; }
@@ -185,6 +188,23 @@
   .img-zoom:hover img, .group:hover .img-zoom img { transform: scale(1.05); }
 }
 .img-zoom:focus-visible img, .group:focus-visible .img-zoom img { transform: scale(1.05); }
+
+.property-cover-label {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s var(--ease-luxe), transform 0.45s var(--ease-luxe);
+}
+.property-cover:focus-visible .property-cover-label { opacity: 1; transform: none; }
+@media (hover: hover) {
+  .property-cover:hover .property-cover-label { opacity: 1; transform: none; }
+}
+
+.gallery-image { animation: gallery-in 0.45s var(--ease-luxe) both; }
+@keyframes gallery-in { from { opacity: 0.45; } to { opacity: 1; } }
+.gallery-arrow {
+  @apply absolute top-1/2 grid size-11 -translate-y-1/2 place-items-center border border-ivory/35 bg-burgundy/85 text-ivory transition-colors;
+}
+.gallery-arrow:is(:hover, :focus-visible) { @apply border-champagne bg-champagne text-burgundy; }
 
 /* Button fill sweep */
 .btn-sweep { position: relative; isolation: isolate; overflow: hidden; }

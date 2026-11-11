@@ -1,0 +1,39 @@
+name: Refresh website media
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      clear_instagram_cache:
+        description: Clear previously authorised Instagram API data
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: website-media-cache
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main' && github.repository == 'nourabm33/gescard-akiki'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+      - name: Refresh public media snapshot
+        run: node website/scripts/sync-media.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION }}
+          CLEAR_INSTAGRAM_CACHE: ${{ inputs.clear_instagram_cache }}

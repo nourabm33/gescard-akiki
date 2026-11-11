@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Featured Developments",
-  description: "Explore Marsa Al Saadiyat in Abu Dhabi, and Palm Central and Palm Springs in Dubai, with off-plan property consultant Gescard Akiki.",
+  description: "Explore Marsa Al Saadiyat, Palm Central, Palm Springs, Marèva at The Oasis and Dubai Design District with off-plan property consultant Gescard Akiki.",
   path: "/properties/",
 });
 

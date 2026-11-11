@@ -28,6 +28,12 @@
 
 export type PropertyCategory = "Apartment" | "Villa" | "Townhouse" | "Penthouse" | "Plot" | "Off-plan" | "Other";
 export type PropertyStatus = "available" | "reserved" | "sold";
+export type PropertyImage = { src: string; alt: string; previewSrc?: string; thumbnailSrc?: string };
+
+function projectRender(slug: string, filename: string, alt: string): PropertyImage {
+  const path = `/images/properties/${slug}/${filename}`;
+  return { src: `${path}.webp`, previewSrc: `${path}-preview.webp`, thumbnailSrc: `${path}-thumb.webp`, alt };
+}
 
 export type Property = {
   slug: string;
@@ -60,7 +66,7 @@ export type Property = {
   description: string[];
   features: string[];
   /** Paths inside /public. The first image is the cover. */
-  images: { src: string; alt: string }[];
+  images: PropertyImage[];
 };
 
 export const properties: Property[] = [
@@ -183,15 +189,119 @@ export const properties: Property[] = [
       { src: "/images/properties/palm-springs/aliso-townhouse.webp", alt: "Nakheel render of an Aliso four-plex townhouse street" },
     ],
   },
+  {
+    slug: "mareva-the-oasis",
+    title: "Marèva at The Oasis",
+    location: "The Oasis, Dubai",
+    category: "Off-plan",
+    featured: true,
+    shortDescription: "Emaar’s Marèva and Marèva 2 villa collections are planned around the lagoons and landscaped paths of The Oasis.",
+    development: {
+      developer: "Emaar",
+      tagline: "Villas shaped around the lagoon.",
+      homes: "Marèva & Marèva 2 · 4–6 bedroom villas",
+      enquiry: "Hi Gescard, I’m interested in Marèva at The Oasis and would like to know more about the available villas.",
+      facts: [
+        { label: "Villa layouts", value: "4–6 bedrooms" },
+        { label: "Collections", value: "Marèva & Marèva 2" },
+      ],
+      sections: [
+        {
+          title: "Life at The Oasis",
+          items: [
+            { title: "Lagoon and pools", text: "The plans include a swimmable lagoon, beaches and pools with paths along the water." },
+            { title: "Parks and movement", text: "Pocket parks, playgrounds, jogging and cycling tracks, and sports courts are part of the wider community plan." },
+            { title: "Everyday amenities", text: "Emaar’s brochure includes retail centres, a community centre, a clubhouse, schools and wellness facilities." },
+          ],
+        },
+      ],
+      sources: [
+        { label: "Emaar · Marèva at The Oasis", url: "https://www.emaar.com/en/properties/mareva-at-the-oasis" },
+        { label: "Emaar · Marèva 2 at The Oasis", url: "https://www.emaar.com/en/properties/mareva-2-at-the-oasis" },
+      ],
+    },
+    description: [
+      "Marèva and Marèva 2 are two Emaar villa collections within The Oasis in Dubai. The community is planned around waterways, landscaped paths and a swimmable lagoon, with homes that open onto terraces and gardens.",
+      "Both collections include four-, five- and six-bedroom villas. The brochure shows contemporary façades, generous glazing and interiors in warm neutral tones. Ask Gescard to confirm the floor area, handover schedule and availability for a particular home.",
+    ],
+    features: ["Four-, five- and six-bedroom villas", "Planned swimmable lagoon and pools", "Landscaped walking, jogging and cycling routes", "Planned sports, wellness and clubhouse facilities"],
+    images: [
+      projectRender("mareva-the-oasis", "villa", "Emaar render of a villa at Marèva with a landscaped garden and pool"),
+      projectRender("mareva-the-oasis", "lagoon", "Emaar render of the planned swimmable lagoon and waterfront path at The Oasis"),
+      projectRender("mareva-the-oasis", "interior", "Emaar render of an open living room at Marèva overlooking the garden"),
+      projectRender("mareva-the-oasis", "mareva-2-villa", "Emaar render of a three-level Marèva 2 villa and pool at dusk"),
+    ],
+  },
+  {
+    slug: "dubai-design-district",
+    title: "Dubai Design District (d3)",
+    location: "Dubai Water Canal, Dubai",
+    category: "Off-plan",
+    featured: true,
+    shortDescription: "Meraas’s mixed-use masterplan extends the established design district into a walkable waterfront neighbourhood.",
+    development: {
+      developer: "Meraas",
+      tagline: "A creative district on the water.",
+      homes: "Mixed-use masterplan · Apartment and penthouse releases",
+      enquiry: "Hi Gescard, I’m interested in Dubai Design District and would like to know more about the residential releases.",
+      facts: [
+        { label: "Masterplan area", value: "Approx. 18M sq ft" },
+        { label: "Planned Design Line", value: "6 km" },
+        { label: "Distinct areas", value: "5" },
+        { label: "Certification target", value: "LEED Silver" },
+      ],
+      sections: [
+        {
+          title: "Five areas, one Design Line",
+          intro: "The planned car-free Design Line connects the district’s five areas through landscaped walking routes and public spaces.",
+          items: [
+            { title: "The Creekside", text: "Canal-front residences and a promenade with planned leisure and waterfront facilities." },
+            { title: "Design HQ", text: "Studios, creative workplaces and street-level retail extend the established design district." },
+            { title: "Soho", text: "A social and cultural quarter planned around public squares, dining and performance spaces." },
+            { title: "The Sanctuary", text: "A residential area with landscaped courtyards, parks, sports and play spaces." },
+            { title: "The Mindspace", text: "Flexible studios, exhibition space and workspaces for making and collaboration." },
+          ],
+        },
+        {
+          title: "Residential releases",
+          intro: "The brochure profiles The Edit at d3, Atélis at d3 and Design Quarter at d3. Unit sizes and completion dates apply to the individual releases.",
+          items: [
+            { title: "The Edit at d3", text: "One- to four-bedroom apartments and penthouses across three towers. One published one-bedroom floor plan measures approximately 755 sq ft in total, including its balcony." },
+            { title: "Atélis at d3", text: "A Creekside tower designed by SOM. The developer’s floor plans show selected two-bedroom layouts of approximately 1,414–1,419 sq ft in total, including balconies." },
+            { title: "Design Quarter at d3", text: "A separate apartment development within the creative district, with its own floor plans and specifications." },
+          ],
+        },
+      ],
+      sources: [
+        { label: "Meraas · Dubai Design District masterplan", url: "https://meraas.com/en/master-development/d3" },
+        { label: "Meraas · Masterplan announcement", url: "https://meraas.com/en/latest-post/news/meraas-unveils-18-million-sq-ft-residential-vision-d3-anchored-waterfront" },
+        { label: "Meraas · The Edit at d3", url: "https://meraas.com/en/the-edit-at-d3" },
+        { label: "Meraas · The Edit floor plans", url: "https://meraas.com/sites/default/files/2025-11/The%20Edit%20at%20d3%20FloorPlans.pdf" },
+        { label: "Meraas · Atélis floor plans", url: "https://meraas.com/sites/default/files/2025-04/Atelis_at_D3_Floor%20Plans.pdf" },
+      ],
+    },
+    description: [
+      "Meraas’s expansion of Dubai Design District adds a residential waterfront to the existing design, art and fashion hub near Business Bay and Downtown Dubai. The masterplan brings homes, creative workspaces, cultural venues, retail and hospitality together along the Dubai Water Canal.",
+      "The plans prioritise walking and include public art, sports facilities, landscaped parks and links to the waterfront. Meraas is targeting LEED Silver community certification, with an emphasis on sustainable mobility and energy-efficient design. The masterplan’s amenities are planned and the residential releases each have their own schedules.",
+    ],
+    features: ["Planned six-kilometre pedestrian Design Line", "Canal promenade and public spaces", "Creative studios, galleries and performance venues", "Planned parks, sports and play facilities"],
+    images: [
+      projectRender("dubai-design-district", "masterplan", "Meraas aerial render of the Dubai Design District masterplan and its canal-front skyline"),
+      projectRender("dubai-design-district", "daytime-aerial", "Meraas daytime aerial render showing the five areas of Dubai Design District beside the canal"),
+      projectRender("dubai-design-district", "creekside", "Meraas render of the Creekside waterfront buildings along Dubai Water Canal"),
+      projectRender("dubai-design-district", "soho", "Meraas render of Soho’s public square and surrounding buildings at dusk"),
+      projectRender("dubai-design-district", "sanctuary", "Meraas render of the Sanctuary landscape and raised path at sunset"),
+    ],
+  },
 ];
 
 export function getProperty(slug: string) {
   return properties.find((p) => p.slug === slug);
 }
 
-export function getFeaturedProperties(limit = 3) {
+export function getFeaturedProperties() {
   const featured = properties.filter((p) => p.featured);
-  return (featured.length ? featured : properties).slice(0, limit);
+  return featured.length ? featured : properties;
 }
 
 export function getSimilarProperties(property: Property, limit = 3) {

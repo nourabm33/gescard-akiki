@@ -40,8 +40,7 @@ All content lives in `website/src/data/`:
 
 - `profile.ts`: contact details, socials, biography, credentials, languages (biography/credentials/languages are empty until verified text is supplied)
 - `properties.ts`: individual listings and featured development profiles. Add an object and re-export to generate `/properties/<slug>/`. Use the optional `development` fields for project-wide facts and source links.
-- `videos.ts`: long-form YouTube video IDs and titles from the official channel
-- `instagram.ts`: verified Instagram Reel IDs and editorial titles
+- `videos.ts` and `instagram.ts`: the pre-rendered media selection. See [media refresh setup](website/MEDIA-SETUP.md) to activate automatic updates.
 - `services.ts`, `testimonials.ts`, `navigation.ts`
 
 Property images go in `website/public/images/properties/` and are referenced as `/images/properties/<file>`.

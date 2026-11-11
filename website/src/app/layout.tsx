@@ -1,24 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Cormorant_Garamond, Montserrat } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import BackToTop from "@/components/BackToTop";
 import { profile } from "@/data/profile";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl, asset, SITE_URL } from "@/lib/site";
+import "./fonts.css";
 import "./globals.css";
-
-const cinzel = Cinzel({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-cinzel", display: "swap" });
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["italic"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" });
 
 const description =
   "Gescard Akiki, Senior Property Consultant at RichKey Properties, specialises in off-plan real estate in Dubai and Abu Dhabi.";
@@ -78,8 +66,11 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${montserrat.variable}`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {["cinzel", "cormorant-garamond", "montserrat"].map((name) => (
+          <link key={name} rel="preload" as="font" type="font/woff2" href={asset(`/fonts/${name}-latin.woff2`)} crossOrigin="anonymous" />
+        ))}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
       </head>

@@ -2,11 +2,10 @@
 
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { PropertyImage } from "@/data/properties";
 import { asset } from "@/lib/site";
 
-type Img = { src: string; alt: string };
-
-export default function PropertyGallery({ images, title }: { images: Img[]; title: string }) {
+export default function PropertyGallery({ images, title }: { images: PropertyImage[]; title: string }) {
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -36,13 +35,22 @@ export default function PropertyGallery({ images, title }: { images: Img[]; titl
 
   return (
     <div>
-      <button ref={openerRef} type="button" onClick={() => setLightbox(true)} className="img-zoom group relative block aspect-[16/10] w-full overflow-hidden bg-burgundy-soft" aria-label={`Open gallery: ${current.alt}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={asset(current.src)} alt={current.alt} className="h-full w-full object-cover" fetchPriority="high" />
-        <span className="absolute bottom-4 right-4 bg-burgundy/80 px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.22em] text-ivory">
-          {active + 1} / {count}
-        </span>
-      </button>
+      <div className="relative">
+        <button ref={openerRef} type="button" onClick={() => setLightbox(true)} className="img-zoom group relative block aspect-[16/10] w-full overflow-hidden bg-burgundy-soft" aria-label={`Open gallery: ${current.alt}`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img key={current.src} src={asset(current.src)} alt={current.alt} className="gallery-image h-full w-full object-cover" fetchPriority={active === 0 ? "high" : "auto"} />
+          <span className="absolute bottom-4 right-4 bg-burgundy/80 px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.22em] text-ivory" aria-hidden="true">
+            {active + 1} / {count}
+          </span>
+        </button>
+        {count > 1 && (
+          <>
+            <button type="button" onClick={() => go(-1)} className="gallery-arrow left-3" aria-label="Previous gallery photo"><ChevronLeft size={21} /></button>
+            <button type="button" onClick={() => go(1)} className="gallery-arrow right-3" aria-label="Next gallery photo"><ChevronRight size={21} /></button>
+          </>
+        )}
+        <span className="sr-only" role="status">{`Photo ${active + 1} of ${count}. ${current.alt}`}</span>
+      </div>
       {count > 1 && (
         <ul className="mt-4 grid grid-cols-4 gap-3 sm:grid-cols-6" aria-label={`${title} photos`}>
           {images.map((img, i) => (
@@ -55,7 +63,7 @@ export default function PropertyGallery({ images, title }: { images: Img[]; titl
                 className={`block aspect-[4/3] w-full overflow-hidden transition-opacity ${i === active ? "opacity-100 ring-1 ring-champagne" : "opacity-55 hover:opacity-100"}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={asset(img.src)} alt="" loading="lazy" className="h-full w-full object-cover" />
+                <img src={asset(img.thumbnailSrc ?? img.src)} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
               </button>
             </li>
           ))}
@@ -76,7 +84,7 @@ export default function PropertyGallery({ images, title }: { images: Img[]; titl
             </button>
           )}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={asset(current.src)} alt={current.alt} className="max-h-[85vh] max-w-full object-contain" />
+          <img key={current.src} src={asset(current.src)} alt={current.alt} className="gallery-image max-h-[85vh] max-w-full object-contain" />
           {count > 1 && (
             <button type="button" onClick={() => go(1)} className="absolute right-2 flex h-12 w-12 items-center justify-center text-ivory hover:text-champagne sm:right-6" aria-label="Next photo">
               <ChevronRight strokeWidth={1.3} size={32} />

@@ -30,9 +30,11 @@ export default function PrivacyPolicyPage() {
       <h3>WhatsApp</h3>
       <p>Messages you send via WhatsApp are processed by WhatsApp (Meta Platforms) under its own privacy policy.</p>
       <h3>YouTube</h3>
-      <p>Video thumbnails come from YouTube. The player loads after you press play, using YouTube&rsquo;s privacy-enhanced mode (youtube-nocookie.com). Google may process data under its own privacy policy.</p>
+      <p>Public video information and thumbnails come from YouTube. The player loads after you press play, using YouTube&rsquo;s privacy-enhanced mode (youtube-nocookie.com). Your use is subject to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
       <h3>Instagram and external links</h3>
-      <p>Reel previews load from Instagram when you select &ldquo;Load preview&rdquo;. Meta may process data under its own privacy policy. Links to Instagram, YouTube, Google Maps and other sites open those services, which have their own privacy policies.</p>
+      <p>Public Reel thumbnails may load from Meta. Reel players load from Instagram when you select &ldquo;Load preview&rdquo;. Links to Instagram, YouTube, Google Maps and other sites open those services, which have their own privacy policies.</p>
+      <h3>Media cache</h3>
+      <p>The site retrieves a public media list from GitHub and keeps a copy of that list in your browser for the current session. The list contains public video and Reel details.</p>
 
       <h2>Retention</h2>
       <p>Enquiry conversations are kept for as long as needed to respond to you and for legitimate record-keeping, after which they are deleted.</p>

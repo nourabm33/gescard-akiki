@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ButtonLink from "@/components/ButtonLink";
 import PropertyGallery from "@/components/PropertyGallery";
 import PropertyGrid from "@/components/PropertyGrid";
+import Reveal from "@/components/Reveal";
 import { WhatsAppIcon } from "@/components/icons";
 import { formatAED, getProperty, getSimilarProperties, properties, statusLabels } from "@/data/properties";
 import { mailtoLink, whatsappLink } from "@/lib/enquiry";
@@ -75,14 +76,14 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                   {property.status && property.statusConfirmed && <span className="border border-champagne/60 px-3 py-1.5 text-champagne">{statusLabels[property.status]}</span>}
                 </div>
                 {development?.facts && (
-                  <dl className="mt-8 grid grid-cols-2 gap-y-6 border-y border-ivory/10 py-6">
+                  <Reveal as="dl" variant="fade" className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 border-y border-ivory/10 py-6">
                     {development.facts.map(({ value, label }) => (
                       <div key={label}>
                         <dt className="text-[0.6rem] uppercase tracking-[0.22em] text-ivory/55">{label}</dt>
                         <dd className="mt-2 font-serif text-2xl text-ivory">{value}</dd>
                       </div>
                     ))}
-                  </dl>
+                  </Reveal>
                 )}
                 {specs.length > 0 && (
                   <dl className="mt-8 grid grid-cols-3 border-y border-ivory/10 py-6">
@@ -106,25 +107,25 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
 
       <section className="bg-ivory py-20 text-burgundy sm:py-28">
         <div className="container-luxe grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+          <Reveal className="lg:col-span-7">
             <h2 className="text-4xl sm:text-5xl">{development ? "About the development" : "About this property"}</h2>
             <div className="mt-8 space-y-5 text-lg leading-relaxed text-burgundy/75">
               {property.description.map((p) => <p key={p.slice(0, 30)}>{p}</p>)}
             </div>
-          </div>
+          </Reveal>
           {property.features.length > 0 && (
-            <div className="lg:col-span-4 lg:col-start-9">
+            <Reveal className="lg:col-span-4 lg:col-start-9" delay={90}>
               <h2 className="font-sans text-[0.75rem] font-semibold uppercase tracking-[0.26em]">Features &amp; amenities</h2>
               <ul className="mt-6 divide-y divide-burgundy/10 border-y border-burgundy/10">
                 {property.features.map((f) => (
                   <li key={f} className="flex items-center gap-3 py-3.5 text-burgundy/80"><Check size={16} className="text-wine" aria-hidden="true" />{f}</li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           )}
         </div>
         {development?.sections?.map((section) => (
-          <div key={section.title} className="container-luxe mt-20 border-t border-burgundy/10 pt-16">
+          <Reveal key={section.title} className="container-luxe mt-20 border-t border-burgundy/10 pt-16">
             <h2 className="text-4xl sm:text-5xl">{section.title}</h2>
             {section.intro && <p className="mt-6 max-w-3xl text-lg leading-relaxed text-burgundy/75">{section.intro}</p>}
             {section.items && (
@@ -137,7 +138,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                 ))}
               </ul>
             )}
-          </div>
+          </Reveal>
         ))}
         <div className="container-luxe mt-14">
           {development && (
