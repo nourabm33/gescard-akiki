@@ -122,7 +122,12 @@ export default function HomePage() {
             </Reveal>
           </div>
           <Reveal as="figure" variant="image" from="right" className="order-1 lg:order-2 lg:col-span-6 lg:col-start-7">
-            <ResponsiveImage image="gescard/awards-shelf" alt="Developer awards from Emaar, DAMAC, Sobha and BNW on the RichKey Properties awards shelf" sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-square w-full object-cover" />
+            <ResponsiveImage
+              image="gescard/richkey-awards"
+              alt="Gescard Akiki beside the developer awards at the RichKey Properties office"
+              sizes="(min-width: 1320px) 572px, (min-width: 1024px) 45vw, 100vw"
+              className="h-auto w-full brightness-[1.1] saturate-[0.92]"
+            />
           </Reveal>
         </div>
       </section>
