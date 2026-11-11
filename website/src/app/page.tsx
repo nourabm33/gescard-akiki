@@ -90,6 +90,43 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* RICHKEY PROPERTIES */}
+      <section className="bg-burgundy py-24 sm:py-32" aria-labelledby="richkey-heading">
+        <div className="container-luxe grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+          <Reveal variant="image" from="left" className="lg:col-span-6">
+            <ResponsiveImage image="gescard/richkey-office" alt="Gescard Akiki pointing to the RichKey sign at the RichKey Properties office" sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[3/2] w-full object-cover" />
+          </Reveal>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <SectionHeading eyebrow={profile.agency.name} title={<span id="richkey-heading">Part of the RichKey team.</span>} />
+            <Reveal delay={120} className="mt-6 space-y-5 text-base leading-relaxed text-ivory/75 sm:text-lg">
+              <p>Gescard works as a property consultant at {profile.agency.name}, from the brokerage&rsquo;s office at Dubai Hills Business Park.</p>
+              <p>You deal with him directly from the first conversation to the final paperwork, with the RichKey team behind every enquiry.</p>
+            </Reveal>
+            <Reveal delay={200} className="mt-8">
+              <ButtonLink href="https://richkey.ae/" variant="text">Visit RichKey Properties</ButtonLink>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* RECOGNITION */}
+      <section className="bg-ivory py-24 text-burgundy sm:py-32" aria-labelledby="awards-heading">
+        <div className="container-luxe grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+          <div className="order-2 lg:order-1 lg:col-span-5">
+            <SectionHeading tone="light" eyebrow="Recognition" title={<span id="awards-heading"><span className="whitespace-nowrap">Multi-Awarded.</span> <em className="font-normal text-wine">Recognised by <span className="whitespace-nowrap">Top-Tier</span> Developers.</em></span>} />
+            <Reveal delay={120} className="mt-6 text-base leading-relaxed text-burgundy/75 sm:text-lg">
+              <p>Gescard is a multi-awarded agent, recognised by leading UAE developers. The awards display at the RichKey office includes recognition from Emaar, DAMAC, Sobha and BNW.</p>
+            </Reveal>
+            <Reveal delay={200} className="mt-8">
+              <ButtonLink href="/about/" variant="outline-dark">Discover Gescard</ButtonLink>
+            </Reveal>
+          </div>
+          <Reveal as="figure" variant="image" from="right" className="order-1 lg:order-2 lg:col-span-6 lg:col-start-7">
+            <ResponsiveImage image="gescard/awards-shelf" alt="Developer awards from Emaar, DAMAC, Sobha and BNW on the RichKey Properties awards shelf" sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-square w-full object-cover" />
+          </Reveal>
+        </div>
+      </section>
+
       {/* BRAND STATEMENT */}
       <section className="bg-charcoal py-24 sm:py-32" aria-labelledby="statement-heading">
         <Reveal variant="stagger" className="container-luxe flex flex-col items-center text-center">
