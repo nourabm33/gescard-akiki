@@ -173,7 +173,7 @@ export default function HomePage() {
           <div className="lg:col-span-5">
             <SectionHeading tone="light" eyebrow="Why Gescard" title="A More Personal Way to Explore UAE Real Estate." />
             <Reveal as="figure" variant="fade" delay={150} className="mt-10">
-              <ResponsiveImage image="gescard/richkey-awards" alt="Gescard Akiki beside the awards display at the RichKey Properties office" sizes="(min-width: 1024px) 40vw, 100vw" className="aspect-[3/2] w-full object-cover brightness-[1.1] saturate-[0.92]" />
+              <ResponsiveImage image="gescard/awards-display" alt="Gescard Akiki presenting the developer awards display at the RichKey Properties office" sizes="(min-width: 1024px) 40vw, 100vw" className="aspect-[3/2] w-full object-cover" />
               <figcaption className="mt-3 text-xs text-burgundy/65">Gescard at the RichKey Properties office.</figcaption>
             </Reveal>
           </div>
