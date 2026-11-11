@@ -15,7 +15,7 @@ manifest_file = Path("src/data/image-manifest.json")
 # The newer client photos are delivered as web-ready copies. Keep their entries
 # when regenerating images whose source files live in this repository.
 existing = json.loads(manifest_file.read_text(encoding="utf-8")) if manifest_file.exists() else {}
-client_images = ("office-portrait", "richkey-awards", "richkey-office", "consultation", "about-portrait")
+client_images = ("office-portrait", "richkey-awards", "richkey-office", "consultation", "about-portrait", "awards-shelf")
 manifest = {key: value for key, value in existing.items() if key.split("/")[-1] in client_images}
 def emit(name, im, folder, widths, q=78):
     w,h=im.size; outs=[]
