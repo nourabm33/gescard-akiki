@@ -20,8 +20,8 @@ export default function InsightsPage() {
           <ButtonLink href="#youtube-heading" variant="outline">YouTube videos</ButtonLink>
         </div>
       </PageHero>
-      <InstagramSection />
-      <YouTubeSection />
+      <InstagramSection limit={6} />
+      <YouTubeSection limit={6} />
       <FinalCta />
     </>
   );

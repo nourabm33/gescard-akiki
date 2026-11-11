@@ -16,7 +16,7 @@ import { getFeaturedProperties } from "@/data/properties";
 import { principles, serviceHighlights } from "@/data/services";
 
 export default function HomePage() {
-  const featured = getFeaturedProperties(3);
+  const featured = getFeaturedProperties();
 
   return (
     <>

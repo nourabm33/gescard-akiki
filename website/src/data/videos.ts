@@ -1,5 +1,5 @@
-/** Long-form uploads from Gescard’s official channel. Add new watch IDs and titles here. */
-export type Video = { id: string; title: string; duration: string };
+/** The pre-rendered selection used before the first successful API refresh. */
+export type Video = { id: string; title: string; duration: string; thumbnail?: string; embeddable?: boolean };
 
 export const longVideos: Video[] = [
   { id: "3GBvqaLy84I", title: "Expo city masterplan has a timeless value!", duration: "14:26" },
@@ -16,5 +16,5 @@ export function embedUrl(video: Video) {
 }
 
 export function thumbnailUrl(video: Video) {
-  return `https://i.ytimg.com/vi/${video.id}/hq720.jpg`;
+  return video.thumbnail ?? `https://i.ytimg.com/vi/${video.id}/hq720.jpg`;
 }
