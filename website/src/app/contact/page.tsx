@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { InstagramIcon, YouTubeIcon } from "@/components/icons";
 import { profile } from "@/data/profile";
+import { properties } from "@/data/properties";
 import { whatsappLink } from "@/lib/enquiry";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -56,11 +57,11 @@ export default function ContactPage() {
             </div>
           </Reveal>
           <Reveal delay={120} className="lg:col-span-8">
-            <div className="border border-ivory/10 bg-burgundy-soft p-6 sm:p-10 lg:p-14">
+            <div id="enquiry" className="scroll-mt-24 border border-ivory/10 bg-burgundy-soft p-6 sm:p-10 lg:p-14">
               <p className="eyebrow text-champagne">Enquiry</p>
               <h2 className="mb-10 mt-5 text-4xl leading-tight text-ivory sm:text-5xl">Let&rsquo;s discuss your goals.</h2>
               <Suspense fallback={null}>
-                <ContactForm />
+                <ContactForm projects={properties.map(({ slug, title }) => ({ slug, title }))} />
               </Suspense>
             </div>
           </Reveal>

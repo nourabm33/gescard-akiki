@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { enquiryIntegration } from "@/lib/integrations";
+import EnquiryChallenge from "./EnquiryChallenge";
 import {
   budgetOptions,
   enquiryText,
@@ -16,7 +18,7 @@ import {
 } from "@/lib/enquiry";
 import { WhatsAppIcon } from "./icons";
 
-const empty: EnquiryInput = { name: "", email: "", phone: "", interest: "", budget: "", location: "", message: "", privacy: false };
+const empty: EnquiryInput = { name: "", email: "", phone: "", interest: "", budget: "", location: "", project: "", message: "", privacy: false };
 
 const interestFromQuery: Record<string, string> = {
   investment: "Property investment",
@@ -25,39 +27,96 @@ const interestFromQuery: Record<string, string> = {
   home: "Buying a home",
 };
 
-export default function ContactForm() {
+export default function ContactForm({ projects }: { projects: { slug: string; title: string }[] }) {
   const id = useId();
   const params = useSearchParams();
   const [values, setValues] = useState<EnquiryInput>(empty);
   const [errors, setErrors] = useState<EnquiryErrors>({});
   const [sent, setSent] = useState<{ wa: string; mail: string } | null>(null);
+  const [status, setStatus] = useState("");
+  const [sending, setSending] = useState(false);
+  const [verify, setVerify] = useState(false);
+  const [token, setToken] = useState("");
+  const challengeReset = useRef(() => {});
+  const submitting = useRef(false);
+  const requestId = useRef<string | undefined>(undefined);
   const statusRef = useRef<HTMLDivElement>(null);
+  const direct = enquiryIntegration;
 
   useEffect(() => {
     const interest = interestFromQuery[params.get("interest") ?? ""];
     const property = params.get("property");
-    if (interest || property) {
+    const project = projects.find((item) => item.slug === params.get("project"));
+    if (interest || property || project) {
       setValues((v) => ({
         ...v,
         interest: interest ?? v.interest,
+        project: project?.title ?? v.project,
         message: property && !v.message ? `I'm interested in the property: ${property.slice(0, 120)}` : v.message,
       }));
     }
-  }, [params]);
+  }, [params, projects]);
 
   const set = <K extends keyof EnquiryInput>(key: K, value: EnquiryInput[K]) => {
+    requestId.current = undefined;
     setValues((v) => ({ ...v, [key]: value }));
     if (errors[key]) setErrors((e) => ({ ...e, [key]: undefined }));
   };
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submitting.current) return;
+    setStatus("");
+    setSent(null);
     const { data, errors: found } = validateEnquiry(values);
     setErrors(found);
     if (Object.keys(found).length) {
       const first = Object.keys(found)[0];
       document.getElementById(`${id}-${first}`)?.focus();
-      setSent(null);
+      return;
+    }
+    if (direct) {
+      if (!token) {
+        setVerify(true);
+        setStatus("Complete the security check, then send your enquiry.");
+        return;
+      }
+      const website = new FormData(e.currentTarget).get("website");
+      const key = requestId.current ??= crypto.randomUUID();
+      submitting.current = true;
+      setSending(true);
+      try {
+        const response = await fetch(direct.endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "omit",
+          redirect: "error",
+          signal: AbortSignal.timeout(20000),
+          body: JSON.stringify({ ...data, website, token, requestId: key }),
+        });
+        const result = await response.json();
+        if (!response.ok || result.accepted !== true) {
+          setStatus(response.status === 429
+            ? "Too many attempts. Please wait a minute and try again, or contact Gescard directly."
+            : "We couldn’t confirm that your enquiry was accepted. Try again or contact Gescard directly.");
+          return;
+        }
+        setValues(empty);
+        setVerify(false);
+        requestId.current = undefined;
+        setStatus("Thank you. Your enquiry has been accepted for delivery to Gescard.");
+        window.dispatchEvent(new CustomEvent("gescard:enquiry-accepted", {
+          detail: projects.find((item) => item.title === data.project)?.slug,
+        }));
+      } catch {
+        setStatus("We couldn’t confirm that your enquiry was accepted. Try again or contact Gescard directly.");
+      } finally {
+        submitting.current = false;
+        setSending(false);
+        setToken("");
+        challengeReset.current();
+        requestAnimationFrame(() => statusRef.current?.focus());
+      }
       return;
     }
     const text = enquiryText(data);
@@ -85,7 +144,10 @@ export default function ContactForm() {
   );
 
   return (
-    <form onSubmit={onSubmit} noValidate className="form-luxe space-y-8" aria-describedby={`${id}-note`}>
+    <form onSubmit={onSubmit} noValidate className="form-luxe" aria-describedby={`${id}-note`} aria-busy={sending} onFocus={(event) => {
+      if (direct && event.target.matches("input, select, textarea, button[type=submit]")) setVerify(true);
+    }}>
+      <fieldset disabled={sending} className="min-w-0 space-y-8">
       <div className="grid gap-8 sm:grid-cols-2">
         <div>
           <Label k="name" required>Full name</Label>
@@ -117,8 +179,11 @@ export default function ContactForm() {
           </select>
         </div>
         <div>
-          <Label k="location">Preferred location in the UAE</Label>
-          <input id={fieldId("location")} name="location" type="text" placeholder="e.g. Dubai Hills Estate" maxLength={limits.location} value={values.location} onChange={(e) => set("location", e.target.value)} className="field" />
+          <Label k="project">Development</Label>
+          <select id={fieldId("project")} name="project" value={values.project} onChange={(e) => set("project", e.target.value)} className="field">
+            <option value="">Select a development</option>
+            {projects.map(({ slug, title }) => <option key={slug} value={title}>{title}</option>)}
+          </select>
         </div>
       </div>
       <div>
@@ -132,22 +197,32 @@ export default function ContactForm() {
           <label htmlFor={fieldId("privacy")} className="cursor-pointer text-sm leading-relaxed text-ivory/75">
             I have read the{" "}
             <Link href="/privacy-policy/" className="text-champagne underline underline-offset-4 hover:text-ivory">privacy policy</Link>{" "}
-            and agree that my details are shared with Gescard via WhatsApp to respond to my enquiry. <span className="text-champagne">*</span>
+            and agree that my details may be used to respond to my enquiry. <span className="text-champagne">*</span>
           </label>
         </div>
         <Err k="privacy" />
       </div>
 
+      {direct && (
+        <>
+          <div hidden aria-hidden="true">
+            <input name="website" autoComplete="off" tabIndex={-1} />
+          </div>
+          {verify && <EnquiryChallenge siteKey={direct.turnstileSiteKey} onToken={setToken} reset={challengeReset} />}
+        </>
+      )}
       <div className="flex flex-col gap-5 border-t border-ivory/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
         <p id={`${id}-note`} className="max-w-sm text-[0.82rem] leading-relaxed text-ivory/60">
-          Submitting opens WhatsApp with your message ready to send to Gescard. Nothing is sent until you press send in WhatsApp.
+          {direct ? "Your details will be used to respond to this enquiry." : "Prepare your message here, then send it to Gescard in WhatsApp or by email."}
         </p>
-        <button type="submit" className="btn-sweep group inline-flex shrink-0 items-center justify-center gap-3 bg-champagne px-8 py-4 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-burgundy transition-transform duration-300 [--sweep:var(--color-ivory)] active:scale-[0.98]">
-          <WhatsAppIcon size={17} /> Send via WhatsApp
+        <button type="submit" className="btn-sweep group inline-flex shrink-0 items-center justify-center gap-3 bg-champagne px-8 py-4 text-[0.72rem] font-medium uppercase tracking-[0.24em] text-burgundy transition-transform duration-300 [--sweep:var(--color-ivory)] active:scale-[0.98] disabled:opacity-60">
+          {!direct && <WhatsAppIcon size={17} />}{sending ? "Sending…" : direct ? "Send enquiry" : "Continue to WhatsApp"}
         </button>
       </div>
+      </fieldset>
 
-      <div ref={statusRef} tabIndex={-1} aria-live="polite" className="outline-none">
+      <div ref={statusRef} tabIndex={-1} aria-live="polite" className="mt-4 outline-none">
+        {status && <p className="border border-champagne/40 p-4 text-sm text-ivory">{status}</p>}
         {sent && (
           <div className="feedback-in border border-champagne/40 bg-champagne/[0.06] p-6">
             <p className="signature text-2xl text-ivory">WhatsApp is opening with your message ready to send.</p>
