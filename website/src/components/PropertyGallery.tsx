@@ -4,14 +4,19 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { PropertyImage } from "@/data/properties";
 import { asset } from "@/lib/site";
+import { track } from "@/lib/analytics";
 
-export default function PropertyGallery({ images, title }: { images: PropertyImage[]; title: string }) {
+export default function PropertyGallery({ images, title, slug }: { images: PropertyImage[]; title: string; slug: string }) {
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const openerRef = useRef<HTMLButtonElement>(null);
   const count = images.length;
-  const go = useCallback((d: number) => setActive((i) => (i + d + count) % count), [count]);
+  const go = useCallback((d: number) => {
+    if (count < 2) return;
+    setActive((i) => (i + d + count) % count);
+    track("gallery_interaction", { project_slug: slug, action: d > 0 ? "next" : "previous" });
+  }, [count, slug]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -36,13 +41,18 @@ export default function PropertyGallery({ images, title }: { images: PropertyIma
   return (
     <div>
       <div className="relative">
-        <button ref={openerRef} type="button" onClick={() => setLightbox(true)} className="img-zoom group relative block aspect-[16/10] w-full overflow-hidden bg-burgundy-soft" aria-label={`Open gallery: ${current.alt}`}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img key={current.src} src={asset(current.src)} alt={current.alt} className="gallery-image h-full w-full object-cover" fetchPriority={active === 0 ? "high" : "auto"} />
-          <span className="absolute bottom-4 right-4 bg-burgundy/80 px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.22em] text-ivory" aria-hidden="true">
-            {active + 1} / {count}
-          </span>
+        <button ref={openerRef} type="button" onClick={() => {
+          setLightbox(true);
+          track("gallery_interaction", { project_slug: slug, action: "open" });
+        }} className="img-zoom group relative block aspect-[16/10] w-full overflow-hidden bg-burgundy-soft" aria-label={`Open gallery: ${current.alt}`}>
+          <picture key={current.src}>
+            {current.previewSrc && <source media="(max-width: 639px)" srcSet={asset(current.previewSrc)} />}
+            <img src={asset(current.src)} alt="" className="gallery-image h-full w-full object-cover" fetchPriority={active === 0 ? "high" : "auto"} />
+          </picture>
         </button>
+        <span className="pointer-events-none absolute bottom-4 right-4 bg-burgundy/80 px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.22em] text-ivory" aria-hidden="true">
+          {active + 1} / {count}
+        </span>
         {count > 1 && (
           <>
             <button type="button" onClick={() => go(-1)} className="gallery-arrow left-3" aria-label="Previous gallery photo"><ChevronLeft size={21} /></button>
@@ -57,7 +67,11 @@ export default function PropertyGallery({ images, title }: { images: PropertyIma
             <li key={img.src}>
               <button
                 type="button"
-                onClick={() => setActive(i)}
+                onClick={() => {
+                  if (i === active) return;
+                  setActive(i);
+                  track("gallery_interaction", { project_slug: slug, action: "thumbnail" });
+                }}
                 aria-label={`Show photo ${i + 1}: ${img.alt}`}
                 aria-current={i === active}
                 className={`block aspect-[4/3] w-full overflow-hidden transition-opacity ${i === active ? "opacity-100 ring-1 ring-champagne" : "opacity-55 hover:opacity-100"}`}

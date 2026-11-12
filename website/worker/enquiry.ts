@@ -106,4 +106,5 @@ export async function handleEnquiry(request: Request, env: EnquiryEnv, fetcher =
   }
 }
 
-export default { fetch: (request: Request, env: EnquiryEnv) => handleEnquiry(request, env) };
+const worker = { fetch: (request: Request, env: EnquiryEnv) => handleEnquiry(request, env) };
+export default worker;

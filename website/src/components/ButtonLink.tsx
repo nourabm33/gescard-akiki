@@ -23,9 +23,10 @@ type Props = {
   external?: boolean;
   icon?: ReactNode;
   ariaLabel?: string;
+  enquiryChannel?: "form" | "whatsapp" | "email";
 };
 
-export default function ButtonLink({ href, children, variant = "gold", className = "", external, icon, ariaLabel }: Props) {
+export default function ButtonLink({ href, children, variant = "gold", className = "", external, icon, ariaLabel, enquiryChannel }: Props) {
   const content = (
     <>
       {icon}
@@ -43,13 +44,13 @@ export default function ButtonLink({ href, children, variant = "gold", className
   if (isExternal) {
     const newTab = href.startsWith("http");
     return (
-      <a href={href} className={cls} aria-label={ariaLabel} {...(newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+      <a href={href} className={cls} aria-label={ariaLabel} data-project-enquiry={enquiryChannel} {...(newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
         {content}
       </a>
     );
   }
   return (
-    <Link href={href} className={cls} aria-label={ariaLabel}>
+    <Link href={href} className={cls} aria-label={ariaLabel} data-project-enquiry={enquiryChannel}>
       {content}
     </Link>
   );

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { enquiryIntegration } from "@/lib/integrations";
+import { track } from "@/lib/analytics";
 import EnquiryChallenge from "./EnquiryChallenge";
 import {
   budgetOptions,
@@ -123,6 +124,8 @@ export default function ContactForm({ projects }: { projects: { slug: string; ti
     const wa = whatsappLink(text);
     const mail = mailtoLink(`Property enquiry from ${data.name}`, text);
     setSent({ wa, mail });
+    const project = projects.find((item) => item.title === data.project)?.slug;
+    track("whatsapp_click", project ? { project_slug: project } : {});
     window.open(wa, "_blank", "noopener,noreferrer");
     requestAnimationFrame(() => statusRef.current?.focus());
   };
@@ -139,7 +142,7 @@ export default function ContactForm({ projects }: { projects: { slug: string; ti
   const Label = ({ k, children, required }: { k: keyof EnquiryInput; children: string; required?: boolean }) => (
     <label htmlFor={fieldId(k)} className="block text-[0.66rem] font-medium uppercase tracking-[0.24em] text-ivory/65">
       {children}
-      {required ? <span className="text-champagne"> *</span> : <span className="normal-case tracking-normal text-ivory/40"> (optional)</span>}
+      {required ? <span className="text-champagne"> *</span> : <span className="normal-case tracking-normal text-ivory/75"> (optional)</span>}
     </label>
   );
 
@@ -189,7 +192,7 @@ export default function ContactForm({ projects }: { projects: { slug: string; ti
       <div>
         <Label k="message">Message</Label>
         <textarea id={fieldId("message")} name="message" rows={4} maxLength={limits.message} value={values.message} onChange={(e) => set("message", e.target.value)} className="field resize-y" placeholder="Tell Gescard what you are looking for" />
-        <p className="mt-2 text-right text-[0.7rem] text-ivory/40">{values.message.length}/{limits.message}</p>
+        <p className="mt-2 text-right text-[0.7rem] text-ivory/75">{values.message.length}/{limits.message}</p>
       </div>
       <div>
         <div className="flex items-start gap-3">

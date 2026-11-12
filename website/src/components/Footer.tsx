@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { PrivacyPreferences } from "@/components/AnalyticsConsent";
+import { analyticsId } from "@/lib/integrations";
 import { navigation } from "@/data/navigation";
 import { profile } from "@/data/profile";
 import { InstagramIcon, YouTubeIcon } from "./icons";
@@ -64,9 +66,10 @@ export default function Footer() {
             <p>
               &copy; {year} {profile.name}. All rights reserved.
             </p>
-            <ul className="flex gap-6">
+            <ul className="flex flex-wrap gap-x-6 gap-y-3">
               <li><Link href="/privacy-policy/" className="link-line hover:text-champagne">Privacy Policy</Link></li>
               <li><Link href="/terms/" className="link-line hover:text-champagne">Terms and Conditions</Link></li>
+              {analyticsId && <li><PrivacyPreferences /></li>}
             </ul>
           </div>
         </div>
