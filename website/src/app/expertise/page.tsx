@@ -16,7 +16,7 @@ export const metadata = pageMetadata({
 export default function ExpertisePage() {
   return (
     <>
-      <PageHero eyebrow="Expertise" title="UAE Real Estate, Tailored to Your Goals." intro="Three ways to begin, each built around your objectives, preferences and budget." image="stock/downtown-dubai" />
+      <PageHero eyebrow="Expertise" title="UAE Real Estate, Tailored to Your Goals." intro="Three ways to begin, each built around your objectives, preferences and budget." image="stock/downtown-dubai" videoClip="city-walk" />
 
       <section className="bg-ivory text-burgundy">
         {services.map((s, i) => {

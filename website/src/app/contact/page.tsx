@@ -28,6 +28,7 @@ export default function ContactPage() {
         title="Let's Find Your Next Opportunity."
         intro="Tell Gescard what you’re looking for in Dubai or Abu Dhabi. Share your preferred location, budget and timing to start a consultation."
         image="stock/dubai-skyline"
+        videoClip="lobby-walk"
       />
       <section className="bg-burgundy pb-28 pt-8 sm:pb-36">
         <div className="container-luxe grid gap-16 lg:grid-cols-12 lg:gap-20">

@@ -14,7 +14,7 @@ export const metadata = pageMetadata({
 export default function InsightsPage() {
   return (
     <>
-      <PageHero eyebrow="Insights & Media" title="See the location for yourself." intro="Join Gescard on site for short Instagram Reels and longer YouTube walkthroughs." image="stock/dubai-night-boulevard">
+      <PageHero eyebrow="Insights & Media" title="See the location for yourself." intro="Join Gescard on site for short Instagram Reels and longer YouTube walkthroughs." image="stock/dubai-night-boulevard" videoClip="award-stage">
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="#instagram-heading">Instagram Reels</ButtonLink>
           <ButtonLink href="#youtube-heading" variant="outline">YouTube videos</ButtonLink>
