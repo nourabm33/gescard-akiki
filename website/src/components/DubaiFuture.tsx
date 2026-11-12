@@ -40,7 +40,7 @@ export default function DubaiFuture() {
                 <p className="text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-wine">{item.stage}</p>
                 <h3 className="mt-2 text-2xl leading-snug">{item.name}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-burgundy/75 sm:text-base">{item.detail}</p>
-                <ButtonLink href={item.source} variant="text-dark" className="mt-2" ariaLabel={`Read official updates about ${item.name} (opens in a new tab)`}>Official source</ButtonLink>
+                <ButtonLink href={item.source} variant="text-dark" className="mt-2" ariaLabel={`Official source for ${item.name} (opens in a new tab)`}>Official source</ButtonLink>
               </Reveal>
             ))}
           </ol>

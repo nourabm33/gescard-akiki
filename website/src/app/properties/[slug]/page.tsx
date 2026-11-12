@@ -7,6 +7,7 @@ import PropertyGrid from "@/components/PropertyGrid";
 import Reveal from "@/components/Reveal";
 import { WhatsAppIcon } from "@/components/icons";
 import { formatAED, getProperty, getSimilarProperties, properties, statusLabels } from "@/data/properties";
+import { abuDhabiDocuments, dubaiProjectCheck, projectQuestions } from "@/data/buyer-guidance";
 import { mailtoLink, whatsappLink } from "@/lib/enquiry";
 import { pageMetadata } from "@/lib/metadata";
 import { absoluteUrl } from "@/lib/site";
@@ -42,6 +43,17 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
   const similar = getSimilarProperties(property);
   const development = property.development;
   const pageUrl = absoluteUrl(`/properties/${property.slug}/`);
+  const questions = projectQuestions[property.slug];
+  const abuDhabi = property.location.includes("Abu Dhabi");
+  const breadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Developments", item: absoluteUrl("/properties/") },
+      { "@type": "ListItem", position: 3, name: property.title, item: pageUrl },
+    ],
+  };
   const enquiry = development?.enquiry ? `${development.enquiry} ${pageUrl}` : `Hello Gescard, I'm interested in "${property.title}" (${property.location}) on your website: ${pageUrl}`;
   const specs = [
     { icon: BedDouble, label: "Bedrooms", value: property.bedrooms },
@@ -51,6 +63,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs).replace(/</g, "\\u003c") }} />
       <section className="bg-burgundy pb-20 pt-32 sm:pt-40">
         <div className="container-luxe">
           <nav aria-label="Breadcrumb" className="text-[0.68rem] uppercase tracking-[0.24em] text-ivory/55">
@@ -58,7 +71,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
           </nav>
           <div className="mt-8 grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <PropertyGallery images={property.images} title={property.title} />
+              <PropertyGallery images={property.images} title={property.title} slug={property.slug} />
               {development && <p className="mt-4 text-xs text-ivory/65">Illustrative renders courtesy of {development.developer}.</p>}
             </div>
             <aside className="lg:col-span-4">
@@ -96,8 +109,9 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                   </dl>
                 )}
                 <div className="mt-8 flex flex-col gap-3">
-                  <ButtonLink href={whatsappLink(enquiry)} icon={<WhatsAppIcon size={17} />}>Enquire on WhatsApp</ButtonLink>
-                  <ButtonLink href={mailtoLink(`Enquiry: ${property.title}`, enquiry)} variant="outline" icon={<Mail size={16} strokeWidth={1.5} aria-hidden="true" />}>Enquire by email</ButtonLink>
+                  <ButtonLink href={`/contact/?project=${property.slug}#enquiry`} enquiryChannel="form">Enquire about this development</ButtonLink>
+                  <ButtonLink href={whatsappLink(enquiry)} variant="outline" enquiryChannel="whatsapp" icon={<WhatsAppIcon size={17} />}>Enquire on WhatsApp</ButtonLink>
+                  <ButtonLink href={mailtoLink(`Enquiry: ${property.title}`, enquiry)} variant="text" enquiryChannel="email" icon={<Mail size={16} strokeWidth={1.5} aria-hidden="true" />}>Enquire by email</ButtonLink>
                 </div>
               </div>
             </aside>
@@ -141,6 +155,17 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
           </Reveal>
         ))}
         <div className="container-luxe mt-14">
+          {questions && (
+            <div className="mb-8 max-w-3xl border-t border-burgundy/15 pt-8">
+              <h2 className="text-3xl sm:text-4xl">What to check before you enquire</h2>
+              <ul className="mt-5 list-disc space-y-3 pl-5 leading-relaxed text-burgundy/80">
+                {questions.map((question) => <li key={question}>{question}</li>)}
+              </ul>
+              <a href={abuDhabi ? abuDhabiDocuments : dubaiProjectCheck} className="mt-5 inline-block text-sm font-medium text-wine underline underline-offset-4">
+                {abuDhabi ? "Verify documents with ADREC" : "Check project status with Dubai Land Department"}
+              </a>
+            </div>
+          )}
           {development && (
             <details className="mb-8 max-w-3xl border-y border-burgundy/15 py-4">
               <summary className="cursor-pointer text-sm font-semibold text-wine">Project and destination sources</summary>
@@ -151,7 +176,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
               </ul>
             </details>
           )}
-          <p className="max-w-3xl text-xs leading-relaxed text-burgundy/55">Information is provided by the seller or developer for guidance only and may change without notice. Please confirm price, availability and specifications directly before making any decision.</p>
+          <p className="max-w-3xl text-sm leading-relaxed text-burgundy/75">Developer plans, renders and specifications may change. Ask for the current project documents and applicable approvals before making a reservation or paying a deposit.</p>
         </div>
       </section>
 

@@ -1,6 +1,8 @@
 import LegalPage from "@/components/LegalPage";
 import { profile } from "@/data/profile";
 import { pageMetadata } from "@/lib/metadata";
+import { analyticsId, enquiryIntegration } from "@/lib/integrations";
+import { PrivacyPreferences } from "@/components/AnalyticsConsent";
 
 export const metadata = pageMetadata({
   title: "Privacy Policy",
@@ -11,12 +13,16 @@ export const metadata = pageMetadata({
 // Template: review with a legal professional (UAE PDPL and, where relevant, GDPR) before launch.
 export default function PrivacyPolicyPage() {
   return (
-    <LegalPage eyebrow="Legal" title="Privacy Policy" updated="2 November 2026">
+    <LegalPage eyebrow="Legal" title="Privacy Policy" updated="12 November 2026">
       <p>This policy explains how personal information is handled when you use this website, operated by {profile.name}, a property advisor with {profile.agency.name}, {profile.address.full}.</p>
 
       <h2>What this website collects</h2>
-      <p>This website does not store your personal data on its own servers, does not use analytics or advertising trackers and does not set cookies.</p>
-      <p>When you complete the enquiry form, the details you enter (name, email address, phone number, interests, budget range, preferred location and message) are checked in your browser and used to prepare a WhatsApp message. Nothing is sent until you choose to send that message from WhatsApp. If you choose to email instead, your email application prepares the message and you decide whether to send it.</p>
+      <p>The site uses static hosting. The host and providers may receive technical information such as your IP address and browser type when your browser connects to their services.</p>
+      {enquiryIntegration ? (
+        <p>If you submit an online enquiry, we use your name, email and any details you choose to provide about your phone number, interests, project, budget or message to respond. Cloudflare processes the request and checks for abuse using Turnstile, which can receive technical data including your IP address. Resend relays the enquiry to Gescard’s business inbox. The website does not maintain a separate enquiry database.</p>
+      ) : (
+        <p>The form prepares a message using the details you enter. You decide whether to send it from WhatsApp or your email application. The website does not submit those details to an enquiry server.</p>
+      )}
 
       <h2>How your information is used</h2>
       <ul>
@@ -24,7 +30,15 @@ export default function PrivacyPolicyPage() {
         <li>To share property information relevant to your request.</li>
         <li>To keep a record of our communication.</li>
       </ul>
-      <p>Your information is not sold. It may be shared with {profile.agency.name} where necessary to handle your enquiry.</p>
+      <p>{profile.agency.name} may receive the information needed to handle your enquiry. An enquiry does not subscribe you to marketing.</p>
+
+      <h2>Analytics choices</h2>
+      {analyticsId ? (
+        <>
+          <p>Google Analytics loads only if you allow it. It uses cookies to measure pages visited, traffic sources and interactions such as opening a gallery or completing an enquiry. The site does not send form values or contact details as analytics events. Your preference is kept in this browser for up to 180 days.</p>
+          <p><PrivacyPreferences /> · <a href="https://policies.google.com/privacy">Google Privacy Policy</a></p>
+        </>
+      ) : <p>Google Analytics and advertising tags are disabled on this version of the site.</p>}
 
       <h2>Third-party services</h2>
       <h3>WhatsApp</h3>
@@ -37,7 +51,8 @@ export default function PrivacyPolicyPage() {
       <p>The site retrieves a public media list from GitHub and keeps a copy of that list in your browser for the current session. The list contains public video and Reel details.</p>
 
       <h2>Retention</h2>
-      <p>Enquiry conversations are kept for as long as needed to respond to you and for legitimate record-keeping, after which they are deleted.</p>
+      <p>Enquiry correspondence is handled through Gescard’s business inbox or the channel you choose. The applicable retention depends on the purpose of the correspondence, provider settings and any record-keeping obligations. Contact us if you want to ask about a particular enquiry.</p>
+      <p>Third-party providers may process data in other countries. For information about an applicable transfer or how long particular data is retained, use the privacy contact below.</p>
 
       <h2>Your rights</h2>
       <p>You may ask to access, correct or delete the personal information held about you, or object to its use, by contacting <a href={`mailto:${profile.email}`}>{profile.email}</a>.</p>

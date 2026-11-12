@@ -11,7 +11,7 @@ Live: https://gescardakiki.com (GitHub Pages custom domain; the root `CNAME` fil
 | `website/` | Source code: Next.js (App Router) + TypeScript + Tailwind CSS |
 | everything else at the root | The **generated static site** served by GitHub Pages. Do not edit by hand. |
 
-GitHub Pages settings: **Source: Deploy from a branch → Branch: `main` → Folder: `/ (root)`**. No GitHub Actions and no `gh-pages` branch are used. `.nojekyll` makes Pages serve the `_next/` folder.
+GitHub Pages uses **Deploy from a branch → `main` → `/ (root)`**. `.nojekyll` makes Pages serve the `_next/` folder. The media refresh uses a separate GitHub Actions workflow.
 
 ## Develop
 
@@ -20,7 +20,7 @@ cd website
 npm install
 npm run dev        # http://localhost:3000
 npm run lint       # ESLint + TypeScript
-npm test           # unit tests (enquiry form validation / WhatsApp message)
+npm test           # enquiry, analytics consent and media feed tests
 ```
 
 ## Publish a change
@@ -38,7 +38,7 @@ cd ..
 
 All content lives in `website/src/data/`:
 
-- `profile.ts`: contact details, socials, biography, credentials, languages (biography/credentials/languages are empty until verified text is supplied)
+- `profile.ts`: contact details, socials, verified credentials and optional biography or languages
 - `properties.ts`: individual listings and featured development profiles. Add an object and re-export to generate `/properties/<slug>/`. Use the optional `development` fields for project-wide facts and source links.
 - `videos.ts` and `instagram.ts`: the pre-rendered media selection. See [media refresh setup](website/MEDIA-SETUP.md) to activate automatic updates.
 - `services.ts`, `testimonials.ts`, `navigation.ts`
@@ -51,7 +51,6 @@ Original photos are kept in `website/assets/originals/`. `npm run images` (Pytho
 
 New client portraits and project renders are stored as web-ready copies only. See `website/CONTENT-SOURCES.md` for the asset references and content to confirm.
 
-## Before launch
+## Activation and review
 
-- Have the Privacy Policy and Terms templates reviewed by a legal professional.
-- Confirm the "Certified Senior Property Consultant" title and any credentials before adding them to `profile.ts`.
+See [V3 deployment and activation](website/V3-OPERATIONS.md) for direct enquiries, analytics, project marketing review and live checks.

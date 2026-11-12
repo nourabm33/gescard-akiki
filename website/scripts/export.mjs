@@ -15,4 +15,5 @@ const build = spawnSync(process.execPath, [next, "build"], {
 if (build.error) throw build.error;
 if (build.status !== 0) process.exit(build.status ?? 1);
 
+await import("./legacy-redirects.mjs");
 await import("./publish.mjs");

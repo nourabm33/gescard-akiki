@@ -18,7 +18,7 @@ export default function PageHero({ eyebrow, title, intro, image, imageAlt = "", 
     <section className="relative isolate flex min-h-[72svh] items-end overflow-hidden bg-burgundy pb-16 pt-40 sm:pb-20 lg:min-h-[78vh] lg:pb-24">
       <Parallax className="absolute inset-0 -z-10">
         <div className="hero-bg h-full w-full">
-          <ResponsiveImage image={image} alt={imageAlt} priority className="h-full w-full object-cover opacity-45" />
+          <ResponsiveImage image={image} alt={imageAlt} sizes="(max-width: 639px) 220px, 100vw" priority className="h-full w-full object-cover opacity-45" />
         </div>
       </Parallax>
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-burgundy via-burgundy/70 to-burgundy/30" aria-hidden="true" />

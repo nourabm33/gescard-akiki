@@ -6,6 +6,7 @@
   "contact",
   "expertise",
   "fonts",
+  "gescard-akiki",
   "icon.svg",
   "images",
   "index.html",
@@ -16,5 +17,6 @@
   "properties",
   "robots.txt",
   "sitemap.xml",
-  "terms"
+  "terms",
+  "video"
 ]

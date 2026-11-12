@@ -1,4 +1,4 @@
-import { profile } from "@/data/profile";
+import { profile } from "../data/profile";
 
 export const interestOptions = ["Property investment", "Apartment", "Villa", "Buying a home", "Other"] as const;
 export const budgetOptions = [
@@ -19,6 +19,7 @@ export type EnquiryInput = {
   location: string;
   message: string;
   privacy: boolean;
+  project?: string;
 };
 
 export type EnquiryErrors = Partial<Record<keyof EnquiryInput, string>>;
@@ -44,6 +45,7 @@ export function cleanEnquiry(input: EnquiryInput): EnquiryInput {
     location: sanitize(input.location, limits.location),
     message: sanitize(input.message, limits.message, true),
     privacy: input.privacy === true,
+    project: sanitize(input.project ?? "", 120),
   };
 }
 
@@ -71,6 +73,7 @@ export function enquiryText(d: EnquiryInput): string {
     ["Email", d.email],
     ["WhatsApp / phone", d.phone],
     ["Interested in", d.interest],
+    ["Development", d.project ?? ""],
     ["Estimated budget", d.budget],
     ["Preferred location", d.location],
   ];

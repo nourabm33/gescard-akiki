@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
 // Template: review with a legal professional before launch.
 export default function TermsPage() {
   return (
-    <LegalPage eyebrow="Legal" title="Terms and Conditions" updated="2 November 2026">
+    <LegalPage eyebrow="Legal" title="Terms and Conditions" updated="12 November 2026">
       <p>By using this website you agree to these terms. If you do not agree, please do not use the website.</p>
 
       <h2>About this website</h2>
@@ -19,6 +19,7 @@ export default function TermsPage() {
 
       <h2>Property information</h2>
       <p>Property details, prices, availability, images and specifications are provided for general information only, may be supplied by third parties such as developers or owners, and can change without notice. They do not constitute an offer or form part of any contract. Images may be illustrative. Always confirm details directly before making any decision.</p>
+      <p>Before reserving an off-plan unit, ask for the current developer documents, the relevant project registration and escrow details, and any permit that applies to its marketing. You can check Dubai project information with <a href="https://dubailand.gov.ae/en/eservices/dubai-rest/">Dubai REST</a> and verify applicable Abu Dhabi permits with the <a href="https://adrec.gov.ae/en/verify-document">Abu Dhabi Real Estate Centre</a>.</p>
 
       <h2>No financial, legal or tax advice</h2>
       <p>Nothing on this website is financial, investment, mortgage, legal or tax advice. {profile.name} is not a licensed financial or legal adviser. Property values can go down as well as up and no return is guaranteed. Please obtain independent professional advice before investing.</p>

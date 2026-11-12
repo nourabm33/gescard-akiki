@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { InstagramIcon, YouTubeIcon } from "@/components/icons";
 import { profile } from "@/data/profile";
+import { properties } from "@/data/properties";
 import { whatsappLink } from "@/lib/enquiry";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -33,6 +34,8 @@ export default function ContactPage() {
           <Reveal className="lg:col-span-4">
             <h2 className="text-3xl text-ivory sm:text-4xl">{profile.name}</h2>
             <p className="mt-2 text-[0.68rem] uppercase tracking-[0.28em] text-champagne">{profile.title}</p>
+            <p className="mt-4 text-sm text-ivory/85">{profile.agency.registeredName}</p>
+            <a href={profile.registrationUrl} className="mt-2 inline-block text-sm text-champagne underline underline-offset-4">Verify Dubai broker registration</a>
             <ul className="mt-10 divide-y divide-ivory/10 border-y border-ivory/10">
               {channels.map((c) => (
                 <li key={c.label}>
@@ -56,11 +59,11 @@ export default function ContactPage() {
             </div>
           </Reveal>
           <Reveal delay={120} className="lg:col-span-8">
-            <div className="border border-ivory/10 bg-burgundy-soft p-6 sm:p-10 lg:p-14">
+            <div id="enquiry" className="scroll-mt-24 border border-ivory/10 bg-burgundy-soft p-6 sm:p-10 lg:p-14">
               <p className="eyebrow text-champagne">Enquiry</p>
               <h2 className="mb-10 mt-5 text-4xl leading-tight text-ivory sm:text-5xl">Let&rsquo;s discuss your goals.</h2>
               <Suspense fallback={null}>
-                <ContactForm />
+                <ContactForm projects={properties.map(({ slug, title }) => ({ slug, title }))} />
               </Suspense>
             </div>
           </Reveal>

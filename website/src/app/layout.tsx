@@ -3,8 +3,10 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import BackToTop from "@/components/BackToTop";
+import AnalyticsConsent from "@/components/AnalyticsConsent";
 import { profile } from "@/data/profile";
 import { absoluteUrl, asset, SITE_URL } from "@/lib/site";
+import { analyticsId } from "@/lib/integrations";
 import "./fonts.css";
 import "./globals.css";
 
@@ -80,6 +82,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Footer />
         <BackToTop />
         <WhatsAppFloat />
+        {analyticsId && <AnalyticsConsent />}
       </body>
     </html>
   );

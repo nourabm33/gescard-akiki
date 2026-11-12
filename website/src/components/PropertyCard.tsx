@@ -10,15 +10,15 @@ export default function PropertyCard({ property }: { property: Property }) {
   const showStatus = property.status && property.statusConfirmed;
   return (
     <article className="group relative flex h-full flex-col">
-      <Link href={`/properties/${property.slug}/`} className={`property-cover img-zoom relative block overflow-hidden bg-burgundy-soft ${development ? "aspect-[16/10]" : "aspect-[4/5]"}`} aria-label={`${detailLabel}: ${property.title}`}>
+      <Link href={`/properties/${property.slug}/`} className={`property-cover img-zoom relative block overflow-hidden bg-burgundy-soft ${development ? "aspect-[16/10]" : "aspect-[4/5]"}`}>
         {cover && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={asset(cover.previewSrc ?? cover.src)} alt={cover.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+          <img src={asset(cover.previewSrc ?? cover.src)} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
         )}
         <span className="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent transition-opacity duration-700" aria-hidden="true" />
         <span className="absolute inset-0 bg-burgundy/0 transition-colors duration-700 group-hover:bg-burgundy/25" aria-hidden="true" />
-        <span className="property-cover-label absolute bottom-5 right-5 border border-ivory/40 bg-burgundy/75 px-3 py-1.5 text-[0.6rem] font-medium uppercase tracking-[0.24em] text-ivory" aria-hidden="true">View details</span>
-        <span className="absolute left-5 top-5 bg-burgundy/85 px-3 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-ivory backdrop-blur-sm">
+        <span className="property-cover-label absolute bottom-5 right-5 border border-ivory/40 bg-burgundy/75 px-3 py-1.5 text-[0.6rem] font-medium uppercase tracking-[0.24em] text-ivory">View details<span className="sr-only"> for {property.title}</span></span>
+        <span className="absolute left-5 top-5 bg-burgundy/90 px-3 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-ivory" aria-hidden="true">
           {property.category}
         </span>
         {showStatus && (
