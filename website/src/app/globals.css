@@ -166,10 +166,10 @@
 }
 @keyframes word-rise { from { opacity: 0; transform: translate3d(0, 105%, 0); } to { opacity: 1; transform: none; } }
 
-.hero-portrait { animation: portrait-in 1.35s var(--ease-luxe) both 160ms; }
+.hero-portrait { animation: portrait-in 0.85s var(--ease-luxe) both; }
 @keyframes portrait-in {
-  from { opacity: 0; clip-path: inset(5% 0 0 0); transform: translate3d(0, 12px, 0) scale(1.015); }
-  to { opacity: 1; clip-path: inset(0 0 0 0); transform: none; }
+  from { clip-path: inset(3% 0 0 0); transform: translate3d(0, 7px, 0); }
+  to { clip-path: inset(0 0 0 0); transform: none; }
 }
 .hero-halo { animation: halo-in 2s var(--ease-luxe) both 600ms; }
 @keyframes halo-in { from { opacity: 0; scale: 0.94; } to { opacity: 1; scale: 1; } }
@@ -179,7 +179,7 @@
 
 .parallax { transform: translate3d(0, var(--parallax, 0px), 0); will-change: transform; }
 
-.scroll-cue { animation: scroll-cue 2.6s var(--ease-luxe) infinite; }
+.scroll-cue { animation: scroll-cue 2.6s var(--ease-luxe) 1 both; }
 @keyframes scroll-cue { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
 /* ---------- Hover & micro-interactions (pointer devices only) ---------- */

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import ButtonLink from "@/components/ButtonLink";
+import CinematicBackground from "@/components/CinematicBackground";
 import DubaiFuture from "@/components/DubaiFuture";
 import FinalCta from "@/components/FinalCta";
 import InstagramSection from "@/components/InstagramSection";
 import PropertiesEmptyState from "@/components/PropertiesEmptyState";
 import PropertyGrid from "@/components/PropertyGrid";
 import ResponsiveImage from "@/components/ResponsiveImage";
-import Parallax from "@/components/Parallax";
 import Reveal from "@/components/Reveal";
 import SplitWords from "@/components/SplitWords";
 import SectionHeading from "@/components/SectionHeading";
@@ -22,12 +22,8 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-burgundy lg:min-h-[100svh]">
-        <Parallax className="absolute inset-0 -z-20">
-          <div className="hero-bg h-full w-full">
-            <ResponsiveImage image="stock/dubai-skyline" alt="" priority className="h-full w-full object-cover object-[60%_center] opacity-20" />
-          </div>
-        </Parallax>
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_72%_48%,rgba(140,39,79,0.5),rgba(48,7,25,0.9)_62%)]" aria-hidden="true" />
+        <CinematicBackground clip="arrival" autoplay className="opacity-45" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_72%_48%,rgba(85,23,48,0.44),rgba(48,7,25,0.88)_68%)]" aria-hidden="true" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-burgundy via-burgundy/80 to-transparent" aria-hidden="true" />
 
         <div className="container-luxe grid items-center gap-10 pb-20 pt-28 lg:min-h-[100svh] lg:grid-cols-12 lg:gap-0 lg:pb-24 lg:pt-32">
@@ -38,7 +34,7 @@ export default function HomePage() {
               image="gescard/office-portrait"
               alt="Gescard Akiki seated at the RichKey Properties office"
               priority
-              sizes="(min-width: 640px) 430px, 90vw"
+              sizes="(min-width: 640px) 430px, calc(100vw - 48px)"
               className="hero-portrait relative aspect-[4/5] w-full object-cover object-[50%_62%]"
             />
           </div>
