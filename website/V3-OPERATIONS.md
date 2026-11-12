@@ -2,7 +2,7 @@
 
 ## Website release
 
-Review the feature branch and confirm the project marketing review below before merging. From `website/`, run `npm ci`, `npm test`, `node --test scripts/sync-media.test.mjs` and `npm run export`. Commit the source and generated root files together. GitHub Pages serves the repository root on `main` with `CNAME` set to `gescardakiki.com`. The export creates HTML redirects for legacy `/gescard-akiki/` paths. The new URLs stay in the sitemap and canonical tags.
+The V3 pull request is intentionally draft. Keep it unmerged until every release blocker in [V3-QUALITY-REPORT.md](V3-QUALITY-REPORT.md) is resolved and the owner approves. In particular, confirm the project marketing review below before merging. From `website/`, run `npm ci`, `npm test`, `node --test scripts/sync-media.test.mjs` and `npm run export`. Commit the source and generated root files together. GitHub Pages serves the repository root on `main` with `CNAME` set to `gescardakiki.com`. The export creates HTML redirects for legacy `/gescard-akiki/` paths. The new URLs stay in the sitemap and canonical tags.
 
 After an approved merge, wait for the Pages deployment to succeed and test the homepage, Contact, all five developments and the old prefixed Contact and Developments URLs on the live domain. Try opening an enquiry from a development and confirm that the selected development carries over. Confirm the original media sections and WhatsApp, email and telephone links.
 
