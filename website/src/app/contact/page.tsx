@@ -34,6 +34,8 @@ export default function ContactPage() {
           <Reveal className="lg:col-span-4">
             <h2 className="text-3xl text-ivory sm:text-4xl">{profile.name}</h2>
             <p className="mt-2 text-[0.68rem] uppercase tracking-[0.28em] text-champagne">{profile.title}</p>
+            <p className="mt-4 text-sm text-ivory/85">{profile.agency.registeredName}</p>
+            <a href={profile.registrationUrl} className="mt-2 inline-block text-sm text-champagne underline underline-offset-4">Verify Dubai broker registration</a>
             <ul className="mt-10 divide-y divide-ivory/10 border-y border-ivory/10">
               {channels.map((c) => (
                 <li key={c.label}>

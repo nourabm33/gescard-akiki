@@ -1,9 +1,11 @@
 import ButtonLink from "@/components/ButtonLink";
+import CinematicBackground from "@/components/CinematicBackground";
 import FinalCta from "@/components/FinalCta";
 import PageHero from "@/components/PageHero";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import Reveal from "@/components/Reveal";
 import { profile } from "@/data/profile";
+import { consultationSteps } from "@/data/buyer-guidance";
 import { testimonials } from "@/data/testimonials";
 import { whatsappLink } from "@/lib/enquiry";
 import { pageMetadata } from "@/lib/metadata";
@@ -14,18 +16,12 @@ export const metadata = pageMetadata({
   path: "/about/",
 });
 
-const approach = [
-  { title: "Understanding your brief", text: "Every enquiry starts with a conversation about your goals, preferred locations, property type, timing and budget, whether you are investing or looking for a home." },
-  { title: "Exploring suitable options", text: "Your requirements shape the search. Options are shortlisted around what matters to you, rather than presenting everything on the market." },
-  { title: "Direct communication", text: "You speak with Gescard directly throughout the search, with clear answers to your questions and support as you consider each next step." },
-];
-
 export default function AboutPage() {
   const identity: { label: string; value: string }[] = [
     { label: "Name", value: profile.name },
     { label: "Professional title", value: profile.title },
     { label: "Speciality", value: profile.specialty },
-    { label: "Agency", value: profile.agency.name },
+    { label: "Registered brokerage", value: profile.agency.registeredName },
     { label: "Office", value: profile.address.full },
     ...profile.credentials,
     ...(profile.languages.length ? [{ label: "Languages", value: profile.languages.join(", ") }] : []),
@@ -56,13 +52,13 @@ export default function AboutPage() {
               ) : (
                 <>
                   <p>
-                    Gescard advises buyers on off-plan homes in Dubai and Abu Dhabi. He begins with a conversation about where you want to live or invest, what you can commit to and when you need the home.
+                    Gescard Akiki is a property consultant with RichKey Properties, working from the brokerage’s Dubai Hills office. He helps buyers compare off-plan homes across Dubai and Abu Dhabi, whether they plan to live there or hold the property as an investment.
                   </p>
                   <p>
                     He looks closely at the developer, the masterplan and what is already in place around a project. The details that matter often sit outside the floor plan: the coastline, established schools, nearby jobs and the routes people use every day.
                   </p>
                   <p>
-                    The shortlist reflects your priorities. Gescard helps you compare the homes, payment schedules and delivery milestones that fit your brief.
+                    The shortlist reflects your priorities. If you are relocating, you can compare travel routes and which everyday amenities are already open. If you are comparing payment plans, Gescard helps you put the instalments, handover balance and open questions side by side so you can discuss them with the developer and your advisers.
                   </p>
                 </>
               )}
@@ -78,11 +74,10 @@ export default function AboutPage() {
       <section className="bg-burgundy py-24 sm:py-32" aria-labelledby="approach-heading">
         <div className="container-luxe">
           <Reveal>
-            <p className="eyebrow text-champagne">My Approach</p>
-            <h2 id="approach-heading" className="mt-6 max-w-3xl text-[2.5rem] leading-[1.05] text-ivory sm:text-5xl lg:text-[3.6rem]">A property search shaped around your goals.</h2>
+            <h2 id="approach-heading" className="max-w-3xl text-[2.5rem] leading-[1.05] text-ivory sm:text-5xl lg:text-[3.6rem]">How I work</h2>
           </Reveal>
-          <ol className="mt-16 grid gap-px bg-ivory/10 md:grid-cols-3">
-            {approach.map((a, i) => (
+          <ol className="mt-12 grid gap-px bg-ivory/10 md:grid-cols-2">
+            {consultationSteps.map((a, i) => (
               <Reveal as="li" key={a.title} delay={i * 120} className="bg-burgundy p-8 md:p-10">
                 <span className="font-serif text-5xl text-champagne/80">0{i + 1}</span>
                 <h3 className="mt-8 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.26em] text-ivory">{a.title}</h3>
@@ -94,9 +89,7 @@ export default function AboutPage() {
       </section>
 
       <section className="relative isolate overflow-hidden bg-burgundy py-28 sm:py-40" aria-labelledby="philosophy-heading">
-        <div className="absolute inset-0 -z-10">
-          <ResponsiveImage image="stock/dubai-night-boulevard" alt="" className="h-full w-full object-cover opacity-25" />
-        </div>
+        <CinematicBackground clip="awards-team" className="opacity-40" />
         <div className="absolute inset-0 -z-10 bg-burgundy/60" aria-hidden="true" />
         <div className="container-luxe">
           <Reveal className="mx-auto max-w-4xl text-center">
@@ -126,6 +119,10 @@ export default function AboutPage() {
                 </div>
               ))}
             </dl>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-wine">
+              <a className="underline underline-offset-4" href="https://richkey.ae/">RichKey Properties team</a>
+              <a className="underline underline-offset-4" href={profile.registrationUrl}>Verify registration with Dubai Land Department</a>
+            </div>
           </Reveal>
         </div>
       </section>

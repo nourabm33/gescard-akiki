@@ -39,6 +39,7 @@ export const services: {
   label: string;
   title: string;
   text: string;
+  comparison: string;
   cta: { label: string; href: string };
   image: ImageKey;
   alt: string;
@@ -49,6 +50,7 @@ export const services: {
     label: "Off-Plan Advisory",
     title: "Understand what you’re buying.",
     text: "Gescard helps you compare off-plan opportunities from developers such as Emaar, Aldar and Nakheel, part of Dubai Holding Real Estate. He looks at the developer, payment schedule, delivery milestones and the location before building a shortlist.",
+    comparison: "Two homes can have similar headline prices and very different payment dates. Compare how much falls due at reservation, during construction and at handover. Ask what triggers each instalment and which charges sit outside the purchase price.",
     cta: { label: "Discuss your investment goals", href: "/contact/?interest=investment" },
     image: "stock/dubai-night-boulevard",
     alt: "Dubai skyscrapers along an illuminated boulevard at night",
@@ -59,6 +61,7 @@ export const services: {
     label: "Dubai & Abu Dhabi",
     title: "Start with the location.",
     text: "A home on a developing waterfront comes with a different timeline from one in an established district. Gescard helps you compare what each location offers today and what is planned, including schools, transport and everyday amenities.",
+    comparison: "Check the exact building or plot on the masterplan. An address can tell you the district, while the unit’s orientation, walking route and nearby construction can change how the home feels day to day.",
     cta: { label: "Explore properties", href: "/properties/" },
     image: "stock/villa-garden-illustrative",
     alt: "Modern villa with garden and pool terrace (illustrative)",
@@ -69,6 +72,7 @@ export const services: {
     label: "Personalised Property Search",
     title: "A Property Search Built Around You.",
     text: "Every client has different requirements. Share your preferences, desired location and budget to begin a more personalised property search.",
+    comparison: "A first consultation can start with one development you already know. Bring its brochure or floor plan and the questions you still have. Gescard can help you compare it with alternatives and identify the details to confirm before reserving.",
     cta: { label: "Start your property search", href: "/contact/" },
     image: "gescard/consultation",
     alt: "Gescard Akiki discussing property options by phone",

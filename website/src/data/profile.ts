@@ -10,6 +10,7 @@ export const profile = {
   specialty: "Off-Plan Real Estate",
   agency: {
     name: "RichKey Properties",
+    registeredName: "RichKey Properties L.L.C.",
     /** Wording for his relationship with the agency (he is not the owner). */
     relationship: "Senior Property Consultant at RichKey Properties",
   },
@@ -40,8 +41,11 @@ export const profile = {
    * the About page then shows only the general approach copy.
    */
   biography: [] as string[],
-  /** Verified credentials only, e.g. { label: "Broker registration (BRN)", value: "12345" }. */
-  credentials: [] as { label: string; value: string }[],
+  registrationUrl: "https://dubailand.gov.ae/en/eservices/licensed-real-estate-brokers-list/?cardnum=78844&lang=en",
+  credentials: [
+    { label: "Dubai broker number", value: "78844" },
+    { label: "DLD brokerage office number", value: "36052" },
+  ],
   /** Languages spoken, once confirmed. */
   languages: [] as string[],
 } as const;

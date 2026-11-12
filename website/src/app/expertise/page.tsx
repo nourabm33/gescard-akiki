@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import Reveal from "@/components/Reveal";
 import { services } from "@/data/services";
+import { buyerQuestions, dubaiAdvertising, dubaiRest } from "@/data/buyer-guidance";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -34,6 +35,7 @@ export default function ExpertisePage() {
                   </p>
                   <h2 className="mt-6 text-[2.5rem] leading-[1.05] sm:text-5xl lg:text-[3.4rem]">{s.title}</h2>
                   <p className="mt-6 text-lg leading-relaxed text-burgundy/75">{s.text}</p>
+                  <p className="mt-4 leading-relaxed text-burgundy/75">{s.comparison}</p>
                   <div className="mt-10">
                     <ButtonLink href={s.cta.href} variant="outline-dark">{s.cta.label}</ButtonLink>
                   </div>
@@ -42,6 +44,28 @@ export default function ExpertisePage() {
             </article>
           );
         })}
+      </section>
+
+      <section id="buyer-questions" className="scroll-mt-24 bg-ivory pb-20 text-burgundy sm:pb-28" aria-labelledby="buyer-questions-heading">
+        <div className="container-luxe grid gap-8 border-t border-burgundy/15 pt-14 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <h2 id="buyer-questions-heading" className="text-4xl sm:text-5xl">Off-plan buyer questions</h2>
+            <p className="mt-5 leading-relaxed text-burgundy/75">What to ask before choosing a development, reviewing a payment schedule or making a reservation.</p>
+          </div>
+          <div className="divide-y divide-burgundy/15 border-y border-burgundy/15 lg:col-span-8">
+            {buyerQuestions.map(({ question, answer, link }) => (
+              <details key={question} className="py-4">
+                <summary className="cursor-pointer py-2 font-semibold text-wine">{question}</summary>
+                <p className="mt-3 max-w-3xl leading-relaxed text-burgundy/80">{answer}</p>
+                {link && <a href={link.href} className="mt-3 inline-block text-sm font-medium text-wine underline underline-offset-4">{link.text}</a>}
+              </details>
+            ))}
+            <p className="flex flex-wrap gap-x-5 gap-y-2 py-5 text-sm text-wine">
+              <a href={dubaiRest} className="underline underline-offset-4">Dubai REST</a>
+              <a href={dubaiAdvertising} className="underline underline-offset-4">Dubai Madmoun QR codes</a>
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="bg-burgundy py-14">
