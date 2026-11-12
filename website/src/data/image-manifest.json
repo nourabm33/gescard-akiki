@@ -1,4 +1,31 @@
 {
+ "gescard/richkey-awards": {
+  "w": 5472,
+  "h": 3648,
+  "widths": [
+   640,
+   1000,
+   1440
+  ]
+ },
+ "gescard/awards-shelf": {
+  "w": 3700,
+  "h": 3648,
+  "widths": [
+   640,
+   1000,
+   1400
+  ]
+ },
+ "gescard/awards-display": {
+  "w": 1280,
+  "h": 854,
+  "widths": [
+   640,
+   1000,
+   1280
+  ]
+ },
  "stock/dubai-skyline": {
   "w": 2400,
   "h": 1600,
@@ -81,12 +108,12 @@
   ]
  },
  "gescard/gescard-portrait": {
-  "w": 1002,
-  "h": 1179,
+  "w": 1122,
+  "h": 1402,
   "widths": [
    480,
    800,
-   1002
+   1122
   ]
  },
  "gescard/gescard-portrait-cutout": {
@@ -97,58 +124,7 @@
    755
   ]
  },
- "gescard/emaar-awards-team-stage": {
-  "w": 1290,
-  "h": 852,
-  "widths": [
-   640,
-   1290
-  ]
- },
- "gescard/emaar-awards-team-group": {
-  "w": 1290,
-  "h": 846,
-  "widths": [
-   640,
-   1290
-  ]
- },
- "gescard/emaar-awards-duo": {
-  "w": 1290,
-  "h": 860,
-  "widths": [
-   640,
-   1290
-  ]
- },
  "gescard/office-portrait": {
-  "w": 3648,
-  "h": 5472,
-  "widths": [
-   480,
-   800,
-   1200
-  ]
- },
- "gescard/richkey-awards": {
-  "w": 5472,
-  "h": 3648,
-  "widths": [
-   640,
-   1000,
-   1440
-  ]
- },
- "gescard/richkey-office": {
-  "w": 5472,
-  "h": 3648,
-  "widths": [
-   640,
-   1000,
-   1440
-  ]
- },
- "gescard/consultation": {
   "w": 3648,
   "h": 5472,
   "widths": [
@@ -166,22 +142,48 @@
    1200
   ]
  },
- "gescard/awards-shelf": {
-  "w": 3700,
-  "h": 3648,
+ "gescard/consultation": {
+  "w": 3648,
+  "h": 5472,
   "widths": [
-   640,
-   1000,
-   1400
+   480,
+   800,
+   1200
   ]
  },
- "gescard/awards-display": {
-  "w": 1280,
-  "h": 854,
+ "gescard/richkey-office": {
+  "w": 1448,
+  "h": 1086,
   "widths": [
    640,
    1000,
-   1280
+   1448
+  ]
+ },
+ "gescard/emaar-awards-team-stage": {
+  "w": 1448,
+  "h": 1086,
+  "widths": [
+   640,
+   1290,
+   1448
+  ]
+ },
+ "gescard/emaar-awards-team-group": {
+  "w": 1254,
+  "h": 1254,
+  "widths": [
+   640,
+   1254
+  ]
+ },
+ "gescard/emaar-awards-duo": {
+  "w": 1448,
+  "h": 1086,
+  "widths": [
+   640,
+   1290,
+   1448
   ]
  }
 }
