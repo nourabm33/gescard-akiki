@@ -22,11 +22,11 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-burgundy lg:min-h-[100svh]">
-        <CinematicBackground clip="arrival" autoplay className="opacity-45" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_72%_48%,rgba(85,23,48,0.44),rgba(48,7,25,0.88)_68%)]" aria-hidden="true" />
-        <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-burgundy via-burgundy/80 to-transparent" aria-hidden="true" />
+        <CinematicBackground clip="arrival" autoplay />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_72%_48%,rgba(85,23,48,0.40),rgba(48,7,25,0.70)_68%)]" aria-hidden="true" />
+        <div className="absolute inset-x-0 bottom-0 z-10 h-1/2 bg-gradient-to-t from-burgundy via-burgundy/65 to-transparent" aria-hidden="true" />
 
-        <div className="container-luxe grid items-center gap-10 pb-20 pt-28 lg:min-h-[100svh] lg:grid-cols-12 lg:gap-0 lg:pb-24 lg:pt-32">
+        <div className="container-luxe relative z-20 grid items-center gap-10 pb-20 pt-28 lg:min-h-[100svh] lg:grid-cols-12 lg:gap-0 lg:pb-24 lg:pt-32">
           {/* Portrait */}
           <div className="relative order-2 mx-auto w-full max-w-[430px] lg:col-span-5 lg:col-start-8 lg:row-start-1">
             <div className="absolute inset-0 translate-x-2 translate-y-2 border border-champagne/35 sm:translate-x-3 sm:translate-y-3" aria-hidden="true" />
@@ -58,7 +58,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <a href="#introduction" style={{ "--d": "1300ms" } as React.CSSProperties} className="hero-rise absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[0.6rem] uppercase tracking-[0.34em] text-ivory/60 transition-colors hover:text-champagne lg:flex" aria-label="Scroll to introduction">
+        <a href="#introduction" style={{ "--d": "1300ms" } as React.CSSProperties} className="hero-rise absolute bottom-8 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-3 text-[0.6rem] uppercase tracking-[0.34em] text-ivory/60 transition-colors hover:text-champagne lg:flex" aria-label="Scroll to introduction">
           Scroll
           <span className="relative block h-12 w-px overflow-hidden bg-ivory/15" aria-hidden="true">
             <span className="scroll-cue absolute inset-0 bg-champagne" />

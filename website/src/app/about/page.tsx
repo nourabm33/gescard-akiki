@@ -29,7 +29,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageHero eyebrow="About Gescard" title="Meet Gescard Akiki." intro="Senior Property Consultant at RichKey Properties, specialising in off-plan homes in Dubai and Abu Dhabi." image="gescard/richkey-office" />
+      <PageHero eyebrow="About Gescard" title="Meet Gescard Akiki." intro="Senior Property Consultant at RichKey Properties, specialising in off-plan homes in Dubai and Abu Dhabi." image="gescard/richkey-office" videoClip="award-moment" />
 
       <section className="bg-ivory py-24 text-burgundy sm:py-32">
         <div className="container-luxe grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
@@ -89,9 +89,9 @@ export default function AboutPage() {
       </section>
 
       <section className="relative isolate overflow-hidden bg-burgundy py-28 sm:py-40" aria-labelledby="philosophy-heading">
-        <CinematicBackground clip="awards-team" className="opacity-40" />
-        <div className="absolute inset-0 -z-10 bg-burgundy/60" aria-hidden="true" />
-        <div className="container-luxe">
+        <CinematicBackground clip="team-awards" autoplay />
+        <div className="absolute inset-0 z-10 bg-burgundy/60" aria-hidden="true" />
+        <div className="container-luxe relative z-20">
           <Reveal className="mx-auto max-w-4xl text-center">
             <h2 id="philosophy-heading" className="eyebrow justify-center font-sans text-champagne">My Philosophy</h2>
             <blockquote className="mt-10">
