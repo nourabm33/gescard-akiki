@@ -18,7 +18,6 @@ export default function VideoCard({ video, playing, onPlay, onClose }: Props) {
       <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/60 bg-burgundy/45 text-ivory transition-[transform,background-color,border-color,color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-hover:border-champagne group-hover:bg-champagne group-hover:text-burgundy group-focus-within:border-champagne" aria-hidden="true">
         <Play size={18} strokeWidth={1.4} className="translate-x-0.5" fill="currentColor" />
       </span>
-      <span className="absolute bottom-3 right-3 bg-burgundy/85 px-2 py-1 text-xs tabular-nums text-ivory">{duration}</span>
     </>
   );
 
@@ -39,6 +38,7 @@ export default function VideoCard({ video, playing, onPlay, onClose }: Props) {
         ) : (
           <button ref={thumbnailButton} type="button" onClick={onPlay} className="img-zoom absolute inset-0" aria-label={`Play video: ${title}`}>{preview}</button>
         )}
+        {!playing && <span className="pointer-events-none absolute bottom-3 right-3 bg-burgundy/85 px-2 py-1 text-xs tabular-nums text-ivory">{duration}</span>}
       </div>
       <div className="flex flex-1 flex-col pt-4">
         <h3 className="break-words text-xl leading-snug text-ivory">{title}</h3>
