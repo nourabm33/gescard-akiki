@@ -132,14 +132,10 @@ export default function AboutPage() {
           <Reveal>
             <p className="eyebrow text-champagne">RichKey Properties</p>
             <h2 id="moments-heading" className="mt-6 max-w-3xl text-[2.5rem] leading-[1.05] text-ivory sm:text-5xl">Behind the advisory.</h2>
-            <p className="mt-6 max-w-2xl leading-relaxed text-ivory/75">Gescard works with RichKey Properties, a Dubai brokerage with an off-plan property team. The photos show Gescard at the office awards display and the RichKey team at Emaar’s Quarter 1 Broker Awards 2026.</p>
+            <p className="mt-6 max-w-2xl leading-relaxed text-ivory/75">Gescard works with RichKey Properties, a Dubai brokerage with an off-plan property team. The photos show Gescard and the RichKey team at Emaar’s Quarter 1 Broker Awards 2026.</p>
             <ButtonLink href="https://richkey.ae/" variant="text" className="mt-4">Visit RichKey Properties</ButtonLink>
           </Reveal>
           <div className="mt-14 grid gap-4 md:grid-cols-2">
-            <Reveal as="figure" variant="fade" className="md:col-span-2">
-              <ResponsiveImage image="gescard/richkey-awards" alt="Gescard Akiki beside the RichKey Properties trophy display" sizes="(min-width: 1320px) 1224px, 100vw" className="aspect-[3/2] w-full object-cover brightness-[1.1] saturate-[0.92]" />
-              <figcaption className="mt-3 text-sm text-ivory/70">At the RichKey Properties office.</figcaption>
-            </Reveal>
             <Reveal variant="image" from="left" className="md:row-span-2">
               <ResponsiveImage image="gescard/emaar-awards-team-group" alt="Gescard Akiki and the RichKey Properties team at the Emaar Quarter 1 Broker Awards 2026" sizes="(min-width: 768px) 50vw, 100vw" className="h-full w-full object-cover" />
             </Reveal>

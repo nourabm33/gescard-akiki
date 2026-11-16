@@ -93,9 +93,9 @@ export default function HomePage() {
             <ResponsiveImage image="gescard/richkey-office" alt="Gescard Akiki pointing to the RichKey sign at the RichKey Properties office" sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[3/2] w-full object-cover" />
           </Reveal>
           <div className="lg:col-span-5 lg:col-start-8">
-            <SectionHeading eyebrow={profile.agency.name} title={<span id="richkey-heading">Part of the RichKey team.</span>} />
+            <SectionHeading eyebrow={profile.agency.name} title={<span id="richkey-heading">Senior Property Consultant at RichKey Properties.</span>} />
             <Reveal delay={120} className="mt-6 space-y-5 text-base leading-relaxed text-ivory/75 sm:text-lg">
-              <p>Gescard works as a property consultant at {profile.agency.name}, from the brokerage&rsquo;s office at Dubai Hills Business Park.</p>
+              <p>Gescard works from the brokerage&rsquo;s office at Dubai Hills Business Park.</p>
               <p>You deal with him directly from the first conversation to the final paperwork, with the RichKey team behind every enquiry.</p>
             </Reveal>
             <Reveal delay={200} className="mt-8">
@@ -174,8 +174,8 @@ export default function HomePage() {
           <div className="lg:col-span-5">
             <SectionHeading tone="light" eyebrow="Why Gescard" title="A More Personal Way to Explore UAE Real Estate." />
             <Reveal as="figure" variant="fade" delay={150} className="mt-10">
-              <ResponsiveImage image="gescard/awards-display" alt="Gescard Akiki presenting the developer awards display at the RichKey Properties office" sizes="(min-width: 1024px) 40vw, 100vw" className="aspect-[3/2] w-full object-cover" />
-              <figcaption className="mt-3 text-xs text-burgundy/65">Gescard at the RichKey Properties office.</figcaption>
+              <ResponsiveImage image="gescard/gescard-portrait" alt="Gescard Akiki holding the RichKey Properties award at the Emaar Quarter 1 Broker Awards 2026" sizes="(min-width: 1320px) 480px, (min-width: 1024px) 40vw, 100vw" className="h-auto w-full" />
+              <figcaption className="mt-3 text-xs text-burgundy/65">Gescard at the Emaar Quarter 1 Broker Awards 2026.</figcaption>
             </Reveal>
           </div>
           <ol className="lg:col-span-6 lg:col-start-7 lg:pt-16">

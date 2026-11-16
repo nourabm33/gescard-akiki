@@ -43,8 +43,7 @@ export default function CinematicBackground({
   const [visible, setVisible] = useState(false);
   const [foreground, setForeground] = useState(true);
   const [armed, setArmed] = useState(false);
-  const [requested, setRequested] = useState(autoplay);
-  const [playing, setPlaying] = useState(false);
+  const requested = autoplay;
   const [hasFrame, setHasFrame] = useState(false);
   const [failed, setFailed] = useState(false);
 
@@ -125,33 +124,15 @@ export default function CinematicBackground({
     };
   }, [eligible, failed, nearby, visible]);
 
-  const pause = useCallback(() => {
-    if (player.current) pauseExclusive(player.current);
-  }, []);
-
   useEffect(() => {
     const video = player.current;
     if (!video) return;
     if (eligible && nearby && visible && foreground && requested && armed && !failed) {
-      void playExclusive(video).catch(() => setPlaying(false));
+      void playExclusive(video).catch(() => {});
     } else {
       pauseExclusive(video);
     }
   }, [armed, eligible, failed, foreground, nearby, requested, visible, mobile]);
-
-  function toggle() {
-    if (playing) {
-      setRequested(false);
-      pause();
-      return;
-    }
-    setRequested(true);
-    setFailed(false);
-    if (nearby) setArmed(true);
-    if (player.current && visible && foreground) {
-      void playExclusive(player.current).catch(() => setPlaying(false));
-    }
-  }
 
   return (
     <>
@@ -178,27 +159,15 @@ export default function CinematicBackground({
             playsInline
             preload="metadata"
             disablePictureInPicture
-            onPlaying={() => { setPlaying(true); setHasFrame(true); }}
-            onPause={() => setPlaying(false)}
+            onPlaying={() => setHasFrame(true)}
             onError={() => {
               setFailed(true);
-              setPlaying(false);
               setHasFrame(false);
             }}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${hasFrame ? "opacity-100" : "opacity-0"}`}
           />
         )}
       </div>
-      {eligible && (
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={playing ? "Pause background motion" : "Play background motion"}
-          className="absolute bottom-5 right-24 z-40 min-h-11 border border-ivory/45 bg-burgundy/90 px-4 text-xs text-ivory shadow-sm transition-colors hover:border-champagne hover:text-champagne focus-visible:border-champagne"
-        >
-          {playing ? "Pause background motion" : "Play background motion"}
-        </button>
-      )}
     </>
   );
 }
